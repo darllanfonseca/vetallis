@@ -14,3 +14,11 @@ C:\Users\admin\Documents\Projects\vetallis\Vetallis\obj\Debug\Interop.ADODB.dll
 C:\Users\admin\Documents\Projects\vetallis\Vetallis\obj\Debug\Vetallis.csproj.ResolveComReference.cache
 C:\Users\admin\Documents\Projects\vetallis\Vetallis\obj\Debug\Vetallis.dll
 C:\Users\admin\Documents\Projects\vetallis\Vetallis\obj\Debug\Vetallis.pdb
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\bin\Vetallis.dll.config
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\bin\Vetallis.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\bin\Vetallis.pdb
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.csprojResolveAssemblyReference.cache
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Interop.ADODB.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.csproj.ResolveComReference.cache
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.pdb
