@@ -98,6 +98,7 @@
 	{	background: #8AC007;
 		color: #FFF} 
 
+
      
 #header {
     background-color:#606060;
@@ -108,17 +109,19 @@
 #nav {
     line-height:30px;
     background-color:#eeeeee;
-    height:522px;
+    height:494px;
     width:200px;
     float:left;
     padding:5px;	      
 }
 #section {
-    width:968px;
     float:left;
     padding:10px;
-    text-align:center;	 	 
+    text-align:center;	
+    color:#FFF; 	 
+    background-image: url("logo.jpg"); width: 994px; height: 494px;
 }
+
 #link1 {
     float:left;
     text-align:center;
@@ -149,12 +152,12 @@
     left:20px;
     top:20px;   
     width:1200px;
-    height:658px;
+    height:630px;
     text-align:center;
     border: 3px solid #8AC007;
 }
 .btn-primary {
-    background: #28A828;
+    background: #339900;
     color: #ffffff;
     border-radius:0;
 }
