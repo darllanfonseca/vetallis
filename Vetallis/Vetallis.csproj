@@ -65,6 +65,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\RegForms.css" />
     <Content Include="Img\logo.jpg" />
     <Content Include="CSS\MainScreen.css" />
     <Content Include="Default.aspx" />
@@ -94,8 +95,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FunctionalClasses\ExportExcel.cs" />
-    <Compile Include="FunctionalClasses\UploadExcel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -124,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="FunctionalClasses\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">
