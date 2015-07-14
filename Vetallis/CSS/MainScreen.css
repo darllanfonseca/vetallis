@@ -1,0 +1,89 @@
+﻿#all{
+            position:absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #000;
+        }
+        #container {
+            position: absolute;
+            top: 2%;
+            left: 17%;
+            right: 17%;
+            width: 1200px;
+            height: 630px;
+            text-align: center;
+            border: 3px solid #5a7922;
+        }
+        #header {
+            background-color: #e0e0e0;
+            color: white;
+            text-align: center;
+            padding: 50px;
+            padding-left: 10px;
+        }
+
+        #nav {
+            line-height: 50px;
+            text-align: left;
+            color: #000;
+            background-color: #c0c0c0;
+            height: 494px;
+            width: 200px;
+            float: left;
+            padding: 10px;
+        }
+
+        #section {
+            float: left;
+            padding: 10px;
+            text-align: center;
+            color: #FFF;
+            background-image: url("../Img/logo.jpg");
+            width: 994px;
+            height: 494px;
+        }
+
+        #footer {
+            background-color: #606060;
+            color: white;
+            clear: both;
+            text-align: center;
+            padding: 5px;
+        }
+
+        #link1 {
+            float: left;
+            text-align: center;
+            display: table-cell;
+            padding: 2px 5px;
+        }
+
+        #link2 {
+            float: left;
+            text-align: center;
+            display: table-cell;
+            padding: 2px 5px;
+        }
+
+        #link3 {
+            float: left;
+            text-align: center;
+            display: table-cell;
+            padding: 2px 5px;
+        }
+
+        .btn-primary {
+            background: #5a7922;
+            height: 40px;
+            width: 100px;
+            color: #ffffff;
+            border-radius: 0;
+            border-color: #3b4f0b;
+            border-width: 2px;            
+        }
+
+        .btn-toggle {
+            background: #adadad;
+        }

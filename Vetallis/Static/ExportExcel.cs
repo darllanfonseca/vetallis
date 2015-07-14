@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace Vetallis.FunctionalClasses
 {
-    public class ExportExcel
+    public static class ExportExcel
     {
         string conn = ConfigurationManager.ConnectionStrings["ConnTest"].ToString();
         SqlConnection sqlCon = new SqlConnection();

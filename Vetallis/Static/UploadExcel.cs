@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Vetallis.FunctionalClasses
 {
-    public class UploadExcel
+    public static class UploadExcel
     {
         public void UploadExcelFile(String path)
         {

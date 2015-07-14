@@ -1,0 +1,41 @@
+﻿#all{
+            position:absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: #606060;
+        }
+        #container {
+            position: absolute;
+            top: 2%;
+            left: 23%;
+            width: 1000px;
+            height: 630px;
+            background: #729f67;
+            text-align: center;
+            border: 1px solid #000;
+        }
+        #header {
+            position: relative;
+            padding: 15px;
+            background-color: #729f67;
+            color: #FFF;
+            font-family: Calibri;
+            font-size: 18px;
+            height: 25px;
+            text-align: center;
+        }
+
+        #section {
+            position: absolute;
+            top: 55px;
+            left: 6px;
+            background: #f0f0f0;
+            text-align: center;
+            color: #FFF;
+            width: 988px;
+            height: 569px;
+        }
+
+

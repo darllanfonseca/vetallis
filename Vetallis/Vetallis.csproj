@@ -65,10 +65,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\logo.jpg" />
+    <Content Include="CSS\RegForms.css" />
+    <Content Include="Img\logo.jpg" />
+    <Content Include="CSS\MainScreen.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="logo.jpg" />
+    <Content Include="View\InsertCE.aspx" />
+    <Content Include="View\InsertMember.aspx" />
+    <Content Include="View\InsertPartner.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,15 +95,35 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FunctionalClasses\ExportExcel.cs" />
-    <Compile Include="FunctionalClasses\UploadExcel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\InsertCE.aspx.cs">
+      <DependentUpon>InsertCE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\InsertCE.aspx.designer.cs">
+      <DependentUpon>InsertCE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\InsertMember.aspx.cs">
+      <DependentUpon>InsertMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\InsertMember.aspx.designer.cs">
+      <DependentUpon>InsertMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\InsertPartner.aspx.cs">
+      <DependentUpon>InsertPartner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\InsertPartner.aspx.designer.cs">
+      <DependentUpon>InsertPartner.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="FunctionalClasses\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">
