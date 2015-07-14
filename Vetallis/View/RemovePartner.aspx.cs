@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Vetallis
+namespace Vetallis.View
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class RemovePartner : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.timeAndDate.Text = "Welcome (User)! Today is " + DateTime.Today.ToLongDateString();
+
         }
     }
 }
