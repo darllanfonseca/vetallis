@@ -150,15 +150,15 @@
                     <div style="position: absolute; top: 470px; left: 15px; width: 100px; height: 50px;">
                         <asp:Button Height="25px" Width="100px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="clearFields" OnClick="clearAllFields" Text="Clear Fields" AutoPostBack="True"/>
                     </div>
-                    <div style="position: absolute; top: 470px; right: 15px; width: 120px; height: 50px;">
+                    <div style="position: absolute; top: 440px; right: 15px; width: 120px; height: 50px;">
                        <asp:Button Height="25px" Width="120px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel"/>
                     </div>
-                    <div style="position: absolute; top: 520px; right: 15px; width: 120px; height: 50px;">
+                    <div style="position: absolute; top: 485px; right: 15px; width: 120px; height: 50px;">
                         <asp:Button Height="30px" BackColor="#e3efc7" Width="120px" Font-Names="Calibri" Font-Size="Large" runat="server" ID="addMember" Text="Add Member" OnClick="insertNewMember" AutoPostBack="True"/>
                     </div>
 
 
-                    <div style="text-align: left; position: absolute; top: 570px; left: 15px; width: 300px; height: 20px;">
+                    <div style="text-align: left; position: absolute; top: 505px; left: 15px; width: 300px; height: 20px;">
                         * indicates the field is required.
                     </div>
                 </div>
