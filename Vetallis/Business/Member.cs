@@ -8,7 +8,7 @@ namespace Vetallis.Business
         public string idGroup { get; set; }
         public string accountNumber { get; set; }
         public string name { get; set; }
-        public DateTime dateJoined { get; set; }
+        public string dateJoined { get; set; }
         public string status { get; set; }
         public string doctor { get; set; }
         public string address { get; set; }

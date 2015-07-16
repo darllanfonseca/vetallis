@@ -8,10 +8,10 @@ namespace Vetallis.DAO
 {
     public class MemberDAO
     {
-        string conn = ConfigurationManager.ConnectionStrings["ConnTest"].ToString();
+        string conn = "Data Source=DARLLAN\\SQLEXPRESS;Initial Catalog=TEST_JUN_25;Persist Security Info=True;User ID=sa;Password=DrBr23++";
         SqlConnection sqlConn = new SqlConnection();
 
-        public void insertNewMember(Member member)
+        public string insertNewMember(Member member)
         {
             sqlConn.ConnectionString = conn;
             DataTable dt = new DataTable();
@@ -23,9 +23,9 @@ namespace Vetallis.DAO
             (@ID_GROUP, @ACCOUNT_NUMBER, @NAME, @DATE_JOINED, @STATUS, @DOCTOR, @ADDRESS, @CITY, @PROVINCE, @REGION, 
             @POSTAL_CODE, @WEBSITE, @EMAIL_ADDRESS, @PHONE_NUMBER, @FAX, @CONTACT_PERSON)"), sqlConn);
 
-            cmd.Parameters.AddWithValue("@ID_GROUP", member.idGroup);
+            cmd.Parameters.AddWithValue("@ID_GROUP", member.idGroup); 
             cmd.Parameters.AddWithValue("@ACCOUNT_NUMBER", member.accountNumber);
-            cmd.Parameters.AddWithValue("@NAME", member.name); cmd.Parameters.AddWithValue("@DATE_JOINED", DateTime.Today.ToShortDateString());
+            cmd.Parameters.AddWithValue("@NAME", member.name); cmd.Parameters.AddWithValue("@DATE_JOINED", member.dateJoined);
             cmd.Parameters.AddWithValue("@STATUS", "ACTIVE"); cmd.Parameters.AddWithValue("@DOCTOR", member.doctor);
             cmd.Parameters.AddWithValue("@ADDRESS", member.address); cmd.Parameters.AddWithValue("@CITY", member.city);
             cmd.Parameters.AddWithValue("@PROVINCE", member.province); cmd.Parameters.AddWithValue("@REGION", member.region);
@@ -37,11 +37,11 @@ namespace Vetallis.DAO
             {
                 sqlConn.Open();
                 cmd.ExecuteNonQuery();
-                //MessageBox.Show("The Member has been added to the Database sucessfully.");
+                return "The Member has been added to the Database sucessfully.";
             }
             catch (Exception e)
             {
-                //MessageBox.Show("An error has occured when we tried to access the database. " + e.Message);
+                return e.Message.ToString();
             }
             finally
             {
@@ -51,7 +51,7 @@ namespace Vetallis.DAO
 
         }
 
-        public void updateMember(Member member)
+        public string updateMember(Member member)
         {
             sqlConn.ConnectionString = conn;
             DataTable dt = new DataTable();
@@ -79,11 +79,11 @@ namespace Vetallis.DAO
             {
                 sqlConn.Open();
                 cmd.ExecuteNonQuery();
-                //MessageBox.Show("The Member has been updated sucessfully.");
+                return "The Member has been updated sucessfully.";
             }
             catch (Exception e)
             {
-                //MessageBox.Show("An error has occured when we tried to access the database. " + e.Message);
+                return e.Message.ToString();
             }
             finally
             {
@@ -116,7 +116,7 @@ namespace Vetallis.DAO
                 member.idGroup = reader.GetValue(1).ToString();
                 member.accountNumber = reader.GetValue(2).ToString();
                 member.name = reader.GetValue(3).ToString();
-                member.dateJoined = (DateTime)reader.GetValue(4);
+                member.dateJoined = reader.GetValue(4).ToString();
                 member.status = reader.GetValue(5).ToString();
                 member.doctor = reader.GetValue(6).ToString();
                 member.address = reader.GetValue(7).ToString();

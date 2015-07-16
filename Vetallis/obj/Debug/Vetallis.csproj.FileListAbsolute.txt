@@ -24,3 +24,6 @@ C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.dll
 C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.pdb
 C:\Users\admin\Documents\Projects\vetallis\Vetallis\obj\Debug\Vetallis.Properties.Resources.resources
 C:\Users\admin\Documents\Projects\vetallis\Vetallis\obj\Debug\Vetallis.csproj.GenerateResource.Cache
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.Properties.Resources.resources
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.csproj.GenerateResource.Cache
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\bin\AjaxControlToolkit.dll
