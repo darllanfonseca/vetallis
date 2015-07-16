@@ -1,93 +1,167 @@
-﻿#all{
-            position:absolute;
-            top: 0px;
-            left: 0px;
-            font-family: Calibri;
-            right: 0px;
-            bottom: 0px;
-            background-color: #000;
-        }
-        #container {
-            position: absolute;
-            top: 1%;
-            left: 6%;
-            right: 17%;
-            width: 1200px;
-            height: 635px;
-            text-align: center;
-            border: 3px solid #729f67;
-        }
-        #header {
-            position: relative;
-            height: 80px;
-            background-color: #606060;
-            color: white;
-            text-align: center;
-            padding: 17px;
-            padding-left: 17px;
-        }
+﻿#all {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: Calibri;
+    right: 0px;
+    bottom: 0px;
+    background-color: #000;
+}
 
-        #nav {
-            line-height: 50px;
-            text-align: left;
-            color: #fff;
-            background-color: #808080;
-            height: 519px;
-            width: 200px;
-            float: left;
-            padding: 10px;
-        }
+#container {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    right: 10px;
+    bottom: 5px;
+    text-align: center;
+    border: 3px solid #3b4f0b;
+    border-radius: 5px;
+}
 
-        #section {
-            float: left;
-            padding: 10px;
-            text-align: center;
-            color: #FFF;
-            background-image: url("../Img/logo.jpg");
-            width: 994px;
-            height: 519px;
-        }
+#header {
+    position: absolute;
+    top: 5px;
+    height: 80px;
+    left: 5px;
+    right: 5px;
+    background: linear-gradient(#e3f5b8, #9da779);
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+}
 
-        #footer {
-            background-color: #606060;
-            color: white;
-            height: 30px;
-            clear: both;
-            text-align: center;
-            padding: 5px;
-        }
+#nav {
+    position: absolute;
+    line-height: 50px;
+    text-align: left;
+    color: #fff;
+    background-color: #808080;
+    float: left;
+    top: 90px;
+    left: 5px;
+    bottom: 37px;
+    width: 362px;
+    border-radius: 5px;
+}
 
-        #link1 {
-            float: left;
-            text-align: center;
-            display: table-cell;
-            padding: 2px 5px;
-        }
+#navItem1 {
+    position: absolute;
+    bottom: 120px;
+    left: 10px;
+    height: 40px;
+    width: 342px;
+}
 
-        #link2 {
-            float: left;
-            text-align: center;
-            display: table-cell;
-            padding: 2px 5px;
-        }
+#navItem2 {
+    position: absolute;
+    bottom: 70px;
+    left: 10px;
+    height: 40px;
+    width: 342px;
+}
 
-        #link3 {
-            float: left;
-            text-align: center;
-            display: table-cell;
-            padding: 2px 5px;
-        }
+#navItem3 {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    height: 40px;
+    width: 342px;
+}
 
-        .btn-success {
-            height: 40px;
-            width: 100px;
-            color: #FFF;
-            font-size: 18px;
-            font-family: Calibri;
-            border-radius: 0;
-            border-color: #3b4f0b;
-            border-width: 2px;   
-                     
-        }
+#section {
+    position: absolute;
+    top: 90px;
+    left: 372px;
+    right: 5px;
+    bottom: 37px;
+    padding: 10px;
+    text-align: center;
+    color: #FFF;
+    background: #fefefe;
+    border-radius: 5px;
+}
 
+#footer {
+    position: absolute;
+    background: linear-gradient(#e3f5b8, #9da779);
+    color: black;
+    font-size: 5px;
+    bottom: 3px;
+    left: 5px;
+    right: 5px;
+    height: 30px;
+    clear: both;
+    text-align: center;
+    border-radius: 5px;
+    padding: 6px;
+}
 
+#link1 {
+    float: left;
+    text-align: center;
+    display: table-cell;
+    top: 21px;
+    left: 21px;
+    padding-right: 21px;
+}
+
+#link2 {
+    float: left;
+    text-align: center;
+    display: table-cell;
+    top: 21px;
+    left: 21px;
+    padding-right: 21px;
+}
+
+#link3 {
+    float: left;
+    text-align: center;
+    display: table-cell;
+    top: 21px;
+    left: 21px;
+    padding-right: 21px;
+}
+
+.btn-success {
+    height: 38px;
+    width: 100px;
+    color: #000;
+    vertical-align: central;
+    font-size: 18px;
+    font-family: Calibri;
+    border-radius: 0px;
+    border-color: #3b4f0b;
+    border-width: 1px;
+    /* background: #bfcf9c;  */
+    background: linear-gradient(#e3f5b8, #9da779);
+    border-radius: 5px;
+}
+
+.btn-default {
+    top: 0px;
+    height: 35px;
+    width: 300px;
+    color: #000;
+    vertical-align: central;
+    font-size: 18px;
+    font-family: Calibri;
+    text-align: left;
+    border-radius: 0px;
+    border-color: #3b4f0b;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+#imgContainer {
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+    top: 20%;
+    background-image: url("../Img/vetalliance_logo_small.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: right;
+}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Vetallis.FunctionalClasses;
 
 namespace Vetallis
 {
@@ -13,5 +14,13 @@ namespace Vetallis
         {
             this.timeAndDate.Text = "Welcome (User)! Today is " + DateTime.Today.ToLongDateString();
         }
+
+        protected Microsoft.Office.Interop.Excel.Application btn1_Click(object sender, EventArgs e)
+        {
+            ExportExcel export = new ExportExcel();
+       
+            return export.insertBTN("SELECT * from MEMBER");
+
+        }  
     }
 }
