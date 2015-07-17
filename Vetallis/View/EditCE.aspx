@@ -10,9 +10,9 @@
 <body>
     <form id="form1" runat="server">
     <div id="all">
-        <div id="container">
-            <div id="header">Edition...</div>
-            <div id="section"></div>
+        <div class="container">
+            <div class="header">Edition...</div>
+            <div class="section"></div>
         </div>
 
     </div>

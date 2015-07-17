@@ -19,10 +19,10 @@
 <body>
     <!-- Main Form -->
     <form id="insertNewMemberForm" runat="server">
-    <div id="all">
-        <div id="container">
-            <div id="header">Fill out all the required fields to insert a new member</div>
-            <div id="section">
+    <div class="all">
+        <div class="container">
+            <div class="header">Fill out all the required fields to insert a new member</div>
+            <div class="section">
                 <div id="fieldSection">
                     <div style="text-align:left; position: absolute; top: 15px; left: 15px; width: 160px; height: 50px;">
                         <b>Is a Group? *</b>
@@ -147,19 +147,19 @@
                         <asp:TextBox runat="server" id="contactPerson" Width="250px">                           
                         </asp:TextBox>
                     </div>
-                    <div style="position: absolute; top: 470px; left: 15px; width: 100px; height: 50px;">
+                    <div style="position: absolute; top: 460px; left: 15px; width: 100px; height: 50px;">
                         <asp:Button Height="25px" Width="100px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="clearFields" OnClick="clearAllFields" Text="Clear Fields" AutoPostBack="True"/>
                     </div>
-                    <div style="position: absolute; top: 440px; right: 15px; width: 120px; height: 50px;">
-                       <asp:Button Height="25px" Width="120px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel"/>
+                    <div style="position: absolute; top: 460px; right: 15px; width: 120px; height: 50px;">
+                       <asp:Button Height="25px" Width="120px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel" AutoPostBack="True" OnClick="returnToMainPage"/>
                     </div>
-                    <div style="position: absolute; top: 485px; right: 15px; width: 120px; height: 50px;">
+                    <div style="position: absolute; top: 510px; right: 15px; width: 120px; height: 50px;">
                         <asp:Button Height="30px" BackColor="#e3efc7" Width="120px" Font-Names="Calibri" Font-Size="Large" runat="server" ID="addMember" Text="Add Member" OnClick="insertNewMember" AutoPostBack="True"/>
                     </div>
 
 
-                    <div style="text-align: left; position: absolute; top: 505px; left: 15px; width: 300px; height: 20px;">
-                        * indicates the field is required.
+                    <div style="text-align: left; position: absolute; top: 510px; left: 15px; width: 300px; height: 20px;">
+                        * indicates that the field is required.
                     </div>
                 </div>
             </div>

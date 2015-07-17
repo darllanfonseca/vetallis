@@ -9,10 +9,10 @@
     </head>
 <body>
     <form id="form1" runat="server">
-    <div id="all">
-        <div id="container">
-            <div id="header">Fill out all the required fields to insert a new Ce Event</div>
-            <div id="section"></div>
+    <div class="all">
+        <div class="container">
+            <div class="header">Fill out all the required fields to insert a new Ce Event</div>
+            <div class="section"></div>
         </div>
 
     </div>

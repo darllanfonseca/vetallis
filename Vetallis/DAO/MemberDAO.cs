@@ -8,7 +8,7 @@ namespace Vetallis.DAO
 {
     public class MemberDAO
     {
-        string conn = "Data Source=DARLLAN\\SQLEXPRESS;Initial Catalog=TEST_JUN_25;Persist Security Info=True;User ID=sa;Password=DrBr23++";
+        string conn = ConfigurationManager.ConnectionStrings["Conn"].ToString();
         SqlConnection sqlConn = new SqlConnection();
 
         public string insertNewMember(Member member)
@@ -80,6 +80,36 @@ namespace Vetallis.DAO
                 sqlConn.Open();
                 cmd.ExecuteNonQuery();
                 return "The Member has been updated sucessfully.";
+            }
+            catch (Exception e)
+            {
+                return e.Message.ToString();
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+        }
+
+        public string removeMember(Member member)
+        {
+            sqlConn.ConnectionString = conn;
+            DataTable dt = new DataTable();
+            dt.Clear();
+
+            string inactive = "INACTIVE";
+
+            SqlCommand cmd = new SqlCommand(string.Format(
+            @"UPDATE MEMBER SET STATUS=@STATUS WHERE ID_MEMBER=@ID_MEMBER"), sqlConn);
+
+            cmd.Parameters.AddWithValue("@ID_MEMBER", member.id);
+            cmd.Parameters.AddWithValue("@STATUS", member.status);
+
+            try
+            {
+                sqlConn.Open();
+                cmd.ExecuteNonQuery();
+                return "The Member has been removed sucessfully from the list of Active members.";
             }
             catch (Exception e)
             {

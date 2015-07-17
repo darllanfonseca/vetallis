@@ -122,5 +122,10 @@ namespace Vetallis.View
             this.chooseGroup.Visible = true;
             this.insertNewMemberForm.Visible = false;
         }
+
+        protected void returnToMainPage(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 }
