@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Main Form -->
-    <form id="insertNewMemberForm" runat="server">
+    <form id="editMemberForm" runat="server">
         <div class="all">
             <div class="container">
                 <div class="header">Fill out all the required fields and update the member</div>
@@ -57,7 +57,7 @@
                         </div>
                         <div style="text-align: left; position: absolute; top: 235px; left: 415px; width: 80px; height: 50px;">
                             <b>Province *</b>
-                            <asp:DropDownList runat="server" Width="70px" AutoPostBack="True" ID="province">
+                            <asp:DropDownList runat="server" Width="70px" AutoPostBack="True" ID="province" OnSelectedIndexChanged="changeRegion">
                                 <asp:ListItem
                                     Text="Select..." />
                                 <asp:ListItem
@@ -139,7 +139,7 @@
                             * indicates that the field is required.
                         </div>
                         <div style="position: absolute; top: 20px; left: 10px; width: 370px; overflow: scroll; bottom: 30px; border: solid 1px #d0d0d0;">
-                            <asp:GridView ID="searchMembers" runat="server" RowStyle-Height="15px" HeaderStyle-Height="30px" RowStyle-Width="100px" AllowSorting="True" OnSelectedIndexChanged="loadSelectedMember" AutoGenerateColumns="False" DataKeyNames="ID_MEMBER" DataSourceID="Teste1" Height="534px" Width="1000px">
+                            <asp:GridView ID="searchMembers" runat="server" AllowSorting="True" OnSelectedIndexChanged="loadSelectedMember" AutoGenerateColumns="False" DataKeyNames="ID_MEMBER" DataSourceID="Teste1">
                                 <Columns>
                                     <asp:CommandField ShowSelectButton="True" />
                                     <asp:BoundField DataField="ACCOUNT_NUMBER" HeaderText="Account #" SortExpression="ACCOUNT_NUMBER">

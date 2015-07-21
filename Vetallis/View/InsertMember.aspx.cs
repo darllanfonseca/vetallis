@@ -6,8 +6,13 @@ namespace Vetallis.View
 {
     public partial class InsertMember : System.Web.UI.Page
     {
+        Member member = new Member();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.group_ID.Enabled = false;
+            this.group_ID.Visible = false;
+            this.ID_GROUP_DIV.Visible = false;
         }
 
         protected void changeRegion(object sender, EventArgs e)
@@ -84,10 +89,8 @@ namespace Vetallis.View
 
         protected void insertNewMember(object sender, EventArgs e)
         {
-            Member member = new Member();
-
+            member.idGroup = this.group_ID.Text;
             member.accountNumber = this.accountNumber.Text.Trim();
-            //  member.idGroup = 
             member.doctor = this.doctorName.Text.Trim();
             member.name = this.memberName.Text.Trim();
             member.dateJoined = this.datepicker.Text;
@@ -111,7 +114,11 @@ namespace Vetallis.View
 
         protected void enableChooseGroup(object sender, EventArgs e)
         {
-            if (this.isAGroup.SelectedValue == "Yes")
+            if (this.isAGroup.SelectedValue == "No")
+            {
+                member.idGroup = "0";
+            }
+            else if (this.isAGroup.SelectedValue == "Yes")
             {
                 this.openChooseGroupForm.Visible = true;
             }          
@@ -126,6 +133,19 @@ namespace Vetallis.View
         protected void returnToMainPage(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
+        }
+
+        protected void loadSelectedGroup(object sender, EventArgs e)
+        {
+            this.chooseGroup.Visible = false;
+            this.insertNewMemberForm.Visible = true;
+            this.doctorName.Text = searchGroups.SelectedRow.Cells[1].Text;
+            this.group_ID.Text = searchGroups.SelectedRow.Cells[3].Text;
+            this.doctorName.Enabled = false;
+            this.openChooseGroupForm.Enabled = false;
+            this.openChooseGroupForm.Visible = false;
+            this.group_ID.Visible = true;
+            this.ID_GROUP_DIV.Visible = true;
         }
     }
 }

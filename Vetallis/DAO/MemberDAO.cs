@@ -103,7 +103,7 @@ namespace Vetallis.DAO
             @"UPDATE MEMBER SET STATUS=@STATUS WHERE ID_MEMBER=@ID_MEMBER"), sqlConn);
 
             cmd.Parameters.AddWithValue("@ID_MEMBER", member.id);
-            cmd.Parameters.AddWithValue("@STATUS", member.status);
+            cmd.Parameters.AddWithValue("@STATUS", inactive);
 
             try
             {

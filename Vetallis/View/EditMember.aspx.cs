@@ -37,7 +37,40 @@ namespace Vetallis.View
         protected void changeForms(object sender, EventArgs e)
         {
             this.chooseGroup.Visible = true;
-            this.insertNewMemberForm.Visible = false;
+            this.editMemberForm.Visible = false;
+        }
+
+        protected void changeRegion(object sender, EventArgs e)
+        {
+            switch (province.SelectedValue)
+            {
+                case "Select...":
+                    region.Text = "";
+                    break;
+
+                case "AB":
+                case "BC":
+                case "MB":
+                case "NT":
+                case "NU":
+                case "QC":
+                case "SK":
+                case "YT":
+                    region.Text = "WESTERN";
+                    break;
+
+                case "NB":
+                case "NL":
+                case "NS":
+                case "PE":
+                    region.Text = "ATLANTIC";
+                    break;
+
+                case "ON":
+                    region.Text = "CENTRAL";
+                    break;
+            }
+            enableFields();
         }
 
         protected void loadSelectedMember(object sender, EventArgs e)
@@ -82,6 +115,28 @@ namespace Vetallis.View
             this.enableFieldsBtt.Enabled = false;
         }
 
+        protected void enableFields()
+        {
+            this.isAGroup.SelectedIndex = 0;
+            this.accountNumber.Enabled = true;
+            this.memberName.Enabled = true;
+            this.datepicker.Enabled = true;
+            this.address.Enabled = true;
+            this.doctorName.Enabled = true;
+            this.city.Enabled = true;
+            this.province.Enabled = true;
+            this.postalCode.Enabled = true;
+            this.website.Enabled = true;
+            this.phoneNumber.Enabled = true;
+            this.emailAddress.Enabled = true;
+            this.faxNumber.Enabled = true;
+            this.contactPerson.Enabled = true;
+            this.cancel.Enabled = true;
+            this.updateMemberBtt.Enabled = true;
+            this.enableFieldsBtt.Visible = false;
+            this.enableFieldsBtt.Enabled = false;
+        }
+
         protected void updateMember(object sender, EventArgs e)
         {
             Member member = new Member();
@@ -105,7 +160,7 @@ namespace Vetallis.View
                             city.Text.ToString() == "" || province.SelectedItem.ToString() == "" || postalCode.Text.ToString() == "")
                         {
                             this.response.InnerHtml = "<div id=\"All2\" runat=\"server\"><div runat=\"server\" id=\"message\" style=\"position: absolute; top: 50%; left: 50%; width: 200px; height: 100px;\">TESTE InnerHtml</div></div>";
-                            this.insertNewMemberForm.Visible = false;
+                            this.editMemberForm.Visible = false;
                             this.chooseGroup.Visible = false;
                             this.response.Visible = true;
 
@@ -137,7 +192,7 @@ namespace Vetallis.View
                                         databaseResponse = memberDAO.updateMember(member);
 
                                         this.response.InnerText = databaseResponse;
-                                        this.insertNewMemberForm.Visible = false;
+                                        this.editMemberForm.Visible = false;
                                         this.chooseGroup.Visible = false;
                                         this.response.Visible = true;
                                     }
@@ -149,7 +204,7 @@ namespace Vetallis.View
                                     if (accountNumber.Text.ToString() == "" || memberName.Text.ToString() == "" || address.Text.ToString() == "" ||
                                         city.Text.ToString() == "" || province.SelectedItem.ToString() == "" || postalCode.Text.ToString() == "")
                                     {
-                                        this.insertNewMemberForm.Visible = false;
+                                        this.editMemberForm.Visible = false;
                                         this.chooseGroup.Visible = false;
                                         this.response.Visible = true;
                                     }
@@ -177,7 +232,7 @@ namespace Vetallis.View
                                         databaseResponse = memberDAO.updateMember(member);
 
                                         this.response.InnerText = databaseResponse;
-                                        this.insertNewMemberForm.Visible = false;
+                                        this.editMemberForm.Visible = false;
                                         this.chooseGroup.Visible = false;
                                         this.response.Visible = true;
                                     }
@@ -208,7 +263,7 @@ namespace Vetallis.View
 
         protected void returnEditMember(object sender, EventArgs e)
         {
-            this.insertNewMemberForm.Visible = true;
+            this.editMemberForm.Visible = true;
             this.response.Visible = false;
             this.enableFieldsBtt.Enabled = true;
             this.enableFieldsBtt.Visible = true;
@@ -218,5 +273,7 @@ namespace Vetallis.View
         {
             Response.Redirect("~/Default.aspx");
         }
+
+        
     }        
 }

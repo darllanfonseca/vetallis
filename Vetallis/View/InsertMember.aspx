@@ -54,6 +54,11 @@
                         <asp:TextBox runat="server" id="address" Width="350px">                           
                         </asp:TextBox>
                     </div>
+                    <div id="ID_GROUP_DIV" runat="server" style="text-align:right; position: absolute; top: 125px; right: 15px; width: 155px; height: 50px;">
+                        <b>Group ID</b>
+                        <asp:TextBox runat="server" id="group_ID" Width="150px">                           
+                        </asp:TextBox>
+                    </div>
                     <div style="text-align:left; position: absolute; top: 180px; left: 15px; width: 150px; height: 50px;">
                         <b>Doctor Name</b>
                         <asp:TextBox runat="server" id="doctorName" Width="250px">                           
@@ -169,7 +174,28 @@
 
     <!-- Form to choose the Group -->
     <form id="chooseGroup" visible="false" runat="server">
-    TESTE TESTE TESTE
+            <div class="all">
+        <div class="container">
+            <div class="header">Choose the correct group to match with the new Member</div>
+            <div class="section">
+                <div class="fieldSection">
+                    <div style="position: absolute; top: 20px; left: 50%; margin-left: -185px; width: 370px; overflow: scroll; bottom: 300px; border: solid 1px #d0d0d0;">
+                            <asp:GridView ID="searchGroups" runat="server" RowStyle-Height="15px" HeaderStyle-Height="30px" RowStyle-Width="100px" AllowSorting="True" OnSelectedIndexChanged="loadSelectedGroup" AutoGenerateColumns="False" DataKeyNames="ID_GROUP" DataSourceID="Teste3">
+                                <Columns>
+                                    <asp:CommandField ShowSelectButton="True" />
+                                    <asp:BoundField DataField="GROUP_NAME" HeaderText="Name" SortExpression="GROUP_NAME">
+                                        <HeaderStyle Width="100px"></HeaderStyle>
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="ID_MAIN_MEMBER" HeaderText="Main Member" SortExpression="ID_MAIN_MEMBER" />
+                                    <asp:BoundField DataField="ID_GROUP" HeaderText="Group ID" SortExpression="ID_GROUP" />
+                                </Columns>
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="Teste3" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [GROUPS]"></asp:SqlDataSource>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </form>
 
     <!-- Form to write the message from the Database -->

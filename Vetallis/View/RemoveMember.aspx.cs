@@ -42,7 +42,7 @@ namespace Vetallis.View
             member.status = "INACTIVE";
 
             MemberDAO memberDAO = new MemberDAO();
-            this.removeMemberForm.InnerText = memberDAO.removeMember(member); ;  
+            this.removeMemberForm.InnerText = memberDAO.removeMember(member); 
                                                          
         }
 
