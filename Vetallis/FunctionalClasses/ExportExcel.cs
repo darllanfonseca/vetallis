@@ -11,13 +11,14 @@ namespace Vetallis.FunctionalClasses
 
 
 
-        public Microsoft.Office.Interop.Excel.Application insertBTN(String query)
+        public string exportData(String query)
         {
-            SqlConnection sqlCon = new SqlConnection();
-            sqlCon.ConnectionString = "Data Source=DARLLAN\\SQLEXPRESS;Initial Catalog=TEST_JUN_25;Persist Security Info=True;User ID=sa;Password=DrBr23++";
-            sqlCon.Open();
+            string conn = ConfigurationManager.ConnectionStrings["Conn"].ToString();
+            SqlConnection sqlConn = new SqlConnection();
+            sqlConn.ConnectionString = conn;
+            sqlConn.Open();
 
-            SqlDataAdapter da = new SqlDataAdapter(query, sqlCon);
+            SqlDataAdapter da = new SqlDataAdapter(query, sqlConn);
             System.Data.DataTable dtMainSQLData = new System.Data.DataTable();
             da.Fill(dtMainSQLData);
             DataColumnCollection dcCollection = dtMainSQLData.Columns;
@@ -31,8 +32,6 @@ namespace Vetallis.FunctionalClasses
             // ExcelApp.Cells.CopyFromRecordset(objRS);
 
             for (int i = 1; i < dtMainSQLData.Rows.Count + 2; i++)
-                
-
             {
 
                 for (int j = 1; j < dtMainSQLData.Columns.Count + 1; j++)
@@ -45,14 +44,38 @@ namespace Vetallis.FunctionalClasses
                         ExcelApp.Cells[i, j] = dtMainSQLData.Rows[i - 2][j - 1].ToString();
                 }
             }
-         
-            
-            ExcelApp.ActiveWorkbook.SaveCopyAs("Results.xlsx");
-            ExcelApp.ActiveWorkbook.Saved = true;
-            ExcelApp.Quit();
 
-            return ExcelApp;
-        }    
+
+            string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                path = Directory.GetParent(path).ToString();
+            }
+
+            //This path belongs to the computer where the application is running.
+            //I have to find a way to get the path from the client side...
+
+            int extension = 1;
+
+            while (extension != 0)
+            {
+                try
+                {
+                    ExcelApp.ActiveWorkbook.SaveAs(path + "\\Desktop\\Results_v" + extension + ".xlsx");
+                    ExcelApp.ActiveWorkbook.Saved = true;
+                    ExcelApp.Quit();
+                    extension = 0;
+                    return "Success";
+                }
+                catch (Exception e)
+                {
+                    extension++;
+
+                }
+
+            }
+            return "Success";
+        }
 
     }
 }

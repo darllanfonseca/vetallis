@@ -1,0 +1,81 @@
+﻿.GridViewStyle
+{    
+    border-right: 2px solid #A7A6AA;
+    border-bottom: 2px solid #A7A6AA;
+    border-left: 2px solid white;
+    border-top: 2px solid white;
+    padding: 4px;
+}
+
+.GridViewStyle a
+{
+    color: #333333;
+}
+
+.GridViewHeaderStyle th
+{
+    border-left: 1px solid #EBE9ED;
+    border-right: 1px solid #EBE9ED;
+    height: 30px;
+    left: expression(document.getElementById("GridViewContainer").scrollLeft-2);
+}
+
+.GridViewHeaderStyle
+{
+    background-color: #d8e6b4;
+    font-weight: bold;
+    color: White;
+    text-align: left;
+}
+
+.GridViewFooterStyle
+{
+    background-color: #5D7B9D;
+    font-weight: bold;
+    color: White;
+}
+
+.GridViewRowStyle
+{
+    background-color: #F0F0F0;
+    color: #333333;
+    height: 15px;
+    width: 50px;
+    text-wrap: none;
+    text-align: left;
+}
+
+.GridViewAlternatingRowStyle 
+{
+    background-color: #FFFFFF;
+    color: #284775;
+    height: 15px;
+    width: 50px;
+    text-wrap: none;
+    text-align: left;
+}
+
+.GridViewRowStyle td, .GridViewAlternatingRowStyle td
+{
+    border: 1px solid #EBE9ED;
+}
+
+.GridViewSelectedRowStyle
+{
+    background-color: #E2DED6;
+    font-weight: bold;
+    color: #333333;
+    text-align: left;
+}
+
+.GridViewPagerStyle
+{
+    background-color: #284775;
+    color: #FFFFFF;
+}
+
+.GridViewPagerStyle table /* to center the paging links*/
+{
+    margin: 0 auto 0 auto;
+}
+

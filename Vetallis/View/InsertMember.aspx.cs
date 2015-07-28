@@ -139,13 +139,12 @@ namespace Vetallis.View
         {
             this.chooseGroup.Visible = false;
             this.insertNewMemberForm.Visible = true;
-            this.doctorName.Text = searchGroups.SelectedRow.Cells[1].Text;
             this.group_ID.Text = searchGroups.SelectedRow.Cells[3].Text;
-            this.doctorName.Enabled = false;
             this.openChooseGroupForm.Enabled = false;
             this.openChooseGroupForm.Visible = false;
             this.group_ID.Visible = true;
             this.ID_GROUP_DIV.Visible = true;
+            this.isAGroup.Enabled = false;
         }
     }
 }

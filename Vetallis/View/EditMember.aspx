@@ -1,11 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditMember.aspx.cs" Inherits="Vetallis.View.EditMember" %>
 
-<!DOCTYPE html>
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>VETALLIS - Edit a Member</title>
     <link rel="stylesheet" href="../CSS/RegForms.css" />
+    <link rel="stylesheet" href="../CSS/GridView.css"/>
 </head>
 <body>
     <!-- Main Form -->
@@ -138,12 +138,18 @@
                         <div style="text-align: left; position: absolute; top: 510px; left: 415px; width: 300px; height: 20px;">
                             * indicates that the field is required.
                         </div>
-                        <div style="position: absolute; top: 20px; left: 10px; width: 370px; overflow: scroll; bottom: 30px; border: solid 1px #d0d0d0;">
+                        <div style="position: absolute; top: 20px; left: 10px; overflow:auto; width: 370px; bottom: 30px; border: solid 1px #d0d0d0;">
                             <asp:GridView ID="searchMembers" runat="server" AllowSorting="True" OnSelectedIndexChanged="loadSelectedMember" AutoGenerateColumns="False" DataKeyNames="ID_MEMBER" DataSourceID="Teste1">
+                                <FooterStyle CssClass="GridViewFooterStyle" />
+                                <RowStyle CssClass="GridViewRowStyle" />    
+                                <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />
+                                <PagerStyle CssClass="GridViewPagerStyle" />
+                                <AlternatingRowStyle CssClass="GridViewAlternatingRowStyle" />
+                                <HeaderStyle CssClass="GridViewHeaderStyle"/>
+                                <RowStyle Wrap="False" />                               
                                 <Columns>
                                     <asp:CommandField ShowSelectButton="True" />
                                     <asp:BoundField DataField="ACCOUNT_NUMBER" HeaderText="Account #" SortExpression="ACCOUNT_NUMBER">
-                                        <HeaderStyle Width="100px"></HeaderStyle>
                                     </asp:BoundField>
                                     <asp:BoundField DataField="NAME" HeaderText="NAME" SortExpression="NAME" />
                                     <asp:BoundField DataField="ADDRESS" HeaderText="ADDRESS" SortExpression="ADDRESS" />
@@ -163,7 +169,7 @@
                                     <asp:BoundField DataField="CONTACT_PERSON" HeaderText="CONTACT_PERSON" SortExpression="CONTACT_PERSON" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [MEMBER]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [MEMBER] ORDER BY NAME ASC"></asp:SqlDataSource>
                         </div>
                         <div style="position: absolute; left: 10px; width: 370px; top: 530px; color: #707070; font-family: Calibri; font-size: 13px; text-align: left;">You can sort the results by clicking on the name of the columns.</div>
                     </div>

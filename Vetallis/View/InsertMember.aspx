@@ -6,6 +6,7 @@
 <head runat="server">
     <title>VETALLIS - Insert New Member</title>
     <link rel="stylesheet" href="../CSS/RegForms.css"/>
+    <link rel="stylesheet" href="../CSS/GridView.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -179,8 +180,15 @@
             <div class="header">Choose the correct group to match with the new Member</div>
             <div class="section">
                 <div class="fieldSection">
-                    <div style="position: absolute; top: 20px; left: 50%; margin-left: -185px; width: 370px; overflow: scroll; bottom: 300px; border: solid 1px #d0d0d0;">
+                    <div style="position: absolute; top: 20px; left: 50%; margin-left: -150px; width: 300px; overflow: scroll; bottom: 300px; border: solid 1px #d0d0d0;">
                             <asp:GridView ID="searchGroups" runat="server" RowStyle-Height="15px" HeaderStyle-Height="30px" RowStyle-Width="100px" AllowSorting="True" OnSelectedIndexChanged="loadSelectedGroup" AutoGenerateColumns="False" DataKeyNames="ID_GROUP" DataSourceID="Teste3">
+                                <FooterStyle CssClass="GridViewFooterStyle" />
+                                <RowStyle CssClass="GridViewRowStyle" />    
+                                <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />
+                                <PagerStyle CssClass="GridViewPagerStyle" />
+                                <AlternatingRowStyle CssClass="GridViewAlternatingRowStyle" />
+                                <HeaderStyle CssClass="GridViewHeaderStyle" />
+                                <RowStyle Wrap="False" /> 
                                 <Columns>
                                     <asp:CommandField ShowSelectButton="True" />
                                     <asp:BoundField DataField="GROUP_NAME" HeaderText="Name" SortExpression="GROUP_NAME">

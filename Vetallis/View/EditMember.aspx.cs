@@ -91,11 +91,14 @@ namespace Vetallis.View
             this.faxNumber.Text = this.searchMembers.SelectedRow.Cells[16].Text;
             this.contactPerson.Text = this.searchMembers.SelectedRow.Cells[17].Text;
             this.openChooseGroupForm.Visible = false;
+            this.enableFieldsBtt.Visible = true;
+            this.enableFieldsBtt.Enabled = true;
         }
 
         protected void enableFields(object sender, EventArgs e)
         {
             this.isAGroup.SelectedIndex = 0;
+            this.isAGroup.Enabled = true;
             this.accountNumber.Enabled = true;
             this.memberName.Enabled = true;
             this.datepicker.Enabled = true;
@@ -200,6 +203,7 @@ namespace Vetallis.View
 
 
                             case "No":
+                            case "Select...":
                                 {
                                     if (accountNumber.Text.ToString() == "" || memberName.Text.ToString() == "" || address.Text.ToString() == "" ||
                                         city.Text.ToString() == "" || province.SelectedItem.ToString() == "" || postalCode.Text.ToString() == "")

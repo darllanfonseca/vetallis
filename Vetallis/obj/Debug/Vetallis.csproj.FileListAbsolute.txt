@@ -28,3 +28,7 @@ C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.Propert
 C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Vetallis.csproj.GenerateResource.Cache
 C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\bin\AjaxControlToolkit.dll
 C:\Users\admin\Documents\Projects\vetallis\Vetallis\bin\AjaxControlToolkit.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Interop.ADOR.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Interop.MDACVer.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Interop.MSDAOSP.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Interop.MSDASC.dll

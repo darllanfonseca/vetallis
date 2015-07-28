@@ -8,7 +8,7 @@ namespace Vetallis.DAO
 {
     public class GroupsDAO
     {
-        string conn = ConfigurationManager.ConnectionStrings["ConnTest"].ToString();
+        string conn = ConfigurationManager.ConnectionStrings["Conn"].ToString();
         SqlConnection sqlConn = new SqlConnection();
 
         Groups group;

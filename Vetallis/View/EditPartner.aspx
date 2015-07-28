@@ -6,6 +6,7 @@
 <head runat="server">
     <title>VETALLIS - Edit a Partner</title>
     <link rel="stylesheet" href="../CSS/RegForms.css" />
+    <link rel="stylesheet" href="../CSS/GridView.css"/>
 </head>
 <body>
     <!-- Main Form -->
@@ -96,6 +97,13 @@
                         </div>
                         <div style="position: absolute; top: 20px; left: 10px; width: 370px; overflow: scroll; bottom: 30px; border: solid 1px #d0d0d0;">
                             <asp:GridView ID="searchPartners" runat="server" RowStyle-Height="15px" HeaderStyle-Height="30px" RowStyle-Width="100px" AllowSorting="True" OnSelectedIndexChanged="loadSelectedPartner" AutoGenerateColumns="False" DataKeyNames="ID_PARTNER" DataSourceID="Teste2" Height="534px" Width="1000px">
+                                <FooterStyle CssClass="GridViewFooterStyle" />
+                                <RowStyle CssClass="GridViewRowStyle" />    
+                                <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />
+                                <PagerStyle CssClass="GridViewPagerStyle" />
+                                <AlternatingRowStyle CssClass="GridViewAlternatingRowStyle" />
+                                <HeaderStyle CssClass="GridViewHeaderStyle" />
+                                <RowStyle Wrap="False" /> 
                                 <Columns>
                                     <asp:CommandField ShowSelectButton="True" />
                                     <asp:BoundField DataField="NAME" HeaderText="NAME" SortExpression="NAME" />
