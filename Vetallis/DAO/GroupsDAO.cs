@@ -52,5 +52,12 @@ namespace Vetallis.DAO
 
             return group;
         }
+
+        public string insertGroup(Groups group)
+        {
+            
+
+            return "Success";
+        }
     }
 }

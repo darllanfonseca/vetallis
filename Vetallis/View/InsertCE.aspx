@@ -12,6 +12,8 @@
     <div class="all">
         <div class="container">
             <div class="header">Fill out all the required fields to insert a new Ce Event</div>
+
+
             <div class="section"></div>
         </div>
 

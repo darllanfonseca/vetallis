@@ -41,6 +41,7 @@
                         <b>Group Name</b>
                         <asp:TextBox Enabled="false" runat="server" id="groupName" Width="350px">                           
                         </asp:TextBox>
+                        <asp:Label runat="server" ID="ID_Member" Visible="false"></asp:Label>
                     </div>
                     <div runat="server" visible="true" id="selectMember" style="position:absolute; width: 568px; height: 250px; top: 180px; left: 15px; overflow: scroll; border: solid 1px #d0d0d0;">
                         <asp:GridView CssClass="GridViewStyle" ID="searchMembers" runat="server" AllowSorting="True" OnSelectedIndexChanged="loadSelectedMember" AutoGenerateColumns="False" DataKeyNames="ID_MEMBER" DataSourceID="searchMainMember">

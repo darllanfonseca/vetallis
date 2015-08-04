@@ -16,7 +16,6 @@
     bottom: 5px;
     text-align: center;
     border: 3px solid #3b4f0b;
-    border-radius: 5px;
 }
 
 #header {
@@ -28,7 +27,6 @@
     background: linear-gradient(#e3f5b8, #9da779);
     color: black;
     text-align: center;
-    border-radius: 5px;
 }
 
 #nav {
@@ -40,8 +38,7 @@
     top: 90px;
     left: 5px;
     bottom: 37px;
-    width: 362px;
-    border-radius: 5px;
+    width: 250px;
 }
 
 #labelResponse {
@@ -60,7 +57,7 @@
     bottom: 120px;
     left: 10px;
     height: 40px;
-    width: 342px;
+    width: 230px;
 }
 
 #navItem2 {
@@ -68,7 +65,7 @@
     bottom: 70px;
     left: 10px;
     height: 40px;
-    width: 342px;
+    width: 230px;
 }
 
 .navItem3 {
@@ -76,7 +73,7 @@
     bottom: 20px;
     left: 10px;
     height: 40px;
-    width: 342px;
+    width: 230px;
 }
 
 #exportBtt {
@@ -84,20 +81,19 @@
     bottom: 20px;
     left: 10px;
     height: 40px;
-    width: 342px;
+    width: 230px;
 }
 
 #section {
     position: absolute;
     top: 90px;
-    left: 372px;
+    left: 260px;
     right: 5px;
     bottom: 37px;
     padding: 10px;
     text-align: center;
     color: #FFF;
     background: #fefefe;
-    border-radius: 5px;
 }
 
 #footer {
@@ -111,7 +107,6 @@
     height: 30px;
     clear: both;
     text-align: center;
-    border-radius: 5px;
     padding: 6px;
 }
 
@@ -119,7 +114,8 @@
     position:relative;
     float: left;
     text-align: center;
-    top: 21px;
+    top: 20px;
+    padding-left: 20px;
     width: 120px;
     padding-left: 20px;
 }
