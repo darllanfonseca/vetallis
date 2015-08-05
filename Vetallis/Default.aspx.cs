@@ -14,7 +14,7 @@ namespace Vetallis
         protected void exportMemberList(object sender, EventArgs e)
         {
             ExportExcel export = new ExportExcel();
-            export.exportData("SELECT * FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME");
+            export.exportData("SELECT NAME FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME");
 
             successDownload();
         }

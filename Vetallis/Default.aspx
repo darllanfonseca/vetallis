@@ -11,53 +11,93 @@
 </head>
 <body>
     <form id="DefaultForm" runat="server">
-        <div id="all">
-            <div id="container">
+        <div runat="server" id="all">
+            <div runat="server" id="container">
                 <div id="header">
                     <div runat="server" style="position: relative; left: 0px; top: 0px; height: 80px; width: 365px; border-right: solid 1px black;">
-                        <div style="position: absolute; left: 19px; top: 20px;">
+                        <div runat="server" style="position: absolute; left: 19px; top: 20px;">
                             <button class="btn btn-success dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                                Insert 
+                                Member
 	<span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/InsertMember.aspx">New Member</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/InsertPartner.aspx">New Partner</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/InsertGroup.aspx">New Group</a></li>
+                            <ul runat="server" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/InsertMember.aspx">Create New</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/EditMember.aspx">Edit</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/RemoveMember.aspx">Remove</a></li>
+                                <li role="presentation">
+                                    <hr />
+                                </li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activate Removed Member</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Rebate Amounts</a></li>
+                                <li role="presentation">
+                                    <hr />
+                                </li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/ExportMemberList.aspx">Export Current Member List</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export List of Inactives</a></li>
                             </ul>
 
                             <div style="position: absolute; left: 111px; top: 0px;">
                                 <button class="btn btn-success dropdown-toggle" type="button" id="menu2" data-toggle="dropdown">
-                                    Edit
+                                    Group
 	<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu2">
-                                    <li role="presentation"><a role="menuitem" id="editMember" tabindex="-1" href="View/EditMember.aspx">Member</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="View/EditPartner.aspx">Partner</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="View/EditGroup.aspx">Group</a></li>
+                                    <li role="presentation"><a role="menuitem" id="editMember" tabindex="-1" href="/View/GroupView/InsertGroup.aspx">Create New</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Remove</a></li>
+                                    <li role="presentation">
+                                        <hr />
+                                    </li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activate Removed Group</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export List of Groups</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Rebate Amounts</a></li>
                                 </ul>
                             </div>
                             <div style="position: absolute; left: 224px; top: 0px;">
                                 <button class="btn btn-success dropdown-toggle" type="button" id="menu3" data-toggle="dropdown">
-                                    Remove
+                                    Partner
 	<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu3">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="View/RemoveMember.aspx">Member</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="View/RemovePartner.aspx">Partner</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="View/RemoveGroup.aspx">Group</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/InsertPartner.aspx">Create New</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/EditPartner.aspx">Edit</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/RemovePartner.aspx">Remove</a></li>
+                                    <li role="presentation">
+                                        <hr />
+                                    </li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activate Removed Partner</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export Current Partner List</a></li>
+                                    <li role="presentation">
+                                        <hr />
+                                    </li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Active Partners</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Inactive Partners</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Rebate Amounts</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div style="position: absolute; top: 20px; left: 385px;">
                         <button class="btn btn-success dropdown-toggle" type="button" id="menu4" data-toggle="dropdown">
-                                    Rebate
+                            Rebate
 	<span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu4">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/UploadPartnerFile.aspx">Upload Partner Rebate File</a></li>
-                                </ul>                        
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu4">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/UploadPartnerFile.aspx">Upload Partner Rebate File</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/ReplacePartnerFile.aspx">Replace Partner File</a></li>
+                            <li role="presentation">
+                                <hr />
+                            </li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit Single Rebate Data</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export Rebate Data</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export Member Summary</a></li>
+                            <li role="presentation">
+                                <hr />
+                            </li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/InsertCE.aspx">Add CE Data</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/EditCE.aspx">Edit CE Data</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View CE Amounts</a></li>
+                        </ul>
                     </div>
                     <div style="position: absolute; float: right; right: 20px; top: 50%; margin-top: -10px;">
                         <asp:Label ID="timeAndDate" runat="server"></asp:Label>

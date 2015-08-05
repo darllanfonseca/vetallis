@@ -7,117 +7,144 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vetallis {
+namespace Vetallis.View.PartnerView {
     
     
-    public partial class Default {
+    public partial class InsertPartner {
         
         /// <summary>
-        /// DefaultForm control.
+        /// insertNewPartnerForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm DefaultForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm insertNewPartnerForm;
         
         /// <summary>
-        /// all control.
+        /// partnerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl all;
+        protected global::System.Web.UI.WebControls.TextBox partnerName;
         
         /// <summary>
-        /// container control.
+        /// datepicker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl container;
+        protected global::System.Web.UI.WebControls.TextBox datepicker;
         
         /// <summary>
-        /// timeAndDate control.
+        /// address control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label timeAndDate;
+        protected global::System.Web.UI.WebControls.TextBox address;
         
         /// <summary>
-        /// navItem1 control.
+        /// city control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navItem1;
+        protected global::System.Web.UI.WebControls.TextBox city;
         
         /// <summary>
-        /// exportMemberListBtt control.
+        /// postalCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button exportMemberListBtt;
+        protected global::System.Web.UI.WebControls.TextBox postalCode;
         
         /// <summary>
-        /// labelResponse control.
+        /// website control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelResponse;
+        protected global::System.Web.UI.WebControls.TextBox website;
         
         /// <summary>
-        /// exportPartnerListBtt control.
+        /// phoneNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button exportPartnerListBtt;
+        protected global::System.Web.UI.WebControls.TextBox phoneNumber;
         
         /// <summary>
-        /// exportBtt control.
+        /// emailAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl exportBtt;
+        protected global::System.Web.UI.WebControls.TextBox emailAddress;
         
         /// <summary>
-        /// exportRebateSheetBtt control.
+        /// faxNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button exportRebateSheetBtt;
+        protected global::System.Web.UI.WebControls.TextBox faxNumber;
         
         /// <summary>
-        /// pickYear control.
+        /// contactPerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pickYear;
+        protected global::System.Web.UI.WebControls.TextBox contactPerson;
         
         /// <summary>
-        /// rebateYear control.
+        /// clearFields control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList rebateYear;
+        protected global::System.Web.UI.WebControls.Button clearFields;
+        
+        /// <summary>
+        /// cancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancel;
+        
+        /// <summary>
+        /// addPartner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addPartner;
+        
+        /// <summary>
+        /// response control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm response;
     }
 }

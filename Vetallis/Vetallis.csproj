@@ -81,18 +81,18 @@
     <Content Include="CSS\MainScreen.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Test.aspx" />
-    <Content Include="View\EditCE.aspx" />
-    <Content Include="View\EditMember.aspx" />
-    <Content Include="View\EditPartner.aspx" />
-    <Content Include="View\InsertCE.aspx" />
-    <Content Include="View\InsertGroup.aspx" />
-    <Content Include="View\InsertMember.aspx" />
-    <Content Include="View\InsertPartner.aspx" />
-    <Content Include="View\RemoveCE.aspx" />
-    <Content Include="View\RemoveMember.aspx" />
-    <Content Include="View\RemovePartner.aspx" />
-    <Content Include="View\UploadPartnerFile.aspx" />
+    <Content Include="View\MemberView\ExportMemberList.aspx" />
+    <Content Include="View\RebateView\EditCE.aspx" />
+    <Content Include="View\MemberView\EditMember.aspx" />
+    <Content Include="View\PartnerView\EditPartner.aspx" />
+    <Content Include="View\RebateView\InsertCE.aspx" />
+    <Content Include="View\GroupView\InsertGroup.aspx" />
+    <Content Include="View\MemberView\InsertMember.aspx" />
+    <Content Include="View\PartnerView\InsertPartner.aspx" />
+    <Content Include="View\MemberView\RemoveMember.aspx" />
+    <Content Include="View\PartnerView\RemovePartner.aspx" />
+    <Content Include="View\RebateView\ReplacePartnerFile.aspx" />
+    <Content Include="View\RebateView\UploadPartnerFile.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -139,88 +139,88 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
+    <Compile Include="View\MemberView\ExportMemberList.aspx.cs">
+      <DependentUpon>ExportMemberList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
+    <Compile Include="View\MemberView\ExportMemberList.aspx.designer.cs">
+      <DependentUpon>ExportMemberList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\EditCE.aspx.cs">
+    <Compile Include="View\RebateView\EditCE.aspx.cs">
       <DependentUpon>EditCE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\EditCE.aspx.designer.cs">
+    <Compile Include="View\RebateView\EditCE.aspx.designer.cs">
       <DependentUpon>EditCE.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\EditMember.aspx.cs">
+    <Compile Include="View\MemberView\EditMember.aspx.cs">
       <DependentUpon>EditMember.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\EditMember.aspx.designer.cs">
+    <Compile Include="View\MemberView\EditMember.aspx.designer.cs">
       <DependentUpon>EditMember.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\EditPartner.aspx.cs">
+    <Compile Include="View\PartnerView\EditPartner.aspx.cs">
       <DependentUpon>EditPartner.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\EditPartner.aspx.designer.cs">
+    <Compile Include="View\PartnerView\EditPartner.aspx.designer.cs">
       <DependentUpon>EditPartner.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\InsertCE.aspx.cs">
+    <Compile Include="View\RebateView\InsertCE.aspx.cs">
       <DependentUpon>InsertCE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\InsertCE.aspx.designer.cs">
+    <Compile Include="View\RebateView\InsertCE.aspx.designer.cs">
       <DependentUpon>InsertCE.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\InsertGroup.aspx.cs">
+    <Compile Include="View\GroupView\InsertGroup.aspx.cs">
       <DependentUpon>InsertGroup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\InsertGroup.aspx.designer.cs">
+    <Compile Include="View\GroupView\InsertGroup.aspx.designer.cs">
       <DependentUpon>InsertGroup.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\InsertMember.aspx.cs">
+    <Compile Include="View\MemberView\InsertMember.aspx.cs">
       <DependentUpon>InsertMember.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\InsertMember.aspx.designer.cs">
+    <Compile Include="View\MemberView\InsertMember.aspx.designer.cs">
       <DependentUpon>InsertMember.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\InsertPartner.aspx.cs">
+    <Compile Include="View\PartnerView\InsertPartner.aspx.cs">
       <DependentUpon>InsertPartner.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\InsertPartner.aspx.designer.cs">
+    <Compile Include="View\PartnerView\InsertPartner.aspx.designer.cs">
       <DependentUpon>InsertPartner.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\RemoveCE.aspx.cs">
-      <DependentUpon>RemoveCE.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\RemoveCE.aspx.designer.cs">
-      <DependentUpon>RemoveCE.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\RemoveMember.aspx.cs">
+    <Compile Include="View\MemberView\RemoveMember.aspx.cs">
       <DependentUpon>RemoveMember.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\RemoveMember.aspx.designer.cs">
+    <Compile Include="View\MemberView\RemoveMember.aspx.designer.cs">
       <DependentUpon>RemoveMember.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\RemovePartner.aspx.cs">
+    <Compile Include="View\PartnerView\RemovePartner.aspx.cs">
       <DependentUpon>RemovePartner.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\RemovePartner.aspx.designer.cs">
+    <Compile Include="View\PartnerView\RemovePartner.aspx.designer.cs">
       <DependentUpon>RemovePartner.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\UploadPartnerFile.aspx.cs">
+    <Compile Include="View\RebateView\ReplacePartnerFile.aspx.cs">
+      <DependentUpon>ReplacePartnerFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\RebateView\ReplacePartnerFile.aspx.designer.cs">
+      <DependentUpon>ReplacePartnerFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\RebateView\UploadPartnerFile.aspx.cs">
       <DependentUpon>UploadPartnerFile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\UploadPartnerFile.aspx.designer.cs">
+    <Compile Include="View\RebateView\UploadPartnerFile.aspx.designer.cs">
       <DependentUpon>UploadPartnerFile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

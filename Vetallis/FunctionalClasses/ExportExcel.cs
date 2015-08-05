@@ -9,8 +9,6 @@ namespace Vetallis.FunctionalClasses
     public class ExportExcel
     {
 
-
-
         public string exportData(String query)
         {
             string conn = ConfigurationManager.ConnectionStrings["Conn"].ToString();
@@ -55,26 +53,14 @@ namespace Vetallis.FunctionalClasses
             //This path belongs to the computer where the application is running.
             //I have to find a way to get the path from the client side...
 
-            int extension = 1;
 
-            while (extension != 0)
-            {
-                try
-                {
-                    ExcelApp.ActiveWorkbook.SaveAs(path + "\\Desktop\\Results_v" + extension + ".xlsx");
-                    ExcelApp.ActiveWorkbook.Saved = true;
-                    ExcelApp.Quit();
-                    extension = 0;
-                    return "Success";
-                }
-                catch (Exception e)
-                {
-                    extension++;
 
-                }
+            ExcelApp.ActiveWorkbook.SaveAs(path + "\\Desktop\\Results.xlsx");
+            ExcelApp.ActiveWorkbook.Saved = true;
+            ExcelApp.Quit();
 
-            }
             return "Success";
+
         }
 
     }
