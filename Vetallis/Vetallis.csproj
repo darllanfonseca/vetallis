@@ -104,8 +104,6 @@
     <Compile Include="Business\Member.cs" />
     <Compile Include="Business\Partner.cs" />
     <Compile Include="Business\Rebate.cs" />
-    <Compile Include="DAO\ContinuingEducationDAO.cs" />
-    <Compile Include="DAO\EventsDAO.cs" />
     <Compile Include="DAO\GroupsDAO.cs" />
     <Compile Include="DAO\MemberDAO.cs" />
     <Compile Include="DAO\PartnerDAO.cs" />
