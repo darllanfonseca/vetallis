@@ -10,7 +10,7 @@
 namespace Vetallis.View.MemberView {
     
     
-    public partial class ExportMemberList {
+    public partial class ExportInactives {
         
         /// <summary>
         /// mainForm control.

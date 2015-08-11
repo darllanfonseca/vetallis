@@ -1,55 +1,46 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditMember.aspx.cs" Inherits="Vetallis.View.MemberView.EditMember" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActivateRemovedMember.aspx.cs" Inherits="Vetallis.View.MemberView.ActivateRemovedMember" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>VETALLIS - Edit a Member</title>
+  <title>VETALLIS - Edit a Member</title>
     <link rel="stylesheet" href="../../CSS/RegForms.css" />
     <link rel="stylesheet" href="../../CSS/GridView.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script>
-        $(function() {
-        $( "#datepicker" ).datepicker();
+        $(function () {
+            $("#datepicker").datepicker();
         });
     </script>
 </head>
 <body>
     <!-- Main Form -->
-    <form id="editMemberForm" runat="server">
+    <form id="mainForm" runat="server">
         <div class="all">
             <div class="container">
-                <div class="header">Fill out all the required fields and update the member</div>
+                <div class="header">Choose one of the removed members</div>
                 <div class="section">
                     <div class="fieldSection">
-                        <div style="text-align: left; position: absolute; top: 15px; left: 415px; width: 160px; height: 50px;">
-                            <b>Is a Group? *</b>
-                            <asp:TextBox runat="server" Visible="false" ID="groupId"></asp:TextBox>
-                            <asp:DropDownList OnSelectedIndexChanged="enableChooseGroup" runat="server" ID="isAGroup" Width="70px" AutoPostBack="true">
-                                <asp:ListItem Text="Select..." />
-                                <asp:ListItem Text="Yes" />
-                                <asp:ListItem Text="No" />
-                            </asp:DropDownList>
-                            <asp:Button runat="server" Width="80px" Visible="false" ID="openChooseGroupForm" OnClick="changeForms" Text="Pick Group" AutoPostBack="true"/>
-                        </div>
                         <div style="text-align: right; position: absolute; top: 15px; right: 15px; width: 150px; height: 50px;">
-                            <b>Account Number *</b>
+                            <b>Account Number</b>
                             <asp:TextBox runat="server" ID="accountNumber" Width="120px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 70px; left: 415px; width: 155px; height: 50px;">
-                            <b>Member Name *</b>
+                            <b>Member Name</b>
                             <asp:TextBox runat="server" ID="memberName" Width="350px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: right; position: absolute; top: 70px; right: 15px; width: 150px; height: 50px;">
-                            <b>Date Joined *</b>
-                            <asp:TextBox runat="server" ID="datepicker" Width="120px">
+                            <b>Date Removed</b>
+                            <asp:TextBox runat="server" ID="dateRemoved" Width="120px">
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 125px; left: 415px; width: 155px; height: 50px;">
-                            <b>Address *</b>
+                            <b>Address</b>
                             <asp:TextBox runat="server" ID="address" Width="350px">                           
                             </asp:TextBox>
                         </div>
@@ -64,13 +55,13 @@
                             </asp:TextBox>
                         </div>
                         <div style="text-align: right; position: absolute; top: 180px; right: 15px; width: 160px; height: 50px;">
-                            <b>City *</b>
+                            <b>City</b>
                             <asp:TextBox runat="server" ID="city" Width="150px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 235px; left: 415px; width: 80px; height: 50px;">
-                            <b>Province *</b>
-                            <asp:DropDownList runat="server" Width="70px" AutoPostBack="True" ID="province" OnSelectedIndexChanged="changeRegion">
+                            <b>Province</b>
+                            <asp:DropDownList runat="server" Width="70px" ID="province">
                                 <asp:ListItem
                                     Text="Select..." />
                                 <asp:ListItem
@@ -99,7 +90,6 @@
                                     Text="SK" />
                                 <asp:ListItem
                                     Text="YT" />
-
                             </asp:DropDownList>
                         </div>
                         <div style="text-align: right; position: absolute; top: 235px; left: 615px; width: 150px; height: 50px;">
@@ -108,7 +98,7 @@
                             </asp:TextBox>
                         </div>
                         <div style="text-align: right; position: absolute; top: 235px; right: 15px; width: 160px; height: 50px;">
-                            <b>Postal Code *</b>
+                            <b>Postal Code</b>
                             <asp:TextBox Style="text-transform: uppercase;" runat="server" ID="postalCode" Width="150px" MaxLength="6">
                             </asp:TextBox>
                         </div>
@@ -137,14 +127,19 @@
                             <asp:TextBox runat="server" ID="contactPerson" Width="250px">                           
                             </asp:TextBox>
                         </div>
-                        <div style="position: absolute; top: 460px; left: 415px; width: 100px; height: 50px;">
-                            <asp:Button Height="25px" Width="100px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="enableFieldsBtt" OnClick="enableFields" Text="Enable Fields" AutoPostBack="True" />
+                        <div style="position: absolute; top: 460px; left: 415px; width: 150px; height: 50px; text-decoration-color: red;">
+                            <asp:Label runat="server" ID="requiredFieldsTxt"></asp:Label>
+                        </div>
+                        <div style="text-align: right; position: absolute; top: 400px; right: 15px; width: 160px; height: 50px;">
+                            <b>Date of Activation *</b>
+                            <asp:TextBox Style="text-transform: uppercase;" runat="server" ID="datepicker" Width="150px" MaxLength="11">
+                            </asp:TextBox>
                         </div>
                         <div style="position: absolute; top: 460px; right: 15px; width: 150px; height: 50px;">
                             <asp:Button Height="25px" Width="150px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel" OnClick="returnToMainPage" AutoPostBack="True"/>
                         </div>
                         <div style="position: absolute; top: 510px; right: 15px; width: 150px; height: 50px;">
-                            <asp:Button Height="30px" BackColor="#e3efc7" Width="150px" Font-Names="Calibri" Font-Size="Large" runat="server" ID="updateMemberBtt" OnClick="updateMember" Text="Update Member" AutoPostBack="True" />
+                            <asp:Button Height="30px" BackColor="#e3efc7" Width="150px" Font-Names="Calibri" Font-Size="Large" runat="server" ID="activateMemberBtt" OnClick="activateMember" Text="Activate Member" AutoPostBack="True" />
                         </div>
 
 
@@ -170,7 +165,7 @@
                                     <asp:BoundField DataField="PROVINCE" HeaderText="PROVINCE" SortExpression="PROVINCE" />
                                     <asp:BoundField DataField="ID_MEMBER" HeaderText="ID_MEMBER" ReadOnly="True" SortExpression="ID_MEMBER" />
                                     <asp:BoundField DataField="ID_GROUP" HeaderText="ID_GROUP" SortExpression="ID_GROUP" />
-                                    <asp:BoundField DataField="DATE_JOINED" HeaderText="DATE_JOINED" SortExpression="DATE_JOINED" />
+                                    <asp:BoundField DataField="DATE_JOINED" HeaderText="DATE_JOINED" SortExpression="DATE_JOINED" />                                    
                                     <asp:BoundField DataField="STATUS" HeaderText="STATUS" SortExpression="STATUS" />
                                     <asp:BoundField DataField="DOCTOR" HeaderText="DOCTOR" SortExpression="DOCTOR" />
                                     <asp:BoundField DataField="REGION" HeaderText="REGION" SortExpression="REGION" />
@@ -180,48 +175,16 @@
                                     <asp:BoundField DataField="PHONE_NUMBER" HeaderText="PHONE_NUMBER" SortExpression="PHONE_NUMBER" />
                                     <asp:BoundField DataField="FAX" HeaderText="FAX" SortExpression="FAX" />
                                     <asp:BoundField DataField="CONTACT_PERSON" HeaderText="CONTACT_PERSON" SortExpression="CONTACT_PERSON" />
+                                    <asp:BoundField DataField="DATE_REMOVED" HeaderText="DATE REMOVED" SortExpression="DATE_REMOVED" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [MEMBER] ORDER BY NAME ASC"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [MEMBER] WHERE STATUS='INACTIVE' ORDER BY NAME ASC"></asp:SqlDataSource>
                         </div>
                         <div style="position: absolute; left: 10px; width: 370px; top: 530px; color: #707070; font-family: Calibri; font-size: 13px; text-align: left;">You can sort the results by clicking on the name of the columns.</div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
-
-    <!-- Form to choose the Group -->
-    <form id="chooseGroupForm" visible="false" runat="server">
-       <div class="all">
-        <div class="container">
-            <div class="header">Choose the correct group to match with the new Member</div>
-            <div class="section">
-                <div class="fieldSection">
-                    <div style="position: absolute; top: 20px; left: 50%; margin-left: -150px; width: 300px; overflow: scroll; bottom: 300px; border: solid 1px #d0d0d0;">
-                            <asp:GridView ID="searchGroups" runat="server" RowStyle-Height="15px" HeaderStyle-Height="30px" RowStyle-Width="100px" AllowSorting="True" OnSelectedIndexChanged="loadSelectedGroup" AutoGenerateColumns="False" DataKeyNames="ID_GROUP" DataSourceID="Teste3">
-                                <FooterStyle CssClass="GridViewFooterStyle" />
-                                <RowStyle CssClass="GridViewRowStyle" />    
-                                <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />
-                                <PagerStyle CssClass="GridViewPagerStyle" />
-                                <AlternatingRowStyle CssClass="GridViewAlternatingRowStyle" />
-                                <HeaderStyle CssClass="GridViewHeaderStyle" />
-                                <RowStyle Wrap="False" /> 
-                                <Columns>
-                                    <asp:CommandField ShowSelectButton="True" />
-                                    <asp:BoundField DataField="GROUP_NAME" HeaderText="Name" SortExpression="GROUP_NAME">
-                                        <HeaderStyle Width="100px"></HeaderStyle>
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="ID_MAIN_MEMBER" HeaderText="Main Member" SortExpression="ID_MAIN_MEMBER" />
-                                    <asp:BoundField DataField="ID_GROUP" HeaderText="Group ID" SortExpression="ID_GROUP" />
-                                </Columns>
-                            </asp:GridView>
-                            <asp:SqlDataSource ID="Teste3" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [GROUPS]"></asp:SqlDataSource>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </form>
 
     <!-- Form to write the message from the Database -->
@@ -234,7 +197,7 @@
                             <asp:Label runat="server" ID="responseText"></asp:Label>
                             <br />
                             <br />
-                            <asp:Button runat="server" Text="Return" ID="returnBtt" OnClick="returnEditMember" />
+                            <asp:Button runat="server" Text="Return" ID="returnBtt" OnClick="returnToMainPage" />
                         </div>
                     </div>
                 </div>
@@ -243,3 +206,4 @@
     </form>
 </body>
 </html>
+

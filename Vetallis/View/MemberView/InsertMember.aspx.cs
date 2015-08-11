@@ -105,10 +105,11 @@ namespace Vetallis.View.MemberView
             member.contactPerson = this.contactPerson.Text.Trim();
 
             MemberDAO memberDAO = new MemberDAO();
-            this.response.InnerText = memberDAO.insertNewMember(member);
+            
             this.insertNewMemberForm.Visible = false;
             this.chooseGroup.Visible = false;
             this.response.Visible = true;
+            this.responseText.Text = memberDAO.insertNewMember(member);
         }
 
         protected void enableChooseGroup(object sender, EventArgs e)

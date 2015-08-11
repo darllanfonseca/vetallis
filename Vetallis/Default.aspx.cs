@@ -14,53 +14,44 @@ namespace Vetallis
         protected void exportMemberList(object sender, EventArgs e)
         {
             ExportExcel export = new ExportExcel();
-            export.exportData("SELECT NAME FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME");
+            string result = export.exportData("SELECT NAME FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME");
 
-            successDownload();
+            this.changeForms();
+            this.responseText.Text = result;
         }
 
         //Exports current list of the active Partners
         protected void exportPartnerList(object sender, EventArgs e)
         {
             ExportExcel export = new ExportExcel();
-            export.exportData("SELECT * FROM PARTNER WHERE STATUS = 'ACTIVE'");
-            successDownload();
+            string result = export.exportData("SELECT * FROM PARTNER WHERE STATUS = 'ACTIVE'");
+
+            this.changeForms();
+            this.responseText.Text = result;
         }
 
         //Exports current Rebate sheet 
         protected void exportRebateSheet(object sender, EventArgs e)
         {
-            ExportExcel export = new ExportExcel();
+            ExportExcel export = new ExportExcel();           
 
-            string response = export.exportData(@"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
+            string result = export.exportData(@"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
                 REBATE.QUANTITY as Amount, REBATE.YEAR as Year, rebate.CATEGORY as Category, rebate.IS_DELIVERED_BY_PARTNER as Delivered_By_Partner
                 FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = MEMBER.ID_MEMBER JOIN PARTNER ON 
                 REBATE.ID_PARTNER = PARTNER.ID_PARTNER WHERE REBATE.YEAR = '" +
             this.rebateYear.SelectedValue.ToString() + "-01-01' ORDER BY MEMBER.NAME, PARTNER.NAME");
 
-            if (response.Equals("Success"))
-            {
-                successDownload();
-            }
+            this.changeForms();
+            this.responseText.Text = result;
 
             this.rebateYear.SelectedIndex = 0;
-
             this.pickYear.Visible = false;
             this.exportBtt.Visible = true;
         }
 
-        //Generates an alert message telling the user the file is on the desktop
-        protected void successDownload()
+        protected void returnToMainPage(object sender, EventArgs e)
         {
-            string message = "The Excel File is ready on your Desktop.";
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append("<script type = 'text/javascript'>");
-            sb.Append("window.onload=function(){");
-            sb.Append("alert('");
-            sb.Append(message);
-            sb.Append("')};");
-            sb.Append("</script>");
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+            Response.Redirect("~/Default.aspx");
         }
 
         protected void activateYearDropDown(object sender, EventArgs e)
@@ -68,6 +59,12 @@ namespace Vetallis
             this.exportBtt.Visible = false;
             this.pickYear.Visible = true;
 
+        }
+
+        protected void changeForms()
+        {
+            this.DefaultForm.Visible = false;
+            this.responseForm.Visible = true;
         }
     }
 }

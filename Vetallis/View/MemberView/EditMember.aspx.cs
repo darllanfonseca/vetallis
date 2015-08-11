@@ -8,7 +8,6 @@ namespace Vetallis.View.MemberView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.isAGroup.SelectedIndex = 0;
             this.isAGroup.Enabled = false;
             this.accountNumber.Enabled = false;
             this.memberName.Enabled = false;
@@ -28,16 +27,21 @@ namespace Vetallis.View.MemberView
 
         protected void enableChooseGroup(object sender, EventArgs e)
         {
-            if (this.isAGroup.SelectedValue == "Yes")
-            {
-                this.openChooseGroupForm.Visible = true;
-            }
+            if(this.isAGroup.SelectedValue.Equals("Yes"))
+                changeForms();            
         }
 
         protected void changeForms(object sender, EventArgs e)
         {
-            this.chooseGroup.Visible = true;
             this.editMemberForm.Visible = false;
+            this.chooseGroupForm.Visible = true;
+            
+        }
+
+        protected void changeForms()
+        {
+            this.editMemberForm.Visible = false;
+            this.chooseGroupForm.Visible = true;           
         }
 
         protected void changeRegion(object sender, EventArgs e)
@@ -75,9 +79,9 @@ namespace Vetallis.View.MemberView
 
         protected void loadSelectedMember(object sender, EventArgs e)
         {
-            this.isAGroup.SelectedIndex = 0;
             this.accountNumber.Text = this.searchMembers.SelectedRow.Cells[1].Text;
             this.memberName.Text = this.searchMembers.SelectedRow.Cells[2].Text;
+            this.group_ID.Text = this.searchMembers.SelectedRow.Cells[7].Text;
             this.address.Text = this.searchMembers.SelectedRow.Cells[3].Text;
             this.city.Text = this.searchMembers.SelectedRow.Cells[4].Text;
             this.province.SelectedValue = this.searchMembers.SelectedRow.Cells[5].Text;
@@ -97,7 +101,6 @@ namespace Vetallis.View.MemberView
 
         protected void enableFields(object sender, EventArgs e)
         {
-            this.isAGroup.SelectedIndex = 0;
             this.isAGroup.Enabled = true;
             this.accountNumber.Enabled = true;
             this.memberName.Enabled = true;
@@ -120,7 +123,7 @@ namespace Vetallis.View.MemberView
 
         protected void enableFields()
         {
-            this.isAGroup.SelectedIndex = 0;
+            this.isAGroup.Enabled = true;
             this.accountNumber.Enabled = true;
             this.memberName.Enabled = true;
             this.datepicker.Enabled = true;
@@ -162,9 +165,9 @@ namespace Vetallis.View.MemberView
                         if (accountNumber.Text.ToString() == "" || memberName.Text.ToString() == "" || address.Text.ToString() == "" ||
                             city.Text.ToString() == "" || province.SelectedItem.ToString() == "" || postalCode.Text.ToString() == "")
                         {
-                            this.response.InnerHtml = "<div id=\"All2\" runat=\"server\"><div runat=\"server\" id=\"message\" style=\"position: absolute; top: 50%; left: 50%; width: 200px; height: 100px;\">TESTE InnerHtml</div></div>";
+                            this.responseText.Text = "One or more of the required fields are blank";
                             this.editMemberForm.Visible = false;
-                            this.chooseGroup.Visible = false;
+                            this.chooseGroupForm.Visible = false;
                             this.response.Visible = true;
 
                             break;
@@ -174,7 +177,8 @@ namespace Vetallis.View.MemberView
                                     {   //Loads the form content into the member object
                                         member.id = this.searchMembers.SelectedRow.Cells[6].Text;
                                         member.accountNumber = accountNumber.Text.ToString().Trim();
-                                        member.idGroup = this.searchMembers.SelectedRow.Cells[7].Text;
+                                        member.idGroup = this.group_ID.Text;
+                                        member.dateJoined = this.datepicker.Text;
                                         member.doctor = doctorName.Text.ToString().Trim();
                                         member.name = memberName.Text.ToString().Trim();
                                         member.address = address.Text.ToString().Trim();
@@ -187,6 +191,7 @@ namespace Vetallis.View.MemberView
                                         member.phoneNumber = phoneNumber.Text.ToString();
                                         member.faxNumber = faxNumber.Text.ToString();
                                         member.contactPerson = contactPerson.Text.ToString().Trim();
+                                        member.dateLastActivated = this.datepicker.Text;
 
                                         clearAllFields();
 
@@ -194,9 +199,9 @@ namespace Vetallis.View.MemberView
                                         MemberDAO memberDAO = new MemberDAO();
                                         databaseResponse = memberDAO.updateMember(member);
 
-                                        this.response.InnerText = databaseResponse;
+                                        this.responseText.Text = databaseResponse;
                                         this.editMemberForm.Visible = false;
-                                        this.chooseGroup.Visible = false;
+                                        this.chooseGroupForm.Visible = false;
                                         this.response.Visible = true;
                                     }
                                 } break;
@@ -209,14 +214,16 @@ namespace Vetallis.View.MemberView
                                         city.Text.ToString() == "" || province.SelectedItem.ToString() == "" || postalCode.Text.ToString() == "")
                                     {
                                         this.editMemberForm.Visible = false;
-                                        this.chooseGroup.Visible = false;
+                                        this.chooseGroupForm.Visible = false;
                                         this.response.Visible = true;
+                                        this.responseText.Text = "Please verify if all required fields are not blank.";
                                     }
                                     else
                                     {   //Loads the form content into the member object, BUT NOT THE ID_GROUP VALUE..
                                         member.id = this.searchMembers.SelectedRow.Cells[6].Text;
                                         member.idGroup = "0";
                                         member.accountNumber = accountNumber.Text.ToString().Trim();
+                                        member.dateJoined = datepicker.Text;
                                         member.doctor = doctorName.Text.ToString().Trim();
                                         member.name = memberName.Text.ToString().Trim();
                                         member.address = address.Text.ToString().Trim();
@@ -229,15 +236,16 @@ namespace Vetallis.View.MemberView
                                         member.phoneNumber = phoneNumber.Text.ToString();
                                         member.faxNumber = faxNumber.Text.ToString();
                                         member.contactPerson = contactPerson.Text.ToString().Trim();
+                                        member.dateLastActivated = datepicker.Text;
 
                                         clearAllFields();
 
                                         MemberDAO memberDAO = new MemberDAO();
                                         databaseResponse = memberDAO.updateMember(member);
 
-                                        this.response.InnerText = databaseResponse;
+                                        this.responseText.Text = databaseResponse;
                                         this.editMemberForm.Visible = false;
-                                        this.chooseGroup.Visible = false;
+                                        this.chooseGroupForm.Visible = false;
                                         this.response.Visible = true;
                                     }
                                 } break; 
@@ -276,6 +284,20 @@ namespace Vetallis.View.MemberView
         protected void returnToMainPage(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
+        }
+
+        protected void loadSelectedGroup(object sender, EventArgs e)
+        {
+            this.chooseGroupForm.Visible = false;
+            this.editMemberForm.Visible = true;
+            enableFields();
+            this.group_ID.Text = searchGroups.SelectedRow.Cells[3].Text;
+            this.openChooseGroupForm.Enabled = false;
+            this.openChooseGroupForm.Visible = false;
+            this.group_ID.Visible = true;
+            this.ID_GROUP_DIV.Visible = true;
+            this.isAGroup.Enabled = false;
+            this.updateMemberBtt.Enabled = true;
         }
        
     }        

@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExportMemberList.aspx.cs" Inherits="Vetallis.View.MemberView.ExportMemberList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExportInactives.aspx.cs" Inherits="Vetallis.View.MemberView.ExportInactives" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>VETALLIS - Export Member List</title>
+    <title>VETALLIS - Export List of Inactive Members</title>
     <link rel="stylesheet" href="../../CSS/RegForms.css" />
 </head>
 <body>
@@ -22,6 +22,8 @@
                                 <asp:ListItem Text="NAME"></asp:ListItem>
                                 <asp:ListItem Text="ACCOUNT_NUMBER"></asp:ListItem>
                                 <asp:ListItem Text="DATE_JOINED"></asp:ListItem>
+                                <asp:ListItem Text="DATE_REMOVED"></asp:ListItem>
+                                <asp:ListItem Text="DATE_LAST_ACTIVATED"></asp:ListItem>
                                 <asp:ListItem Text="DOCTOR"></asp:ListItem>
                                 <asp:ListItem Text="ADDRESS"></asp:ListItem>
                                 <asp:ListItem Text="CITY"></asp:ListItem>

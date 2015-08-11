@@ -8,7 +8,7 @@ using Vetallis.FunctionalClasses;
 
 namespace Vetallis.View.MemberView
 {
-    public partial class ExportMemberList : System.Web.UI.Page
+    public partial class ExportInactives : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,13 +37,13 @@ namespace Vetallis.View.MemberView
             // Join the string together using the ; delimiter.
             query += String.Join(", ", fields.ToArray());
 
-            query += " FROM MEMBER WHERE STATUS='ACTIVE' ORDER BY NAME";
+            query += " FROM MEMBER WHERE STATUS='INACTIVE' ORDER BY NAME";
 
             ExportExcel export = new ExportExcel();
 
             this.mainForm.Visible = false;
             this.responseForm.Visible = true;
-            this.responseText.Text = export.exportData(query);            
+            this.responseText.Text = export.exportData(query);
 
         }
 

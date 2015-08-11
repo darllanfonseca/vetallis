@@ -85,6 +85,24 @@ namespace Vetallis.View.MemberView {
         protected global::System.Web.UI.WebControls.TextBox address;
         
         /// <summary>
+        /// ID_GROUP_DIV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ID_GROUP_DIV;
+        
+        /// <summary>
+        /// group_ID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox group_ID;
+        
+        /// <summary>
         /// doctorName control.
         /// </summary>
         /// <remarks>
@@ -220,13 +238,31 @@ namespace Vetallis.View.MemberView {
         protected global::System.Web.UI.WebControls.SqlDataSource Teste1;
         
         /// <summary>
-        /// chooseGroup control.
+        /// chooseGroupForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm chooseGroup;
+        protected global::System.Web.UI.HtmlControls.HtmlForm chooseGroupForm;
+        
+        /// <summary>
+        /// searchGroups control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView searchGroups;
+        
+        /// <summary>
+        /// Teste3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Teste3;
         
         /// <summary>
         /// response control.
@@ -236,6 +272,15 @@ namespace Vetallis.View.MemberView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm response;
+        
+        /// <summary>
+        /// responseText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label responseText;
         
         /// <summary>
         /// returnBtt control.

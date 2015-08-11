@@ -9,6 +9,8 @@ namespace Vetallis.Business
         public string accountNumber { get; set; }
         public string name { get; set; }
         public string dateJoined { get; set; }
+        public string dateRemoved { get; set; }
+        public string dateLastActivated { get; set; }
         public string status { get; set; }
         public string doctor { get; set; }
         public string address { get; set; }

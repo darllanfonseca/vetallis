@@ -81,7 +81,10 @@
     <Content Include="CSS\MainScreen.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="View\MemberView\ActivateRemovedMember.aspx" />
+    <Content Include="View\MemberView\ExportInactives.aspx" />
     <Content Include="View\MemberView\ExportMemberList.aspx" />
+    <Content Include="View\MemberView\RebateAmounts.aspx" />
     <Content Include="View\RebateView\EditCE.aspx" />
     <Content Include="View\MemberView\EditMember.aspx" />
     <Content Include="View\PartnerView\EditPartner.aspx" />
@@ -98,8 +101,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\ContinuingEducation.cs" />
-    <Compile Include="Business\Events.cs" />
     <Compile Include="Business\Groups.cs" />
     <Compile Include="Business\Member.cs" />
     <Compile Include="Business\Partner.cs" />
@@ -137,12 +138,33 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="View\MemberView\ActivateRemovedMember.aspx.cs">
+      <DependentUpon>ActivateRemovedMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\MemberView\ActivateRemovedMember.aspx.designer.cs">
+      <DependentUpon>ActivateRemovedMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemberView\ExportInactives.aspx.cs">
+      <DependentUpon>ExportInactives.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\MemberView\ExportInactives.aspx.designer.cs">
+      <DependentUpon>ExportInactives.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\MemberView\ExportMemberList.aspx.cs">
       <DependentUpon>ExportMemberList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\MemberView\ExportMemberList.aspx.designer.cs">
       <DependentUpon>ExportMemberList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemberView\RebateAmounts.aspx.cs">
+      <DependentUpon>RebateAmounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\MemberView\RebateAmounts.aspx.designer.cs">
+      <DependentUpon>RebateAmounts.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\RebateView\EditCE.aspx.cs">
       <DependentUpon>EditCE.aspx</DependentUpon>

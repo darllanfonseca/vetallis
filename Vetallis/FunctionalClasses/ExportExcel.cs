@@ -53,12 +53,21 @@ namespace Vetallis.FunctionalClasses
             //This path belongs to the computer where the application is running.
             //I have to find a way to get the path from the client side... 
 
-            ExcelApp.ActiveWorkbook.SaveAs(path + "\\Desktop\\Results.xlsx");
-            ExcelApp.ActiveWorkbook.Saved = true;
+            try
+            {
+                ExcelApp.ActiveWorkbook.SaveAs(path + "\\Desktop\\Results.xlsx");
+                ExcelApp.ActiveWorkbook.Saved = true;
 
-            ExcelApp.Quit();
+                ExcelApp.Quit();
 
-            return "Success";
+                return "The file has been generated successfully and it is ready on your Desktop.";
+            }
+            catch (Exception e)
+            {
+                return "Some error has occured. Message from Server: " + e.Message;
+            }
+
+            
 
         }
 

@@ -27,13 +27,13 @@
                                 <li role="presentation">
                                     <hr />
                                 </li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activate Removed Member</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Rebate Amounts</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/ActivateRemovedMember.aspx">Activate Removed Member</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/RebateAmounts.aspx">View Rebate Amounts</a></li>
                                 <li role="presentation">
                                     <hr />
                                 </li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/ExportMemberList.aspx">Export Current Member List</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export List of Inactives</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/ExportInactives.aspx">Export List of Inactives</a></li>
                             </ul>
 
                             <div style="position: absolute; left: 111px; top: 0px;">
@@ -104,6 +104,9 @@
                     </div>
                 </div>
                 <div id="nav">
+                    <div id="navItem0">
+                        Quick Links
+                    </div>
                     <div runat="server" id="navItem1">
                         <asp:Button runat="server" Height="35px" Width="200px" ID="exportMemberListBtt" AutoPostBack="true" OnClick="exportMemberList" Text="Export Current Member List" />
                     </div>
@@ -144,6 +147,22 @@
                 </div>
             </div>
         </div>
+    </form>
+
+    <!-- Form to write the message from the Database -->
+    <form id="responseForm" visible="false" runat="server">
+        <div class="all">
+            <div class="container">
+                <div class="section">
+                    <div class="fieldSection">
+                        <div runat="server" style="position: absolute; top: 25%; left: 25%;">
+                            <asp:Label runat="server" ID="responseText"></asp:Label><br /><br />
+                            <asp:Button runat="server" ID="returnBtt" Text="Return" OnClick="returnToMainPage"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>   
     </form>
 </body>
 </html>
