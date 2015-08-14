@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Vetallis.Business;
+using Vetallis.DAO;
 using Vetallis.FunctionalClasses;
 
 namespace Vetallis.View.MemberView
@@ -39,17 +44,13 @@ namespace Vetallis.View.MemberView
 
             query += " FROM MEMBER WHERE STATUS='INACTIVE' ORDER BY NAME";
 
-            ExportExcel export = new ExportExcel();
-
-            this.mainForm.Visible = false;
-            this.responseForm.Visible = true;
-            this.responseText.Text = export.exportData(query);
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "InactiveMembers.xlsx", Response);
 
         }
 
         protected void returnToMainPage(object sender, EventArgs e)
         {
-            Response.Redirect("~/Default.aspx");
+            Server.Transfer("~/Default.aspx");
         }
     }
 }
