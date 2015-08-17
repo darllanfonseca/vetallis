@@ -103,48 +103,12 @@ namespace Vetallis {
         protected global::System.Web.UI.WebControls.Button exportRebateSheetBtt;
         
         /// <summary>
-        /// pickYear control.
+        /// footer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pickYear;
-        
-        /// <summary>
-        /// rebateYear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList rebateYear;
-        
-        /// <summary>
-        /// responseForm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm responseForm;
-        
-        /// <summary>
-        /// responseText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label responseText;
-        
-        /// <summary>
-        /// returnBtt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button returnBtt;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl footer;
     }
 }

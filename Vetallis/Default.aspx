@@ -32,8 +32,8 @@
                                 <li role="presentation">
                                     <hr />
                                 </li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/ExportMemberList.aspx">Export Current Member List</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/ExportInactives.aspx">Export List of Inactives</a></li>
+                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportMemberList" Text="Export Current Member List" /></li>
+                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="selectFieldsFromDB" Text="Export List of Inactives" /></li>
                             </ul>
 
                             <div style="position: absolute; left: 111px; top: 0px;">
@@ -49,7 +49,7 @@
                                         <hr />
                                     </li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activate Removed Group</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export List of Groups</a></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportGroups" Text="Export List of Groups" /></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Rebate Amounts</a></li>
                                 </ul>
                             </div>
@@ -116,25 +116,7 @@
                         <asp:Button runat="server" Height="35px" Width="200px" ID="exportPartnerListBtt" AutoPostBack="true" OnClick="exportPartnerList" Text="Export Current Partner List" />
                     </div>
                     <div id="exportBtt" runat="server">
-                        <asp:Button runat="server" Height="35px" Width="200px" ID="exportRebateSheetBtt" AutoPostBack="true" OnClick="activateYearDropDown" Text="Export Rebate Sheet" />
-                    </div>
-                    <div id="pickYear" runat="server" visible="false" class="navItem3">
-                        <asp:DropDownList runat="server" Height="35px" Width="200px" ID="rebateYear" AutoPostBack="true" OnSelectedIndexChanged="exportRebateSheet">
-                            <asp:ListItem
-                                Text="Select the Year..." />
-                            <asp:ListItem
-                                Text="2015" />
-                            <asp:ListItem
-                                Text="2014" />
-                            <asp:ListItem
-                                Text="2013" />
-                            <asp:ListItem
-                                Text="2012" />
-                            <asp:ListItem
-                                Text="2011" />
-                            <asp:ListItem
-                                Text="2010" />
-                        </asp:DropDownList>
+                        <asp:Button runat="server" Height="35px" Width="200px" ID="exportRebateSheetBtt" AutoPostBack="true" OnClick="exportRebateSheet" Text="Export Rebate Sheet" />
                     </div>
                 </div>
                 <div id="section">
@@ -142,27 +124,10 @@
                     </div>
 
                 </div>
-                <div id="footer" style="font-family: Calibri; font-size: 13px;">
-                    © 2015 Vet Alliance Inc. - Vet Alliance Information System.
+                <div runat="server" id="footer" style="font-family: Calibri; font-size: 13px;">
                 </div>
             </div>
         </div>
-    </form>
-
-    <!-- Form to write the message from the Database -->
-    <form id="responseForm" visible="false" runat="server">
-        <div class="all">
-            <div class="container">
-                <div class="section">
-                    <div class="fieldSection">
-                        <div runat="server" style="position: absolute; top: 25%; left: 25%;">
-                            <asp:Label runat="server" ID="responseText"></asp:Label><br /><br />
-                            <asp:Button runat="server" ID="returnBtt" Text="Return" OnClick="returnToMainPage"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         </div>   
     </form>
 </body>
 </html>

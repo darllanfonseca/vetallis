@@ -41,3 +41,7 @@ C:\Users\admin\Documents\projects\vetallis\Vetallis\bin\WindowsBase.dll
 C:\Users\admin\Documents\projects\vetallis\Vetallis\bin\DocumentFormat.OpenXml.xml
 C:\Users\admin\Documents\projects\vetallis\Vetallis\obj\Debug\Interop.MSXML2.dll
 C:\Users\admin\Documents\projects\vetallis\Vetallis\bin\System.Web.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\obj\Debug\Interop.MSXML2.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\bin\System.Web.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\bin\WindowsBase.dll
+C:\Users\Darllan\Documents\Projects\Vetallis\Vetallis\bin\DocumentFormat.OpenXml.xml

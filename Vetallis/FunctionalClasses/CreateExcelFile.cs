@@ -103,6 +103,7 @@ namespace Vetallis.FunctionalClasses
         /// <returns>True if it was created succesfully, otherwise false.</returns>
         public static bool CreateExcelDocument(DataTable dt, string filename, System.Web.HttpResponse Response)
         {
+            System.Web.HttpResponse response2 = Response;
             try
             {
                 DataSet ds = new DataSet();
@@ -169,7 +170,6 @@ namespace Vetallis.FunctionalClasses
                 stream.Close();
                 Response.BinaryWrite(data1);
                 Response.Flush();
-                Response.End();
 
                 return true;
             }

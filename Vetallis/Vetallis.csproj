@@ -109,12 +109,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Global.cs" />
     <Compile Include="Business\Groups.cs" />
     <Compile Include="Business\Member.cs" />
     <Compile Include="Business\Partner.cs" />
     <Compile Include="Business\Rebate.cs" />
+    <Compile Include="Business\Users.cs" />
     <Compile Include="DAO\ExportExcelDAO.cs" />
     <Compile Include="DAO\GroupsDAO.cs" />
+    <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\MemberDAO.cs" />
     <Compile Include="DAO\PartnerDAO.cs" />
     <Compile Include="DAO\RebateDAO.cs" />

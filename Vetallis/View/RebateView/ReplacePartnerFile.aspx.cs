@@ -5,6 +5,7 @@ using System.Data.OleDb;
 using System.Configuration;
 using System.Data.SqlClient;
 using Vetallis.DAO;
+using System.Web.Security;
 
 namespace Vetallis.View.RebateView
 {
@@ -12,7 +13,10 @@ namespace Vetallis.View.RebateView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!this.Page.User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+            }
         }
 
         protected void uploadExcelFile(object sender, EventArgs e)

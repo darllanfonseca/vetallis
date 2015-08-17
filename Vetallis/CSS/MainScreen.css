@@ -229,3 +229,19 @@
     border: solid 1px #d0d0d0;
     border-radius: 5px;
 }
+
+.menuBtt{
+    border: 0px;
+    background: #FFF;
+    padding-left: 20px;
+    text-align: left;
+    width: 200px;
+}
+
+.menuBtt:hover{
+    background: #EEE;
+}
+
+.a:hover{
+    background: #EEE;
+}

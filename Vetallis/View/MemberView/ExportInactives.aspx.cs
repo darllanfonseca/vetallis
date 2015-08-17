@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Vetallis.Business;
@@ -17,7 +19,10 @@ namespace Vetallis.View.MemberView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!this.Page.User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+            }
         }
 
         protected void selectFieldsFromDB(object sender, EventArgs e)
@@ -44,13 +49,15 @@ namespace Vetallis.View.MemberView
 
             query += " FROM MEMBER WHERE STATUS='INACTIVE' ORDER BY NAME";
 
+            Response.Redirect("~/Default.aspx");
+
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "InactiveMembers.xlsx", Response);
 
         }
 
         protected void returnToMainPage(object sender, EventArgs e)
         {
-            Server.Transfer("~/Default.aspx");
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

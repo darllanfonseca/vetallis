@@ -1,4 +1,10 @@
 ﻿using System;
+using Vetallis.Business;
+using Vetallis.DAO;
+using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Web.Security;
 
 namespace Vetallis
 {
@@ -11,17 +17,21 @@ namespace Vetallis
 
         protected void userLogin(object sender, EventArgs e)
         {
-            if (this.userName.Text == "Darllan" && this.passWord.Text == "DrBr23++")
+
+            LoginDAO login = new LoginDAO();
+            Users user = new Users();
+            user = login.getUsers(this.userName.Text);
+
+            if (user.password.Equals(this.passWord.Text))
             {
-                Response.Redirect("~/Default.aspx");
+                FormsAuthentication.RedirectFromLoginPage(userName.Text, true);
             }
             else
-            {               
-                this.errorMsg.InnerText = "User/Password incorrect";
-                
-
+            {
+                this.errorMsg.InnerText = "User/Password incorrect.";
             }
-        //  ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "setTimeout();", true);
+
+
         }
 
     }

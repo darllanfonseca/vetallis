@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Vetallis.Business;
@@ -13,6 +14,11 @@ namespace Vetallis.View.MemberView
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!this.Page.User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+            }
+
             this.accountNumber.Enabled = false;
             this.memberName.Enabled = false;
             this.dateJoined.Enabled = false;

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Web.Security;
+using Vetallis.DAO;
 using Vetallis.FunctionalClasses;
 
 namespace Vetallis
@@ -7,64 +10,60 @@ namespace Vetallis
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!this.Page.User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+            }
+
             this.timeAndDate.Text = "Welcome Darllan! Today is " + DateTime.Today.ToLongDateString();
+
+            this.footer.InnerText = "© " + DateTime.Today.Year.ToString() + " Vet Alliance Inc. - Vet Alliance Information System.";
+
         }
 
         //Exports current list of active members
         protected void exportMemberList(object sender, EventArgs e)
         {
-            ExportExcel export = new ExportExcel();
-            string result = export.exportData("SELECT NAME FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME");
+            string query = "SELECT ACCOUNT_NUMBER, NAME, DATE_JOINED, DOCTOR, ADDRESS, CITY, PROVINCE, REGION, POSTAL_CODE FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME";
 
-            this.changeForms();
-            this.responseText.Text = result;
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Members.xlsx", Response);
+
         }
 
         //Exports current list of the active Partners
         protected void exportPartnerList(object sender, EventArgs e)
         {
-            ExportExcel export = new ExportExcel();
-            string result = export.exportData("SELECT * FROM PARTNER WHERE STATUS = 'ACTIVE'");
+            string query = "SELECT NAME, ADDRESS, CITY, PARTNER_SINCE, PROVINCE, POSTAL_CODE, WEBSITE FROM PARTNER WHERE STATUS = 'ACTIVE'";
 
-            this.changeForms();
-            this.responseText.Text = result;
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Partners.xlsx", Response);
         }
 
         //Exports current Rebate sheet 
         protected void exportRebateSheet(object sender, EventArgs e)
-        {
-            ExportExcel export = new ExportExcel();           
-
-            string result = export.exportData(@"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
+        {      
+            string query = @"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
                 REBATE.QUANTITY as Amount, REBATE.YEAR as Year, rebate.CATEGORY as Category, rebate.IS_DELIVERED_BY_PARTNER as Delivered_By_Partner
                 FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = MEMBER.ID_MEMBER JOIN PARTNER ON 
-                REBATE.ID_PARTNER = PARTNER.ID_PARTNER WHERE REBATE.YEAR = '" +
-            this.rebateYear.SelectedValue.ToString() + "-01-01' ORDER BY MEMBER.NAME, PARTNER.NAME");
+                REBATE.ID_PARTNER = PARTNER.ID_PARTNER WHERE REBATE.YEAR = '2015-01-01' ORDER BY MEMBER.NAME, PARTNER.NAME";
 
-            this.changeForms();
-            this.responseText.Text = result;
-
-            this.rebateYear.SelectedIndex = 0;
-            this.pickYear.Visible = false;
-            this.exportBtt.Visible = true;
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Sheet.xlsx", Response);            
         }
 
-        protected void returnToMainPage(object sender, EventArgs e)
+        protected void selectFieldsFromDB(object sender, EventArgs e)
         {
-            Response.Redirect("~/Default.aspx");
-        }
+            string query = "SELECT *";
 
-        protected void activateYearDropDown(object sender, EventArgs e)
-        {
-            this.exportBtt.Visible = false;
-            this.pickYear.Visible = true;
+            query += " FROM MEMBER WHERE STATUS='INACTIVE' ORDER BY NAME";
+
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "InactiveMembers.xlsx", Response);
 
         }
 
-        protected void changeForms()
+        protected void exportGroups(object sender, EventArgs e)
         {
-            this.DefaultForm.Visible = false;
-            this.responseForm.Visible = true;
+            string query = "SELECT * FROM GROUPS";
+
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "List of Current Groups.xlsx", Response);
         }
     }
 }

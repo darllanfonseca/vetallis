@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Security;
 using Vetallis.DAO;
 
 namespace Vetallis.View.MemberView
@@ -9,6 +10,11 @@ namespace Vetallis.View.MemberView
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!this.Page.User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+            }
+
             this.group_ID.Enabled = false;
             this.group_ID.Visible = false;
             this.ID_GROUP_DIV.Visible = false;
