@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="//www.w3.org/1999/xhtml">
 <head runat="server">
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> 
     <title>VETALLIS - Login</title>

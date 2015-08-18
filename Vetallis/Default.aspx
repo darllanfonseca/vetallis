@@ -4,10 +4,10 @@
 <html>
 <head>
     <title>VETALLIS</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="../CSS/MainScreen.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
     <form id="DefaultForm" runat="server">
@@ -99,8 +99,11 @@
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View CE Amounts</a></li>
                         </ul>
                     </div>
-                    <div style="position: absolute; float: right; right: 20px; top: 50%; margin-top: -10px;">
-                        <asp:Label ID="timeAndDate" runat="server"></asp:Label>
+                    <div style="position: absolute; float: right; right: 20px; top: 50%; margin-top: -10px; height: 50px;">
+                        <asp:Label ID="timeAndDate" runat="server"></asp:Label><br />
+                        <div style="position: absolute; top: 20px; text-align: right; right: 0px;">
+                            <asp:LinkButton runat="server" Text="Log Out" OnClick="logout"></asp:LinkButton>
+                        </div>
                     </div>
                 </div>
                 <div id="nav">

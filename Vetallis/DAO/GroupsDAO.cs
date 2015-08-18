@@ -22,7 +22,8 @@ namespace Vetallis.DAO
             dt.Clear();
 
             //SELECT SQL, using the ID passed as an argument
-            SqlCommand cmd = new SqlCommand(string.Format(@"SELECT * FROM GROUPS WHERE ID_GROUP=@ID_GROUP"), sqlConn);
+            SqlCommand cmd = new SqlCommand(string.Format(
+            @"SELECT * FROM GROUPS WHERE ID_GROUP=@ID_GROUP"), sqlConn);
 
             cmd.Parameters.AddWithValue("@ID_GROUP", idGroup);
 
@@ -54,9 +55,7 @@ namespace Vetallis.DAO
         }
 
         public string insertGroup(Groups group)
-        {
-            
-
+        {            
             return "Success";
         }
     }

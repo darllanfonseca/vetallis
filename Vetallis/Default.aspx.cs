@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Security;
 using Vetallis.DAO;
 using Vetallis.FunctionalClasses;
@@ -15,16 +14,17 @@ namespace Vetallis
                 FormsAuthentication.RedirectToLoginPage();
             }
 
-            this.timeAndDate.Text = "Welcome Darllan! Today is " + DateTime.Today.ToLongDateString();
-
+            string name = this.Page.User.Identity.Name.ToString();
+            string userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".")-1);
+            this.timeAndDate.Text = "Welcome back " + userName + "! Today is " + DateTime.Today.ToLongDateString();
             this.footer.InnerText = "© " + DateTime.Today.Year.ToString() + " Vet Alliance Inc. - Vet Alliance Information System.";
-
         }
 
         //Exports current list of active members
         protected void exportMemberList(object sender, EventArgs e)
         {
-            string query = "SELECT ACCOUNT_NUMBER, NAME, DATE_JOINED, DOCTOR, ADDRESS, CITY, PROVINCE, REGION, POSTAL_CODE FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME";
+            string query = @"SELECT ACCOUNT_NUMBER, NAME, DATE_JOINED, DOCTOR, ADDRESS, 
+            CITY, PROVINCE, REGION, POSTAL_CODE FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Members.xlsx", Response);
 
@@ -64,6 +64,12 @@ namespace Vetallis
             string query = "SELECT * FROM GROUPS";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "List of Current Groups.xlsx", Response);
+        }
+
+        protected void logout(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }
