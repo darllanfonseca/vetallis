@@ -24,26 +24,55 @@
         <div class="container">
             <div class="header">Fill out all the required fields to insert a new group of members</div>
             <div class="section">
-                <div id="fieldSection">
-                    <div style="text-align:left; position: absolute; top: 15px; left: 15px; width: 160px; height: 50px;">
-                       
-                    </div>
-                    <div style="text-align:right; position: absolute; top: 15px; right: 15px; width: 150px; height: 50px;">
-                    </div>
-                    <div style="text-align:left; position: absolute; top: 70px; left: 15px; width: 155px; height: 50px;">
-                        <b>Main Member</b>
-                        <asp:TextBox runat="server" id="mainMember" Width="350px">                           
-                        </asp:TextBox>
-                    </div>
-                    <div style="text-align:right; position: absolute; top: 70px; right: 15px; width: 150px; height: 50px;">
-                    </div>
-                    <div style="text-align:left; position: absolute; top: 125px; left: 15px; width: 155px; height: 50px;">
+                <div id="fieldSection" style="position:absolute; left:50%; margin-left:-500px; width:1000px;">
+                    <div style="text-align:left; position: absolute; top: 20px; left: 15px; width: 155px; height: 50px;">
                         <b>Group Name</b>
-                        <asp:TextBox Enabled="false" runat="server" id="groupName" Width="350px">                           
-                        </asp:TextBox>
-                        <asp:Label runat="server" ID="ID_Member" Visible="false"></asp:Label>
+                        <asp:TextBox runat="server" id="groupName" Width="350px">                           
+                        </asp:TextBox>                       
                     </div>
-                    <div runat="server" visible="true" id="selectMember" style="position:absolute; width: 568px; height: 250px; top: 180px; left: 15px; overflow: scroll; border: solid 1px #d0d0d0;">
+                    <div style="text-align:left; position: absolute; top: 70px; left: 15px; width: 450px; height: 50px;">
+                        <b>Main Member</b>
+                        <asp:TextBox runat="server" Enabled="false" id="mainMember" Width="350px">                           
+                        </asp:TextBox>
+                        <asp:Label runat="server" ID="ID_MainMember" Visible="false"></asp:Label>
+                        <asp:Button runat="server" Width="90px" ID="addSecondMemberBtt" OnClick="addMember" Text="Add Second"/>
+                    </div>
+                    <div runat="server" id="secondMemberDiv" visible="false" style="text-align:left; position: absolute; top: 120px; left: 15px; width: 450px; height: 50px;">
+                        <b>Second Member</b>
+                        <asp:TextBox runat="server" id="secondMember" Enabled="false" Width="350px">                           
+                        </asp:TextBox>
+                        <asp:Label runat="server" ID="ID_SecondMember" Visible="false"></asp:Label>
+                        <asp:Button runat="server" Width="90px" ID="Button1" OnClick="addMember" Text="Add Third"/>
+                    </div>
+                    <div runat="server" id="thirdMemberDiv" visible="false" style="text-align:left; position: absolute; top: 170px; left: 15px; width: 450px; height: 50px;">
+                        <b>Third Member</b>
+                        <asp:TextBox runat="server" id="thirdMember" Enabled="false" Width="350px">                           
+                        </asp:TextBox>
+                        <asp:Label runat="server" ID="ID_ThirdMember" Visible="false"></asp:Label>
+                        <asp:Button runat="server" Width="90px" ID="Button2" OnClick="addMember" Text="Add Fourth"/>
+                    </div>
+                    <div runat="server" id="FourthMemberDiv" visible="false" style="text-align:left; position: absolute; top: 220px; left: 15px; width: 450px; height: 50px;">
+                        <b>Fourth Member</b>
+                        <asp:TextBox runat="server" id="fourthMember" Enabled="false" Width="350px">                           
+                        </asp:TextBox>
+                        <asp:Label runat="server" ID="ID_FourthMember" Visible="false"></asp:Label>
+                        <asp:Button runat="server" Width="90px" ID="Button3" OnClick="addMember" Text="Add Fith"/>
+                    </div>
+                    <div runat="server" id="fithMemberDiv" visible="false" style="text-align:left; position: absolute; top: 270px; left: 15px; width: 450px; height: 50px;">
+                        <b>Fith  -  Member    </b>
+                        <asp:TextBox runat="server" id="fithMember" Enabled="false" Width="350px">                           
+                        </asp:TextBox>
+                        <asp:Label runat="server" ID="ID_FithMember" Visible="false"></asp:Label>
+                        <asp:Button runat="server" Width="90px" ID="Button4" OnClick="addMember" Text="Add Sixth"/>
+                    </div>
+                    <div runat="server" id="sixthMemberDiv" visible="false" style="text-align:left; position: absolute; top: 320px; left: 15px; width: 450px; height: 50px;">
+                        <b>Sixth Member</b>
+                        <asp:TextBox runat="server" id="sixthMember" Enabled="false" Width="350px">                           
+                        </asp:TextBox>
+                        <asp:Label runat="server" ID="ID_SixthMember" Visible="false"></asp:Label>
+                    </div>
+                    
+                    <div runat="server" visible="true" id="selectMember" style="position:absolute; width: 480px; height: 370px; top: 20px; left: 500px; overflow: scroll; border: solid 1px #d0d0d0;">
                         <asp:GridView CssClass="GridViewStyle" ID="searchMembers" runat="server" AllowSorting="True" OnSelectedIndexChanged="loadSelectedMember" AutoGenerateColumns="False" DataKeyNames="ID_MEMBER" DataSourceID="searchMainMember">
                                 <FooterStyle CssClass="GridViewFooterStyle" />
                                 <RowStyle CssClass="GridViewRowStyle" />    
@@ -74,7 +103,7 @@
                                     <asp:BoundField DataField="CONTACT_PERSON" HeaderText="CONTACT_PERSON" SortExpression="CONTACT_PERSON" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="searchMainMember" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [MEMBER]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="searchMainMember" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [MEMBER] WHERE STATUS='ACTIVE'"></asp:SqlDataSource>
                     </div>
 
 
@@ -85,6 +114,9 @@
                     </div>
                     <div style="position: absolute; top: 460px; right: 15px; width: 120px; height: 50px;">
                        <asp:Button Height="25px" Width="120px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel" AutoPostBack="True" OnClick="returnToMainPage"/>
+                    </div>
+                    <div style="position: absolute; text-align: left; top: 510px; left: 15px; width: 600px; height: 50px; color: red;">
+                        <asp:Label runat="server" ID="errorMsg" Visible="false"></asp:Label>
                     </div>
                     <div style="position: absolute; top: 510px; right: 15px; width: 120px; height: 50px;">
                         <asp:Button Height="30px" BackColor="#e3efc7" Width="120px" Font-Names="Calibri" Font-Size="Large" runat="server" ID="addGroup" Text="Add Group" OnClick="insertNewGroup" AutoPostBack="True"/>
@@ -100,7 +132,20 @@
     </form>
 
     <!-- Form to write the message from the Database -->
-    <form id="response" visible="false" runat="server">   
+    <form id="response" visible="false" runat="server">
+        <div class="all">
+            <div class="container">
+                <div class="section">
+                    <div class="fieldSection" style="width: 500px; text-align: center; position:absolute; left:50%; margin-left: -250px;">
+                        <div runat="server" style="position: absolute; text-align: center; width: 500px; height: 200px; top:50%; margin-top: -100px;">
+                            <asp:Label runat="server" ID="responseText"></asp:Label><br /><br />
+                            <asp:Button runat="server" Text="Return To Main Page" OnClick="returnToMainPage"/>
+                            <asp:Button runat="server" Text="Create Another Group" OnClick="returnToMainForm" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
     </form>
 </body>
 </html>

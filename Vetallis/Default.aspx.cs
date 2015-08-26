@@ -13,9 +13,14 @@ namespace Vetallis
             {
                 FormsAuthentication.RedirectToLoginPage();
             }
-
+            string userName = "User";
             string name = this.Page.User.Identity.Name.ToString();
-            string userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".")-1);
+
+            if (name != null && name != "")
+            {
+                userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+            }
+            
             this.timeAndDate.Text = "Welcome back " + userName + "! Today is " + DateTime.Today.ToLongDateString();
             this.footer.InnerText = "© " + DateTime.Today.Year.ToString() + " Vet Alliance Inc. - Vet Alliance Information System.";
         }

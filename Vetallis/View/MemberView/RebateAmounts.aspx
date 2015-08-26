@@ -108,23 +108,5 @@
             </div>
         </div>
     </form>
-
-    <!-- Form to write the message from the Database -->
-    <form id="response" visible="false" runat="server">
-        <div class="All">
-            <div class="container">
-                <div class="section">
-                    <div class="fieldSection">
-                        <div style="position: absolute; top: 25%; left: 25%;">
-                            <asp:Label runat="server" ID="responseText"></asp:Label>
-                            <br />
-                            <br />
-                            <asp:Button runat="server" Text="Return" ID="returnBtt" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 </body>
 </html>

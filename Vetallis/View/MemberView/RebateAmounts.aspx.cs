@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using Vetallis.DAO;
+using Vetallis.FunctionalClasses;
 
 namespace Vetallis.View.MemberView
 {
@@ -22,7 +25,10 @@ namespace Vetallis.View.MemberView
 
         protected void returnToMainPage(object sender, EventArgs e)
         {
+            //Server.Transfer("Default.aspx", true);
             Response.Redirect("~/Default.aspx");
+
+            //HttpContext.Current.RewritePath("~/Default.aspx");
         }
 
         protected void exportResults(object sender, EventArgs e)
@@ -31,7 +37,7 @@ namespace Vetallis.View.MemberView
 
             string query = @"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
                 REBATE.QUANTITY as Amount, REBATE.YEAR as Year, rebate.CATEGORY as Category, rebate.IS_DELIVERED_BY_PARTNER as Delivered_By_Partner
-                FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = " + memberId + " JOIN PARTNER ON ID_PARTNER = ";
+                FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = " + memberId + " JOIN PARTNER ON PARTNER.ID_PARTNER = ";
 
             List<String> partnerList = new List<string>();
 
@@ -47,11 +53,11 @@ namespace Vetallis.View.MemberView
                 }
             }
             // Join the string together using the ; delimiter.
-            query += String.Join(" OR ID_PARTNER = ", partnerList.ToArray());
+            query += String.Join(" OR PARTNER.ID_PARTNER = ", partnerList.ToArray());
 
             query += " AND YEAR = '" + this.rebateYear.SelectedValue.ToString() + "-01-01'";
 
-            string meuDeus = "isso aqui ta osso!";
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Amounts.xlsx", Response);
         }
     }
 }

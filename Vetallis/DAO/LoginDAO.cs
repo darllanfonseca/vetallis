@@ -18,7 +18,7 @@ namespace Vetallis.DAO
             DataTable dt = new DataTable();
             dt.Clear();
             SqlCommand cmd = new SqlCommand("SELECT * FROM USERS", sqlConn);
-
+            
             try
             {
                 sqlConn.Open();

@@ -43,6 +43,7 @@ namespace Vetallis.View.MemberView
         {
             this.accountNumber.Text = this.searchMembers.SelectedRow.Cells[1].Text;
             this.memberName.Text = this.searchMembers.SelectedRow.Cells[2].Text;
+            this.dateJoined.Text = this.searchMembers.SelectedRow.Cells[8].Text;
         }
 
     }

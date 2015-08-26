@@ -39,6 +39,8 @@ namespace Vetallis.View.PartnerView
             this.phoneNumber.Text = this.searchPartners.SelectedRow.Cells[10].Text;
             this.faxNumber.Text = this.searchPartners.SelectedRow.Cells[11].Text;
             this.contactPerson.Text = this.searchPartners.SelectedRow.Cells[12].Text;
+            this.enableFieldsBtt.Enabled = true;
+            this.enableFieldsBtt.Visible = true;
         }
 
         protected void enableFields(object sender, EventArgs e)
@@ -69,6 +71,7 @@ namespace Vetallis.View.PartnerView
             {
                 this.editPartnerForm.Visible = false;
                 this.response.Visible = true;
+
             }
             else
             {   //Loads the form content into the partner object
