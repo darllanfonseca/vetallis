@@ -94,28 +94,36 @@ namespace Vetallis.View.MemberView
 
         protected void insertNewMember(object sender, EventArgs e)
         {
-            member.idGroup = this.group_ID.Text;
-            member.accountNumber = this.accountNumber.Text.Trim();
-            member.doctor = this.doctorName.Text.Trim();
-            member.name = this.memberName.Text.Trim();
-            member.dateJoined = this.datepicker.Text;
-            member.address = this.address.Text.Trim();
-            member.city = this.city.Text.Trim();
-            member.province = this.province.SelectedValue;
-            member.region = this.region.Text;
-            member.postalCode = this.postalCode.Text.ToUpper();
-            member.website = this.website.Text.Trim();
-            member.emailAddress = this.emailAddress.Text.Trim();
-            member.phoneNumber = this.phoneNumber.Text;
-            member.faxNumber = this.faxNumber.Text;
-            member.contactPerson = this.contactPerson.Text.Trim();
-
             MemberDAO memberDAO = new MemberDAO();
+
+            if (memberDAO.alreadyExists(this.accountNumber.Text))
+            {
+                this.errorMsg.Text = "This Account Number Already Exists. Please choose another one.";
+            }
+            else
+            {
+                member.idGroup = this.group_ID.Text;
+                member.accountNumber = this.accountNumber.Text.Trim();
+                member.doctor = this.doctorName.Text.Trim();
+                member.name = this.memberName.Text.Trim();
+                member.dateJoined = this.datepicker.Text;
+                member.address = this.address.Text.Trim();
+                member.city = this.city.Text.Trim();
+                member.province = this.province.SelectedValue;
+                member.region = this.region.Text;
+                member.postalCode = this.postalCode.Text.ToUpper();
+                member.website = this.website.Text.Trim();
+                member.emailAddress = this.emailAddress.Text.Trim();
+                member.phoneNumber = this.phoneNumber.Text;
+                member.faxNumber = this.faxNumber.Text;
+                member.contactPerson = this.contactPerson.Text.Trim();
+
+                this.insertNewMemberForm.Visible = false;
+                this.chooseGroup.Visible = false;
+                this.response.Visible = true;
+                this.responseText.Text = memberDAO.insertNewMember(member);
+            }
             
-            this.insertNewMemberForm.Visible = false;
-            this.chooseGroup.Visible = false;
-            this.response.Visible = true;
-            this.responseText.Text = memberDAO.insertNewMember(member);
         }
 
         protected void enableChooseGroup(object sender, EventArgs e)
@@ -151,6 +159,12 @@ namespace Vetallis.View.MemberView
             this.group_ID.Visible = true;
             this.ID_GROUP_DIV.Visible = true;
             this.isAGroup.Enabled = false;
+        }
+
+        protected void logout(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

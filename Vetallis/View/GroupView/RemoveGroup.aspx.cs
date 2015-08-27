@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Security;
 
-namespace Vetallis.View.PartnerView
+namespace Vetallis.View.GroupView
 {
-    public partial class RemovePartner : System.Web.UI.Page
+    public partial class RemoveGroup : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

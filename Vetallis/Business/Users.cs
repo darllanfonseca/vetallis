@@ -10,5 +10,10 @@ namespace Vetallis.Business
         public string id;
         public string name;
         public string password;
+        public string status;
+        public string dateCreated;
+        public string dateLastLogin;
+        public string locationLastLogin;
+        public int loginTimes;
     }
 }

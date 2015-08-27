@@ -22,7 +22,12 @@
     <form id="insertGroupForm" runat="server">
     <div class="all">
         <div class="container">
-            <div class="header">Fill out all the required fields to insert a new group of members</div>
+            <div class="header">Fill out all the required fields to insert a new group of members
+                <div style="position: absolute; font-family:Calibri; font-size: 14px; text-align:right; float: right; width: 300px; right: 10px; top: 5px; height: 50px;">
+                        <asp:Label ID="timeAndDate" runat="server"></asp:Label><br />
+                            <asp:LinkButton runat="server" Text="Log Out" OnClick="logout"></asp:LinkButton>
+                    </div>
+            </div>
             <div class="section">
                 <div id="fieldSection" style="position:absolute; left:50%; margin-left:-500px; width:1000px;">
                     <div style="text-align:left; position: absolute; top: 20px; left: 15px; width: 155px; height: 50px;">

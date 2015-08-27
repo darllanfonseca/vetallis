@@ -305,6 +305,12 @@ namespace Vetallis.View.MemberView
             this.isAGroup.Enabled = false;
             this.updateMemberBtt.Enabled = true;
         }
+
+        protected void logout(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
+        }
        
     }        
 }

@@ -89,6 +89,9 @@
     <Content Include="CSS\MainScreen.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="View\GroupView\EditGroup.aspx" />
+    <Content Include="View\GroupView\RebateAmounts.aspx" />
+    <Content Include="View\GroupView\RemoveGroup.aspx" />
     <Content Include="View\MemberView\ActivateRemovedMember.aspx" />
     <Content Include="View\MemberView\ExportInactives.aspx" />
     <Content Include="View\MemberView\ExportMemberList.aspx" />
@@ -150,6 +153,27 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="View\GroupView\EditGroup.aspx.cs">
+      <DependentUpon>EditGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\GroupView\EditGroup.aspx.designer.cs">
+      <DependentUpon>EditGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\GroupView\RebateAmounts.aspx.cs">
+      <DependentUpon>RebateAmounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\GroupView\RebateAmounts.aspx.designer.cs">
+      <DependentUpon>RebateAmounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\GroupView\RemoveGroup.aspx.cs">
+      <DependentUpon>RemoveGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\GroupView\RemoveGroup.aspx.designer.cs">
+      <DependentUpon>RemoveGroup.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\MemberView\ActivateRemovedMember.aspx.cs">
       <DependentUpon>ActivateRemovedMember.aspx</DependentUpon>

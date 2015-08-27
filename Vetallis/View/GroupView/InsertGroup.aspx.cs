@@ -13,6 +13,17 @@ namespace Vetallis.View.GroupView
             {
                 FormsAuthentication.RedirectToLoginPage();
             }
+
+            string userName = "User";
+            string name = this.Page.User.Identity.Name.ToString();
+
+            if (name != null && name != "")
+            {
+                userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+            }
+
+            this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
+
         }
 
         protected void clearAllFields(object sender, EventArgs e)
@@ -188,6 +199,12 @@ namespace Vetallis.View.GroupView
             this.insertGroupForm.Visible = true;
             this.response.Visible = false;
             clearAllFields();
-        }       
+        }
+
+        protected void logout(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
+        }
     }
 }

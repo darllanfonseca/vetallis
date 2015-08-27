@@ -43,14 +43,14 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu2">
                                     <li role="presentation"><a role="menuitem" id="editMember" tabindex="-1" href="/View/GroupView/InsertGroup.aspx">Create New</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Remove</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/GroupView/EditGroup.aspx">Edit</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/GroupView/RemoveGroup.aspx">Remove</a></li>
                                     <li role="presentation">
                                         <hr />
                                     </li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activate Removed Group</a></li>
                                     <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportGroups" Text="Export List of Groups" /></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Rebate Amounts</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/GroupView/RebateAmounts.aspx">View Rebate Amounts</a></li>
                                 </ul>
                             </div>
                             <div style="position: absolute; left: 224px; top: 0px;">

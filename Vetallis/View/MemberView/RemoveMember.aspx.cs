@@ -46,5 +46,11 @@ namespace Vetallis.View.MemberView
             this.dateJoined.Text = this.searchMembers.SelectedRow.Cells[8].Text;
         }
 
+        protected void logout(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
+        }
+
     }
 }

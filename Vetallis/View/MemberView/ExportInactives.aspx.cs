@@ -51,5 +51,11 @@ namespace Vetallis.View.MemberView
         {
             Response.Redirect("~/Default.aspx");
         }
+
+        protected void logout(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
+        }
     }
 }

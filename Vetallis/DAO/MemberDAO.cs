@@ -23,7 +23,7 @@ namespace Vetallis.DAO
             (@ID_GROUP, @ACCOUNT_NUMBER, @NAME, @DATE_JOINED, @STATUS, @DOCTOR, @ADDRESS, @CITY, @PROVINCE, @REGION, 
             @POSTAL_CODE, @WEBSITE, @EMAIL_ADDRESS, @PHONE_NUMBER, @FAX, @CONTACT_PERSON, @DATE_LAST_ACTIVATED)"), sqlConn);
 
-            cmd.Parameters.AddWithValue("@ID_GROUP", member.idGroup); 
+            cmd.Parameters.AddWithValue("@ID_GROUP", member.idGroup);
             cmd.Parameters.AddWithValue("@ACCOUNT_NUMBER", member.accountNumber);
             cmd.Parameters.AddWithValue("@NAME", member.name); cmd.Parameters.AddWithValue("@DATE_JOINED", member.dateJoined);
             cmd.Parameters.AddWithValue("@STATUS", "ACTIVE"); cmd.Parameters.AddWithValue("@DOCTOR", member.doctor);
@@ -154,7 +154,7 @@ namespace Vetallis.DAO
             }
         }
 
-        public Member getMemberData(string idMember) //Creates a member, using a SELECT. The argument received is a member ID..
+        public Member getMemberData(string idMember)
         {
             Member member = new Member();
 
@@ -206,6 +206,46 @@ namespace Vetallis.DAO
             }
 
             return member;
+        }
+
+        public bool alreadyExists(string accountNumber)
+        {
+            sqlConn.ConnectionString = conn;
+            DataTable dt = new DataTable();
+            dt.Clear();
+
+            SqlCommand cmd = new SqlCommand(string.Format(
+            @"SELECT ACCOUNT_NUMBER FROM MEMBER WHERE ACCOUNT_NUMBER=@ACCOUNT_NUMBER"), sqlConn);
+
+            cmd.Parameters.AddWithValue("@ACCOUNT_NUMBER", accountNumber);
+
+            try
+            {
+                sqlConn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                if (!reader.HasRows)
+                {
+                    return false;
+                }
+
+                if (reader.GetValue(0).ToString().Equals(accountNumber))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            finally
+            {
+                sqlConn.Close();
+
+            }
+
         }
     }
 }

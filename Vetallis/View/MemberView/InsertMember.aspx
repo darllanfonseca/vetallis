@@ -25,7 +25,7 @@
             <div class="header">Fill out all the required fields to insert a new member</div>
             <div class="section">
                 <div id="fieldSection">
-                    <div style="text-align:left; position: absolute; top: 15px; left: 15px; width: 160px; height: 50px;">
+                  <!-- <div visible="false" style="text-align:left; position: absolute; top: 15px; left: 15px; width: 160px; height: 50px;">
                         <b>Is a Group? *</b>
                         <asp:TextBox runat="server" Visible="false" ID="groupId"></asp:TextBox>
                         <asp:DropDownList OnSelectedIndexChanged="enableChooseGroup" runat="server" ID="isAGroup" Width="70px" AutoPostBack="True">
@@ -34,7 +34,7 @@
                             <asp:ListItem Text="No" />
                         </asp:DropDownList>
                         <asp:Button runat="server" Width="80px" Visible="false" ID="openChooseGroupForm" OnClick="changeForms" Text="Pick Group" AutoPostBack="True"/>
-                    </div>
+                    </div> -->
                     <div style="text-align:right; position: absolute; top: 15px; right: 15px; width: 150px; height: 50px;">
                         <b>Account Number *</b>
                         <asp:TextBox runat="server" id="accountNumber" Width="120px">                           
@@ -164,8 +164,8 @@
                     </div>
 
 
-                    <div style="text-align: left; position: absolute; top: 510px; left: 15px; width: 300px; height: 20px;">
-                        * indicates that the field is required.
+                    <div runat="server" style="text-align: left; color: red; position: absolute; top: 510px; left: 15px; width: 300px; height: 20px;">
+                        <asp:Label runat="server" ID="errorMsg"></asp:Label>
                     </div>
                 </div>
             </div>

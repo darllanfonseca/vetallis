@@ -20,7 +20,7 @@ namespace Vetallis.DAO
 
              using (SqlDataAdapter a = new SqlDataAdapter(cmd))
              {
-                 a.Fill(dt);
+                a.Fill(dt);
              }
 
              sqlConn.Close();
