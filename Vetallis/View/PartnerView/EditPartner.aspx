@@ -13,7 +13,12 @@
     <form id="editPartnerForm" runat="server">
         <div class="all">
             <div class="container">
-                <div class="header">Fill out all the required fields and update the partner</div>
+                <div class="header">Fill out all the required fields and update the partner
+                    <div runat="server" style="position: absolute; font-family:Calibri; font-size: 14px; text-align:right; float: right; width: 300px; right: 10px; top: 5px; height: 50px;">
+                        <asp:Label ID="timeAndDate" runat="server"></asp:Label><br />
+                            <asp:LinkButton runat="server" Text="Log Out" OnClick="logout"></asp:LinkButton>
+                    </div>
+                </div>
                 <div class="section">
                     <div class="fieldSection">
                         <div style="text-align: left; position: absolute; top: 15px; left: 415px; width: 160px; height: 50px;">

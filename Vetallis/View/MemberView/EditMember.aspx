@@ -20,19 +20,14 @@
     <form id="editMemberForm" runat="server">
         <div class="all">
             <div class="container">
-                <div class="header">Fill out all the required fields and update the member</div>
+                <div class="header">Fill out all the required fields and update the member
+                    <div runat="server" style="position: absolute; font-family:Calibri; font-size: 14px; text-align:right; float: right; width: 300px; right: 10px; top: 5px; height: 50px;">
+                        <asp:Label ID="timeAndDate" runat="server"></asp:Label><br />
+                            <asp:LinkButton runat="server" Text="Log Out" OnClick="logout"></asp:LinkButton>
+                    </div>
+                </div>
                 <div class="section">
                     <div class="fieldSection">
-                        <div style="text-align: left; position: absolute; top: 15px; left: 415px; width: 160px; height: 50px;">
-                            <b>Is a Group? *</b>
-                            <asp:TextBox runat="server" Visible="false" ID="groupId"></asp:TextBox>
-                            <asp:DropDownList OnSelectedIndexChanged="enableChooseGroup" runat="server" ID="isAGroup" Width="70px" AutoPostBack="true">
-                                <asp:ListItem Text="Select..." />
-                                <asp:ListItem Text="Yes" />
-                                <asp:ListItem Text="No" />
-                            </asp:DropDownList>
-                            <asp:Button runat="server" Width="80px" Visible="false" ID="openChooseGroupForm" OnClick="changeForms" Text="Pick Group" AutoPostBack="true"/>
-                        </div>
                         <div style="text-align: right; position: absolute; top: 15px; right: 15px; width: 150px; height: 50px;">
                             <b>Account Number *</b>
                             <asp:TextBox runat="server" ID="accountNumber" Width="120px">                           
@@ -53,11 +48,6 @@
                             <asp:TextBox runat="server" ID="address" Width="350px">                           
                             </asp:TextBox>
                         </div>
-                        <div id="ID_GROUP_DIV" runat="server" style="text-align:right; position: absolute; top: 125px; right: 15px; width: 155px; height: 50px;">
-                        <b>Group ID</b>
-                        <asp:TextBox runat="server" id="group_ID" Width="150px">                           
-                        </asp:TextBox>
-                    </div>
                         <div style="text-align: left; position: absolute; top: 180px; left: 415px; width: 150px; height: 50px;">
                             <b>Doctor Name</b>
                             <asp:TextBox runat="server" ID="doctorName" Width="250px">                           
@@ -182,46 +172,13 @@
                                     <asp:BoundField DataField="CONTACT_PERSON" HeaderText="CONTACT_PERSON" SortExpression="CONTACT_PERSON" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [MEMBER] ORDER BY NAME ASC"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [MEMBER] WHERE STATUS='ACTIVE' ORDER BY NAME ASC"></asp:SqlDataSource>
                         </div>
                         <div style="position: absolute; left: 10px; width: 370px; top: 530px; color: #707070; font-family: Calibri; font-size: 13px; text-align: left;">You can sort the results by clicking on the name of the columns.</div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
-
-    <!-- Form to choose the Group -->
-    <form id="chooseGroupForm" visible="false" runat="server">
-       <div class="all">
-        <div class="container">
-            <div class="header">Choose the correct group to match with the new Member</div>
-            <div class="section">
-                <div class="fieldSection">
-                    <div style="position: absolute; top: 20px; left: 50%; margin-left: -150px; width: 300px; overflow: scroll; bottom: 300px; border: solid 1px #d0d0d0;">
-                            <asp:GridView ID="searchGroups" runat="server" RowStyle-Height="15px" HeaderStyle-Height="30px" RowStyle-Width="100px" AllowSorting="True" OnSelectedIndexChanged="loadSelectedGroup" AutoGenerateColumns="False" DataKeyNames="ID_GROUP" DataSourceID="Teste3">
-                                <FooterStyle CssClass="GridViewFooterStyle" />
-                                <RowStyle CssClass="GridViewRowStyle" />    
-                                <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />
-                                <PagerStyle CssClass="GridViewPagerStyle" />
-                                <AlternatingRowStyle CssClass="GridViewAlternatingRowStyle" />
-                                <HeaderStyle CssClass="GridViewHeaderStyle" />
-                                <RowStyle Wrap="False" /> 
-                                <Columns>
-                                    <asp:CommandField ShowSelectButton="True" />
-                                    <asp:BoundField DataField="GROUP_NAME" HeaderText="Name" SortExpression="GROUP_NAME">
-                                        <HeaderStyle Width="100px"></HeaderStyle>
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="ID_MAIN_MEMBER" HeaderText="Main Member" SortExpression="ID_MAIN_MEMBER" />
-                                    <asp:BoundField DataField="ID_GROUP" HeaderText="Group ID" SortExpression="ID_GROUP" />
-                                </Columns>
-                            </asp:GridView>
-                            <asp:SqlDataSource ID="Teste3" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [GROUPS]"></asp:SqlDataSource>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </form>
 
     <!-- Form to write the message from the Database -->

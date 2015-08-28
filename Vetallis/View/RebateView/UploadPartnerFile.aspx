@@ -14,7 +14,12 @@
 
          <div class="all">
             <div class="container">
-                <div class="header"></div>
+                <div class="header">
+                    <div runat="server" style="position: absolute; font-family:Calibri; font-size: 14px; text-align:right; float: right; width: 300px; right: 10px; top: 5px; height: 50px;">
+                        <asp:Label ID="timeAndDate" runat="server"></asp:Label><br />
+                            <asp:LinkButton runat="server" Text="Log Out" OnClick="logout"></asp:LinkButton>
+                    </div>
+                </div>
                 <div class="section">
                     <div id="fieldSection">
                         <div runat="server" style="position: absolute; text-align: left; padding-left: 10px; padding-top: 20px; width: 200px; height: 200px; top: 50%; left: 50%; margin-left: -100px; margin-top: -100px;">

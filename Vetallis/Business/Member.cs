@@ -23,5 +23,8 @@ namespace Vetallis.Business
         public string phoneNumber { get; set; }
         public string faxNumber { get; set; }
         public string contactPerson { get; set; }
+        public string dateModified { get; set; }
+        public string modifiedBy { get; set; }
+        public string dateCreated { get; set; }
     }
 }

@@ -14,6 +14,16 @@ namespace Vetallis.View.MemberView
                 FormsAuthentication.RedirectToLoginPage();
             }
 
+            string userName = "User";
+            string name = this.Page.User.Identity.Name.ToString();
+
+            if (name != null && name != "")
+            {
+                userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+            }
+
+            this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
+
             this.accountNumber.Enabled = false;
             this.memberName.Enabled = false;
             this.dateRemoved.Enabled = false;
@@ -28,14 +38,44 @@ namespace Vetallis.View.MemberView
             this.faxNumber.Enabled = false;
             this.contactPerson.Enabled = false;
             this.activateMemberBtt.Enabled = true;
-            this.group_ID.Enabled = false;
+        }
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            if (this.doctorName.Text.Equals("&nbsp;"))
+            {
+                this.doctorName.Text = "";
+            }
+            if (this.postalCode.Text.Equals("&nbsp;"))
+            {
+                this.postalCode.Text = "";
+            }
+            if (this.website.Text.Equals("&nbsp;"))
+            {
+                this.website.Text = "";
+            }
+            if (this.emailAddress.Text.Equals("&nbsp;"))
+            {
+                this.emailAddress.Text = "";
+            }
+            if (this.phoneNumber.Text.Equals("&nbsp;"))
+            {
+                this.phoneNumber.Text = "";
+            }
+            if (this.faxNumber.Text.Equals("&nbsp;"))
+            {
+                this.faxNumber.Text = "";
+            }
+            if (this.contactPerson.Text.Equals("&nbsp;"))
+            {
+                this.contactPerson.Text = "";
+            }
         }
 
         protected void loadSelectedMember(object sender, EventArgs e)
         {
             this.accountNumber.Text = this.searchMembers.SelectedRow.Cells[1].Text;
             this.memberName.Text = this.searchMembers.SelectedRow.Cells[2].Text;
-            this.group_ID.Text = this.searchMembers.SelectedRow.Cells[7].Text;
             this.address.Text = this.searchMembers.SelectedRow.Cells[3].Text;
             this.city.Text = this.searchMembers.SelectedRow.Cells[4].Text;
             this.province.SelectedValue = this.searchMembers.SelectedRow.Cells[5].Text;

@@ -12,12 +12,18 @@ namespace Vetallis.View.MemberView
         {
             if (!this.Page.User.Identity.IsAuthenticated)
             {
-                FormsAuthentication.RedirectToLoginPage();
+                FormsAuthentication.RedirectToLoginPage();               
             }
 
-            this.group_ID.Enabled = false;
-            this.group_ID.Visible = false;
-            this.ID_GROUP_DIV.Visible = false;
+            string userName = "User";
+            string name = this.Page.User.Identity.Name.ToString();
+
+            if (name != null && name != "")
+            {
+                userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+            }
+
+            this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
         }
 
         protected void changeRegion(object sender, EventArgs e)
@@ -54,7 +60,6 @@ namespace Vetallis.View.MemberView
 
         protected void clearAllFields(object sender, EventArgs e)
         {
-            this.isAGroup.SelectedIndex = 0;
             this.accountNumber.Text = "";
             this.memberName.Text = "";
             this.datepicker.Text = "";
@@ -69,12 +74,10 @@ namespace Vetallis.View.MemberView
             this.emailAddress.Text = "";
             this.faxNumber.Text = "";
             this.contactPerson.Text = "";
-            this.openChooseGroupForm.Visible = false;
         }
 
         protected void clearAllFields()
         {
-            this.isAGroup.SelectedIndex = 0;
             this.accountNumber.Text = "";
             this.memberName.Text = "";
             this.datepicker.Text = "";
@@ -89,7 +92,6 @@ namespace Vetallis.View.MemberView
             this.emailAddress.Text = "";
             this.faxNumber.Text = "";
             this.contactPerson.Text = "";
-            this.openChooseGroupForm.Visible = false;
         }
 
         protected void insertNewMember(object sender, EventArgs e)
@@ -98,11 +100,10 @@ namespace Vetallis.View.MemberView
 
             if (memberDAO.alreadyExists(this.accountNumber.Text))
             {
-                this.errorMsg.Text = "This Account Number Already Exists. Please choose another one.";
+                this.errorMsg.Text = "This account number already exists. Please choose another one.";
             }
             else
             {
-                member.idGroup = this.group_ID.Text;
                 member.accountNumber = this.accountNumber.Text.Trim();
                 member.doctor = this.doctorName.Text.Trim();
                 member.name = this.memberName.Text.Trim();
@@ -117,48 +118,21 @@ namespace Vetallis.View.MemberView
                 member.phoneNumber = this.phoneNumber.Text;
                 member.faxNumber = this.faxNumber.Text;
                 member.contactPerson = this.contactPerson.Text.Trim();
+                member.dateModified = System.DateTime.Today.ToShortDateString();
+                member.dateCreated = System.DateTime.Today.ToShortDateString();
+                member.modifiedBy = this.Page.User.Identity.Name.ToString();
+                member.dateLastActivated = System.DateTime.Today.ToShortDateString();
 
                 this.insertNewMemberForm.Visible = false;
-                this.chooseGroup.Visible = false;
                 this.response.Visible = true;
                 this.responseText.Text = memberDAO.insertNewMember(member);
             }
             
         }
 
-        protected void enableChooseGroup(object sender, EventArgs e)
-        {
-            if (this.isAGroup.SelectedValue == "No")
-            {
-                member.idGroup = "0";
-            }
-            else if (this.isAGroup.SelectedValue == "Yes")
-            {
-                this.openChooseGroupForm.Visible = true;
-            }          
-        }
-
-        protected void changeForms(object sender, EventArgs e)
-        {
-            this.chooseGroup.Visible = true;
-            this.insertNewMemberForm.Visible = false;
-        }
-
         protected void returnToMainPage(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
-        }
-
-        protected void loadSelectedGroup(object sender, EventArgs e)
-        {
-            this.chooseGroup.Visible = false;
-            this.insertNewMemberForm.Visible = true;
-            this.group_ID.Text = searchGroups.SelectedRow.Cells[3].Text;
-            this.openChooseGroupForm.Enabled = false;
-            this.openChooseGroupForm.Visible = false;
-            this.group_ID.Visible = true;
-            this.ID_GROUP_DIV.Visible = true;
-            this.isAGroup.Enabled = false;
         }
 
         protected void logout(object sender, EventArgs e)

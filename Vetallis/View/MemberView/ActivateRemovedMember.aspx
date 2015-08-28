@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="../../CSS/GridView.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $('.country-IN').html(function (i, h) {
+            return h.replace(/&nbsp;/g, '');
+        });
+    </script>
     <script>
         $(function () {
             $("#datepicker").datepicker();
@@ -21,7 +27,7 @@
     <form id="mainForm" runat="server">
         <div class="all">
             <div class="container">
-                <div class="header">Choose one of the removed members
+                <div runat="server" class="header">Choose one of the removed members
                     <div style="position: absolute; font-family:Calibri; font-size: 14px; text-align:right; float: right; width: 300px; right: 10px; top: 5px; height: 50px;">
                         <asp:Label ID="timeAndDate" runat="server"></asp:Label><br />
                             <asp:LinkButton runat="server" Text="Log Out" OnClick="logout"></asp:LinkButton>
@@ -49,11 +55,6 @@
                             <asp:TextBox runat="server" ID="address" Width="350px">                           
                             </asp:TextBox>
                         </div>
-                        <div id="ID_GROUP_DIV" runat="server" style="text-align:right; position: absolute; top: 125px; right: 15px; width: 155px; height: 50px;">
-                        <b>Group ID</b>
-                        <asp:TextBox runat="server" id="group_ID" Width="150px">                           
-                        </asp:TextBox>
-                    </div>
                         <div style="text-align: left; position: absolute; top: 180px; left: 415px; width: 150px; height: 50px;">
                             <b>Doctor Name</b>
                             <asp:TextBox runat="server" ID="doctorName" Width="250px">                           

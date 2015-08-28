@@ -11,8 +11,18 @@ namespace Vetallis.View.PartnerView
         {
             if (!this.Page.User.Identity.IsAuthenticated)
             {
-                FormsAuthentication.RedirectToLoginPage();
+                FormsAuthentication.RedirectToLoginPage();                
             }
+
+            string userName = "User";
+            string name = this.Page.User.Identity.Name.ToString();
+
+            if (name != null && name != "")
+            {
+                userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+            }
+
+            this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
 
             this.partnerName.Enabled = false;
             this.datepicker.Enabled = false;

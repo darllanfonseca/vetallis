@@ -13,8 +13,16 @@ namespace Vetallis.View.MemberView
             {
                 FormsAuthentication.RedirectToLoginPage();
             }
+                string userName = "User";
+                string name = this.Page.User.Identity.Name.ToString();
 
-            this.isAGroup.Enabled = false;
+                if (name != null && name != "")
+                {
+                    userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+                }
+
+                this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
+            
             this.accountNumber.Enabled = false;
             this.memberName.Enabled = false;
             this.datepicker.Enabled = false;
@@ -31,23 +39,36 @@ namespace Vetallis.View.MemberView
             this.updateMemberBtt.Enabled = false;
         }
 
-        protected void enableChooseGroup(object sender, EventArgs e)
+        protected void Page_LoadComplete(object sender, EventArgs e)
         {
-            if(this.isAGroup.SelectedValue.Equals("Yes"))
-                changeForms();            
-        }
-
-        protected void changeForms(object sender, EventArgs e)
-        {
-            this.editMemberForm.Visible = false;
-            this.chooseGroupForm.Visible = true;
-            
-        }
-
-        protected void changeForms()
-        {
-            this.editMemberForm.Visible = false;
-            this.chooseGroupForm.Visible = true;           
+            if (this.doctorName.Text.Equals("&nbsp;"))
+            {
+                this.doctorName.Text = "";
+            }
+            if (this.postalCode.Text.Equals("&nbsp;"))
+            {
+                this.postalCode.Text = "";
+            }
+            if (this.website.Text.Equals("&nbsp;"))
+            {
+                this.website.Text = "";
+            }
+            if (this.emailAddress.Text.Equals("&nbsp;"))
+            {
+                this.emailAddress.Text = "";
+            }
+            if (this.phoneNumber.Text.Equals("&nbsp;"))
+            {
+                this.phoneNumber.Text = "";
+            }
+            if (this.faxNumber.Text.Equals("&nbsp;"))
+            {
+                this.faxNumber.Text = "";
+            }
+            if (this.contactPerson.Text.Equals("&nbsp;"))
+            {
+                this.contactPerson.Text = "";
+            }
         }
 
         protected void changeRegion(object sender, EventArgs e)
@@ -87,7 +108,6 @@ namespace Vetallis.View.MemberView
         {
             this.accountNumber.Text = this.searchMembers.SelectedRow.Cells[1].Text;
             this.memberName.Text = this.searchMembers.SelectedRow.Cells[2].Text;
-            this.group_ID.Text = this.searchMembers.SelectedRow.Cells[7].Text;
             this.address.Text = this.searchMembers.SelectedRow.Cells[3].Text;
             this.city.Text = this.searchMembers.SelectedRow.Cells[4].Text;
             this.province.SelectedValue = this.searchMembers.SelectedRow.Cells[5].Text;
@@ -100,14 +120,12 @@ namespace Vetallis.View.MemberView
             this.phoneNumber.Text = this.searchMembers.SelectedRow.Cells[15].Text;            
             this.faxNumber.Text = this.searchMembers.SelectedRow.Cells[16].Text;
             this.contactPerson.Text = this.searchMembers.SelectedRow.Cells[17].Text;
-            this.openChooseGroupForm.Visible = false;
             this.enableFieldsBtt.Visible = true;
             this.enableFieldsBtt.Enabled = true;
         }
 
         protected void enableFields(object sender, EventArgs e)
         {
-            this.isAGroup.Enabled = true;
             this.accountNumber.Enabled = true;
             this.memberName.Enabled = true;
             this.datepicker.Enabled = true;
@@ -129,7 +147,6 @@ namespace Vetallis.View.MemberView
 
         protected void enableFields()
         {
-            this.isAGroup.Enabled = true;
             this.accountNumber.Enabled = true;
             this.memberName.Enabled = true;
             this.datepicker.Enabled = true;
@@ -152,116 +169,49 @@ namespace Vetallis.View.MemberView
         protected void updateMember(object sender, EventArgs e)
         {
             Member member = new Member();
-            string isgroup = "";
             string databaseResponse = "";
 
-
-            if (this.isAGroup.SelectedIndex == 0 || this.isAGroup.SelectedIndex == 2)
+            if (accountNumber.Text.ToString() == "" || memberName.Text.ToString() == "" || address.Text.ToString() == "" ||
+                city.Text.ToString() == "" || province.SelectedItem.ToString() == "" || postalCode.Text.ToString() == "")
             {
-                isgroup = "No";
+                this.responseText.Text = "One or more of the required fields are blank";
+                this.editMemberForm.Visible = false;
+                this.response.Visible = true;
             }
-            else { isgroup = this.isAGroup.SelectedItem.ToString(); }
 
-            //validation of the fields
-            switch (isgroup)
-            {
+            else
+            {   //Loads the form content into the member object
+                member.id = this.searchMembers.SelectedRow.Cells[6].Text;
+                member.accountNumber = accountNumber.Text.ToString().Trim();
+                member.dateJoined = this.datepicker.Text;
+                member.doctor = doctorName.Text.ToString().Trim();
+                member.name = memberName.Text.ToString().Trim();
+                member.address = address.Text.ToString().Trim();
+                member.city = city.Text.ToString().Trim();
+                member.province = province.SelectedItem.ToString();
+                member.region = region.Text.ToString();
+                member.postalCode = postalCode.Text.ToString();
+                member.website = website.Text.ToString().Trim();
+                member.emailAddress = emailAddress.Text.ToString().Trim();
+                member.phoneNumber = phoneNumber.Text.ToString();
+                member.faxNumber = faxNumber.Text.ToString();
+                member.contactPerson = contactPerson.Text.ToString().Trim();
+                member.dateLastActivated = this.datepicker.Text;
 
-                case "Yes":
-                    {
-                        if (accountNumber.Text.ToString() == "" || memberName.Text.ToString() == "" || address.Text.ToString() == "" ||
-                            city.Text.ToString() == "" || province.SelectedItem.ToString() == "" || postalCode.Text.ToString() == "")
-                        {
-                            this.responseText.Text = "One or more of the required fields are blank";
-                            this.editMemberForm.Visible = false;
-                            this.chooseGroupForm.Visible = false;
-                            this.response.Visible = true;
+                clearAllFields();
 
-                            break;
-                        }
-                        
-                                   else
-                                    {   //Loads the form content into the member object
-                                        member.id = this.searchMembers.SelectedRow.Cells[6].Text;
-                                        member.accountNumber = accountNumber.Text.ToString().Trim();
-                                        member.idGroup = this.group_ID.Text;
-                                        member.dateJoined = this.datepicker.Text;
-                                        member.doctor = doctorName.Text.ToString().Trim();
-                                        member.name = memberName.Text.ToString().Trim();
-                                        member.address = address.Text.ToString().Trim();
-                                        member.city = city.Text.ToString().Trim();
-                                        member.province = province.SelectedItem.ToString();
-                                        member.region = region.Text.ToString();
-                                        member.postalCode = postalCode.Text.ToString();
-                                        member.website = website.Text.ToString().Trim();
-                                        member.emailAddress = emailAddress.Text.ToString().Trim();
-                                        member.phoneNumber = phoneNumber.Text.ToString();
-                                        member.faxNumber = faxNumber.Text.ToString();
-                                        member.contactPerson = contactPerson.Text.ToString().Trim();
-                                        member.dateLastActivated = this.datepicker.Text;
+                //Sends the member object to the updateMember method in MemberDAO..
+                MemberDAO memberDAO = new MemberDAO();
+                databaseResponse = memberDAO.updateMember(member);
 
-                                        clearAllFields();
-
-                                        //Sends the member object to the updateMember method in MemberDAO..
-                                        MemberDAO memberDAO = new MemberDAO();
-                                        databaseResponse = memberDAO.updateMember(member);
-
-                                        this.responseText.Text = databaseResponse;
-                                        this.editMemberForm.Visible = false;
-                                        this.chooseGroupForm.Visible = false;
-                                        this.response.Visible = true;
-                                    }
-                                } break;
-
-
-                            case "No":
-                            case "Select...":
-                                {
-                                    if (accountNumber.Text.ToString() == "" || memberName.Text.ToString() == "" || address.Text.ToString() == "" ||
-                                        city.Text.ToString() == "" || province.SelectedItem.ToString() == "" || postalCode.Text.ToString() == "")
-                                    {
-                                        this.editMemberForm.Visible = false;
-                                        this.chooseGroupForm.Visible = false;
-                                        this.response.Visible = true;
-                                        this.responseText.Text = "Please verify if all required fields are not blank.";
-                                    }
-                                    else
-                                    {   //Loads the form content into the member object, BUT NOT THE ID_GROUP VALUE..
-                                        member.id = this.searchMembers.SelectedRow.Cells[6].Text;
-                                        member.idGroup = "0";
-                                        member.accountNumber = accountNumber.Text.ToString().Trim();
-                                        member.dateJoined = datepicker.Text;
-                                        member.doctor = doctorName.Text.ToString().Trim();
-                                        member.name = memberName.Text.ToString().Trim();
-                                        member.address = address.Text.ToString().Trim();
-                                        member.city = city.Text.ToString().Trim();
-                                        member.province = province.SelectedItem.ToString();
-                                        member.region = region.Text.ToString();
-                                        member.postalCode = postalCode.Text.ToString();
-                                        member.website = website.Text.ToString().Trim();
-                                        member.emailAddress = emailAddress.Text.ToString().Trim();
-                                        member.phoneNumber = phoneNumber.Text.ToString();
-                                        member.faxNumber = faxNumber.Text.ToString();
-                                        member.contactPerson = contactPerson.Text.ToString().Trim();
-                                        member.dateLastActivated = datepicker.Text;
-
-                                        clearAllFields();
-
-                                        MemberDAO memberDAO = new MemberDAO();
-                                        databaseResponse = memberDAO.updateMember(member);
-
-                                        this.responseText.Text = databaseResponse;
-                                        this.editMemberForm.Visible = false;
-                                        this.chooseGroupForm.Visible = false;
-                                        this.response.Visible = true;
-                                    }
-                                } break; 
-                    } //end of switch statement..
-
+                this.responseText.Text = databaseResponse;
+                this.editMemberForm.Visible = false;
+                this.response.Visible = true;
             }
+        }
 
         protected void clearAllFields()
         {
-            this.isAGroup.SelectedIndex = 0;
             this.accountNumber.Text = "";
             this.memberName.Text = "";
             this.datepicker.Text = "";
@@ -276,7 +226,6 @@ namespace Vetallis.View.MemberView
             this.emailAddress.Text = "";
             this.faxNumber.Text = "";
             this.contactPerson.Text = "";
-            this.openChooseGroupForm.Visible = false;
         }
 
         protected void returnEditMember(object sender, EventArgs e)
@@ -290,20 +239,6 @@ namespace Vetallis.View.MemberView
         protected void returnToMainPage(object sender, EventArgs e)
         {
             Response.Redirect("~/Default.aspx");
-        }
-
-        protected void loadSelectedGroup(object sender, EventArgs e)
-        {
-            this.chooseGroupForm.Visible = false;
-            this.editMemberForm.Visible = true;
-            enableFields();
-            this.group_ID.Text = searchGroups.SelectedRow.Cells[3].Text;
-            this.openChooseGroupForm.Enabled = false;
-            this.openChooseGroupForm.Visible = false;
-            this.group_ID.Visible = true;
-            this.ID_GROUP_DIV.Visible = true;
-            this.isAGroup.Enabled = false;
-            this.updateMemberBtt.Enabled = true;
         }
 
         protected void logout(object sender, EventArgs e)

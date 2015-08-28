@@ -18,12 +18,11 @@ namespace Vetallis.DAO
             dt.Clear();
 
             SqlCommand cmd = new SqlCommand(string.Format(@"INSERT INTO MEMBER 
-            (ID_GROUP, ACCOUNT_NUMBER, NAME, DATE_JOINED, STATUS, DOCTOR, ADDRESS, CITY, PROVINCE, REGION, 
-            POSTAL_CODE, WEBSITE, EMAIL_ADDRESS, PHONE_NUMBER, FAX, CONTACT_PERSON, DATE_LAST_ACTIVATED) VALUES 
-            (@ID_GROUP, @ACCOUNT_NUMBER, @NAME, @DATE_JOINED, @STATUS, @DOCTOR, @ADDRESS, @CITY, @PROVINCE, @REGION, 
-            @POSTAL_CODE, @WEBSITE, @EMAIL_ADDRESS, @PHONE_NUMBER, @FAX, @CONTACT_PERSON, @DATE_LAST_ACTIVATED)"), sqlConn);
+            (ACCOUNT_NUMBER, NAME, DATE_JOINED, STATUS, DOCTOR, ADDRESS, CITY, PROVINCE, REGION, 
+            POSTAL_CODE, WEBSITE, EMAIL_ADDRESS, PHONE_NUMBER, FAX, CONTACT_PERSON, DATE_LAST_ACTIVATED, DATE_MODIFIED, MODIFIED_BY, DATE_CREATED) VALUES 
+            (@ACCOUNT_NUMBER, @NAME, @DATE_JOINED, @STATUS, @DOCTOR, @ADDRESS, @CITY, @PROVINCE, @REGION, 
+            @POSTAL_CODE, @WEBSITE, @EMAIL_ADDRESS, @PHONE_NUMBER, @FAX, @CONTACT_PERSON, @DATE_LAST_ACTIVATED, @DATE_MODIFIED, @MODIFIED_BY, @DATE_CREATED)"), sqlConn);
 
-            cmd.Parameters.AddWithValue("@ID_GROUP", member.idGroup);
             cmd.Parameters.AddWithValue("@ACCOUNT_NUMBER", member.accountNumber);
             cmd.Parameters.AddWithValue("@NAME", member.name); cmd.Parameters.AddWithValue("@DATE_JOINED", member.dateJoined);
             cmd.Parameters.AddWithValue("@STATUS", "ACTIVE"); cmd.Parameters.AddWithValue("@DOCTOR", member.doctor);
@@ -32,7 +31,11 @@ namespace Vetallis.DAO
             cmd.Parameters.AddWithValue("@POSTAL_CODE", member.postalCode); cmd.Parameters.AddWithValue("@WEBSITE", member.website);
             cmd.Parameters.AddWithValue("@EMAIL_ADDRESS", member.emailAddress); cmd.Parameters.AddWithValue("@PHONE_NUMBER", member.phoneNumber);
             cmd.Parameters.AddWithValue("@FAX", member.faxNumber); cmd.Parameters.AddWithValue("@CONTACT_PERSON", member.contactPerson);
-            cmd.Parameters.AddWithValue("@DATE_LAST_ACTIVATED", member.dateJoined);
+            cmd.Parameters.AddWithValue("@DATE_LAST_ACTIVATED", member.dateLastActivated);
+            cmd.Parameters.AddWithValue("@DATE_MODIFIED", member.dateModified);
+            cmd.Parameters.AddWithValue("@MODIFIED_BY", member.modifiedBy);
+            cmd.Parameters.AddWithValue("@DATE_CREATED", member.dateCreated);
+
 
             try
             {

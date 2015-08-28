@@ -22,6 +22,15 @@ namespace Vetallis.View.MemberView {
         protected global::System.Web.UI.HtmlControls.HtmlForm mainForm;
         
         /// <summary>
+        /// timeAndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label timeAndDate;
+        
+        /// <summary>
         /// accountNumber control.
         /// </summary>
         /// <remarks>
@@ -56,24 +65,6 @@ namespace Vetallis.View.MemberView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox address;
-        
-        /// <summary>
-        /// ID_GROUP_DIV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ID_GROUP_DIV;
-        
-        /// <summary>
-        /// group_ID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox group_ID;
         
         /// <summary>
         /// doctorName control.
