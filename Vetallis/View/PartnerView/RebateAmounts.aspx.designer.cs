@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vetallis.View.GroupView {
+namespace Vetallis.View.PartnerView {
     
     
-    public partial class RemoveGroup {
+    public partial class RebateAmounts {
         
         /// <summary>
-        /// chooseGroupForm control.
+        /// mainForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm chooseGroupForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm mainForm;
         
         /// <summary>
         /// timeAndDate control.
@@ -31,93 +31,57 @@ namespace Vetallis.View.GroupView {
         protected global::System.Web.UI.WebControls.Label timeAndDate;
         
         /// <summary>
-        /// groupNameChosen control.
+        /// partnerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox groupNameChosen;
+        protected global::System.Web.UI.WebControls.TextBox partnerName;
         
         /// <summary>
-        /// idGroupChosen control.
+        /// ID_PARTNER control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label idGroupChosen;
+        protected global::System.Web.UI.WebControls.Label ID_PARTNER;
         
         /// <summary>
-        /// mainMemberChosen control.
+        /// rebateYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox mainMemberChosen;
+        protected global::System.Web.UI.WebControls.DropDownList rebateYear;
         
         /// <summary>
-        /// ID_MainMemberChosen control.
+        /// cancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ID_MainMemberChosen;
+        protected global::System.Web.UI.WebControls.Button cancel;
         
         /// <summary>
-        /// selectMember control.
+        /// searchPartners control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selectMember;
+        protected global::System.Web.UI.WebControls.GridView searchPartners;
         
         /// <summary>
-        /// searchGroups control.
+        /// Teste1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView searchGroups;
-        
-        /// <summary>
-        /// searchMainGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource searchMainGroup;
-        
-        /// <summary>
-        /// errorMsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorMsg;
-        
-        /// <summary>
-        /// response control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm response;
-        
-        /// <summary>
-        /// responseText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label responseText;
+        protected global::System.Web.UI.WebControls.SqlDataSource Teste1;
     }
 }

@@ -15,7 +15,7 @@ namespace Vetallis.View.RebateView
         {
             if (!this.Page.User.Identity.IsAuthenticated)
             {
-                FormsAuthentication.RedirectToLoginPage();                
+                FormsAuthentication.RedirectToLoginPage();
             }
 
             string userName = "User";
@@ -27,6 +27,8 @@ namespace Vetallis.View.RebateView
             }
 
             this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
+
+
         }
 
         protected void uploadExcelFile(object sender, EventArgs e)
@@ -85,12 +87,12 @@ namespace Vetallis.View.RebateView
                         DataTable dtExcelData = new DataTable();
 
                         dtExcelData.Columns.AddRange(new DataColumn[6] {
-                    new DataColumn("ID_MEMBER", typeof(int)),
-                    new DataColumn("ID_PARTNER", typeof(int)),
-                    new DataColumn("IS_DELIVERED_BY_PARTNER", typeof(int)),
-                    new DataColumn("QUANTITY", typeof(float)),
-                    new DataColumn("CATEGORY", typeof(string)),
-                    new DataColumn("YEAR",typeof(string)) });
+                            new DataColumn("ID_MEMBER", typeof(int)),
+                            new DataColumn("ID_PARTNER", typeof(int)),
+                            new DataColumn("IS_DELIVERED_BY_PARTNER", typeof(int)),
+                            new DataColumn("QUANTITY", typeof(float)),
+                            new DataColumn("CATEGORY", typeof(string)),
+                            new DataColumn("YEAR",typeof(string)) });
 
                         using (OleDbDataAdapter oda = new OleDbDataAdapter("SELECT * FROM [" + sheet1 + "]", excel_con))
                         {

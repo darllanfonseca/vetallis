@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web.Security;
+using Vetallis.Business;
+using Vetallis.DAO;
 
 namespace Vetallis.View.PartnerView
 {
@@ -27,6 +29,30 @@ namespace Vetallis.View.PartnerView
         {
             FormsAuthentication.SignOut();
             Response.Redirect("~/Login.aspx");
+        }
+
+        protected void returnToMainPage(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
+
+        protected void removePartner(object sender, EventArgs e)
+        {
+            Partner partner = new Partner();
+
+            partner.id = this.ID_PARTNER.Text;
+
+            PartnerDAO partnerDAO = new PartnerDAO();
+            this.removePartnerForm.Visible = false;
+            this.responseForm.Visible = true;
+            this.responseText.Text = partnerDAO.removePartner(partner);
+
+        }
+
+        protected void loadSelectedPartner(object sender, EventArgs e)
+        {
+            this.partnerName.Text = this.searchPartners.SelectedRow.Cells[1].Text;
+            this.ID_PARTNER.Text = this.searchPartners.SelectedRow.Cells[2].Text;
         }
     }
 }

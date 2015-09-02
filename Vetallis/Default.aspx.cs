@@ -28,7 +28,7 @@ namespace Vetallis
         //Exports current list of active members
         protected void exportMemberList(object sender, EventArgs e)
         {
-            string query = @"SELECT ACCOUNT_NUMBER, NAME, DATE_JOINED, DOCTOR, ADDRESS, 
+            string query = @"SELECT ID_MEMBER, ACCOUNT_NUMBER, NAME, DATE_JOINED, DOCTOR, ADDRESS, 
             CITY, PROVINCE, REGION, POSTAL_CODE FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Members.xlsx", Response);
@@ -40,8 +40,15 @@ namespace Vetallis
         {
             string query = "SELECT NAME, ADDRESS, CITY, PARTNER_SINCE, PROVINCE, POSTAL_CODE, WEBSITE FROM PARTNER WHERE STATUS = 'ACTIVE'";
 
-            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Partners.xlsx", Response);
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Active Partners.xlsx", Response);
         }
+
+        protected void exportInactivePartners(object sender, EventArgs e)
+        {
+            string query = "SELECT NAME, ADDRESS, CITY, PARTNER_SINCE, PROVINCE, POSTAL_CODE, WEBSITE FROM PARTNER WHERE STATUS = 'INACTIVE'";
+
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Inactive Partners.xlsx", Response);
+        }       
 
         //Exports current Rebate sheet 
         protected void exportRebateSheet(object sender, EventArgs e)
@@ -66,7 +73,12 @@ namespace Vetallis
 
         protected void exportGroups(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM GROUPS";
+            string query = @"SELECT GROUPS.GROUP_NAME AS 'Group Name', MEMBER.ACCOUNT_NUMBER AS 'Account Number', MEMBER.NAME AS 'Member Name' 
+            FROM GROUPS JOIN MEMBER ON GROUPS.ID_MAIN_MEMBER = MEMBER.ID_MEMBER OR 
+            GROUPS.ID_SECOND_MEMBER = MEMBER.ID_MEMBER OR GROUPS.ID_THIRD_MEMBER = 
+            MEMBER.ID_MEMBER OR GROUPS.ID_FOURTH_MEMBER = MEMBER.ID_MEMBER OR 
+            GROUPS.ID_FITH_MEMBER = MEMBER.ID_MEMBER OR GROUPS.ID_SIXTH_MEMBER = 
+            MEMBER.ID_MEMBER ORDER BY MEMBER.ACCOUNT_NUMBER";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "List of Current Groups.xlsx", Response);
         }

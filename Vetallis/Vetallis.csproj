@@ -96,6 +96,8 @@
     <Content Include="View\MemberView\ExportInactives.aspx" />
     <Content Include="View\MemberView\ExportMemberList.aspx" />
     <Content Include="View\MemberView\RebateAmounts.aspx" />
+    <Content Include="View\PartnerView\ActivateRemovedPartner.aspx" />
+    <Content Include="View\PartnerView\RebateAmounts.aspx" />
     <Content Include="View\RebateView\EditCE.aspx" />
     <Content Include="View\MemberView\EditMember.aspx" />
     <Content Include="View\PartnerView\EditPartner.aspx" />
@@ -106,6 +108,7 @@
     <Content Include="View\MemberView\RemoveMember.aspx" />
     <Content Include="View\PartnerView\RemovePartner.aspx" />
     <Content Include="View\RebateView\ReplacePartnerFile.aspx" />
+    <Content Include="View\RebateView\SingleRebate.aspx" />
     <Content Include="View\RebateView\UploadPartnerFile.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -203,6 +206,20 @@
     <Compile Include="View\MemberView\RebateAmounts.aspx.designer.cs">
       <DependentUpon>RebateAmounts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\PartnerView\ActivateRemovedPartner.aspx.cs">
+      <DependentUpon>ActivateRemovedPartner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\PartnerView\ActivateRemovedPartner.aspx.designer.cs">
+      <DependentUpon>ActivateRemovedPartner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\PartnerView\RebateAmounts.aspx.cs">
+      <DependentUpon>RebateAmounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\PartnerView\RebateAmounts.aspx.designer.cs">
+      <DependentUpon>RebateAmounts.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\RebateView\EditCE.aspx.cs">
       <DependentUpon>EditCE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -272,6 +289,13 @@
     </Compile>
     <Compile Include="View\RebateView\ReplacePartnerFile.aspx.designer.cs">
       <DependentUpon>ReplacePartnerFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\RebateView\SingleRebate.aspx.cs">
+      <DependentUpon>SingleRebate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\RebateView\SingleRebate.aspx.designer.cs">
+      <DependentUpon>SingleRebate.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\RebateView\UploadPartnerFile.aspx.cs">
       <DependentUpon>UploadPartnerFile.aspx</DependentUpon>

@@ -226,5 +226,31 @@ namespace Vetallis.DAO
                 sqlConn.Close();
             }
         }
+
+        public string removeGroup(string idGroup)
+        {
+            sqlConn.ConnectionString = conn;
+
+            string query = "DELETE FROM GROUPS WHERE ID_GROUP = @ID_GROUP";
+
+            SqlCommand cmd = new SqlCommand(query, sqlConn);
+            cmd.Parameters.AddWithValue("ID_GROUP", idGroup);
+
+            try
+            {
+                sqlConn.Open();
+                cmd.ExecuteNonQuery();
+                return "The Group has been deleted sucessfully.";
+            }
+            catch (Exception e)
+            {
+                return e.Message.ToString();
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+
+        }
     }
 }

@@ -37,6 +37,38 @@ namespace Vetallis.View.PartnerView
             this.updatePartnerBtt.Enabled = false;
         }
 
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            if (this.address.Text.Equals("&nbsp;"))
+            {
+                this.address.Text = "";
+            }
+            if (this.postalCode.Text.Equals("&nbsp;"))
+            {
+                this.postalCode.Text = "";
+            }
+            if (this.website.Text.Equals("&nbsp;"))
+            {
+                this.website.Text = "";
+            }
+            if (this.emailAddress.Text.Equals("&nbsp;"))
+            {
+                this.emailAddress.Text = "";
+            }
+            if (this.phoneNumber.Text.Equals("&nbsp;"))
+            {
+                this.phoneNumber.Text = "";
+            }
+            if (this.faxNumber.Text.Equals("&nbsp;"))
+            {
+                this.faxNumber.Text = "";
+            }
+            if (this.contactPerson.Text.Equals("&nbsp;"))
+            {
+                this.contactPerson.Text = "";
+            }
+        }
+
         protected void loadSelectedPartner(object sender, EventArgs e)
         {
             this.partnerName.Text = this.searchPartners.SelectedRow.Cells[1].Text;
@@ -85,7 +117,7 @@ namespace Vetallis.View.PartnerView
             }
             else
             {   //Loads the form content into the partner object
-                partner.idPartner = this.searchPartners.SelectedRow.Cells[4].Text;
+                partner.id = this.searchPartners.SelectedRow.Cells[4].Text;
                 partner.dateJoined = this.searchPartners.SelectedRow.Cells[5].Text;
                 partner.status = this.searchPartners.SelectedRow.Cells[6].Text;
                 partner.name = partnerName.Text.ToString().Trim();

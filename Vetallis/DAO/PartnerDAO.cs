@@ -63,7 +63,7 @@ namespace Vetallis.DAO
             PHONE_NUMBER=@PHONE_NUMBER, FAX=@FAX, CONTACT_PERSON=@CONTACT_PERSON 
             WHERE ID_PARTNER=@ID_PARTNER"), sqlConn);
 
-            cmd.Parameters.AddWithValue("@ID_PARTNER", partner.idPartner);
+            cmd.Parameters.AddWithValue("@ID_PARTNER", partner.id);
             cmd.Parameters.AddWithValue("@NAME", partner.name);
             cmd.Parameters.AddWithValue("@ADDRESS", partner.address); cmd.Parameters.AddWithValue("@CITY", partner.city);
             cmd.Parameters.AddWithValue("@POSTAL_CODE", partner.postalCode); cmd.Parameters.AddWithValue("@WEBSITE", partner.website);
@@ -89,15 +89,13 @@ namespace Vetallis.DAO
         public string removePartner(Partner partner)
         {
             sqlConn.ConnectionString = conn;
-            DataTable dt = new DataTable();
-            dt.Clear();
 
             string inactive = "INACTIVE";
 
             SqlCommand cmd = new SqlCommand(string.Format(
             @"UPDATE PARTNER SET STATUS=@STATUS WHERE ID_PARTNER=@ID_PARTNER"), sqlConn);
 
-            cmd.Parameters.AddWithValue("@ID_PARTNER", partner.idPartner);
+            cmd.Parameters.AddWithValue("@ID_PARTNER", partner.id);
             cmd.Parameters.AddWithValue("@STATUS", inactive);
 
             try
@@ -137,7 +135,7 @@ namespace Vetallis.DAO
                 reader.Read();
 
                 //Sets the partner's parameters using the reader..
-                partner.idPartner = reader.GetValue(0).ToString();
+                partner.id = reader.GetValue(0).ToString();
                 partner.name = reader.GetValue(1).ToString();                                
                 partner.address = reader.GetValue(2).ToString();
                 partner.city = reader.GetValue(3).ToString();
@@ -164,6 +162,34 @@ namespace Vetallis.DAO
             }
 
             return partner;
+        }
+
+        public string activatePartner(Partner partner)
+        {
+            sqlConn.ConnectionString = conn;
+
+            string inactive = "ACTIVE";
+
+            SqlCommand cmd = new SqlCommand(string.Format(
+            @"UPDATE PARTNER SET STATUS=@STATUS WHERE ID_PARTNER=@ID_PARTNER"), sqlConn);
+
+            cmd.Parameters.AddWithValue("@ID_PARTNER", partner.id);
+            cmd.Parameters.AddWithValue("@STATUS", inactive);
+
+            try
+            {
+                sqlConn.Open();
+                cmd.ExecuteNonQuery();
+                return "The Partner has been added sucessfully to the list of Active members.";
+            }
+            catch (Exception e)
+            {
+                return e.Message.ToString();
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
         }
     }
 }

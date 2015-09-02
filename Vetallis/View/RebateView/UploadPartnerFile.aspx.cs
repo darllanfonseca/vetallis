@@ -71,13 +71,15 @@ namespace Vetallis.View.RebateView
                     string sheet1 = excel_con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null).Rows[0]["TABLE_NAME"].ToString();
                     DataTable dtExcelData = new DataTable();
 
-                    dtExcelData.Columns.AddRange(new DataColumn[6] {
+                    dtExcelData.Columns.AddRange(new DataColumn[8] {
                     new DataColumn("ID_MEMBER", typeof(int)),
                     new DataColumn("ID_PARTNER", typeof(int)),
                     new DataColumn("IS_DELIVERED_BY_PARTNER", typeof(int)),
                     new DataColumn("QUANTITY", typeof(float)),
                     new DataColumn("CATEGORY", typeof(string)),
-                    new DataColumn("YEAR",typeof(string)) });
+                    new DataColumn("YEAR",typeof(string)),
+                    new DataColumn("DATE_MODIFIED",typeof(string)),
+                    new DataColumn("MODIFIED_BY",typeof(string)) });
 
                     using (OleDbDataAdapter oda = new OleDbDataAdapter("SELECT * FROM [" + sheet1 + "]", excel_con))
                     {
@@ -101,6 +103,8 @@ namespace Vetallis.View.RebateView
                             sqlBulkCopy.ColumnMappings.Add("QUANTITY", "QUANTITY");
                             sqlBulkCopy.ColumnMappings.Add("CATEGORY", "CATEGORY");
                             sqlBulkCopy.ColumnMappings.Add("YEAR", "YEAR");
+                            sqlBulkCopy.ColumnMappings.Add("DATE_MODIFIED", "DATE_MODIFIED");
+                            sqlBulkCopy.ColumnMappings.Add("MODIFIED_BY", "MODIFIED_BY");
 
                             con.Open();
                             sqlBulkCopy.WriteToServer(dtExcelData);

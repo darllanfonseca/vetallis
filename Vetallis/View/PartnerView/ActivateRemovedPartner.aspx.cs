@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Vetallis.Business;
 using Vetallis.DAO;
 
-namespace Vetallis.View.GroupView
+namespace Vetallis.View.PartnerView
 {
-    public partial class RemoveGroup : System.Web.UI.Page
+    public partial class ActivateRemovedPartner : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -12,6 +18,7 @@ namespace Vetallis.View.GroupView
             {
                 FormsAuthentication.RedirectToLoginPage();
             }
+
             string userName = "User";
             string name = this.Page.User.Identity.Name.ToString();
 
@@ -34,35 +41,22 @@ namespace Vetallis.View.GroupView
             Response.Redirect("~/Default.aspx");
         }
 
-        protected void returnToMainForm(object sender, EventArgs e)
+        protected void activatePartner(object sender, EventArgs e)
         {
-            this.chooseGroupForm.Visible = true;
-            this.response.Visible = false;
-            clearAllFields();
-        }
+            Partner partner = new Partner();
+            partner.id = this.ID_PARTNER.Text;
 
-        protected void loadSelectedGroup(object sender, EventArgs e)
-        {
-            this.groupNameChosen.Text = this.searchGroups.SelectedRow.Cells[1].Text;
-            this.mainMemberChosen.Text = this.searchGroups.SelectedRow.Cells[2].Text;
-            this.idGroupChosen.Text = this.searchGroups.SelectedRow.Cells[3].Text;
-        }
-
-        protected void clearAllFields()
-        {
+            PartnerDAO partnerDAO = new PartnerDAO();
+            this.activatePartnerForm.Visible = false;
+            this.responseForm.Visible = true;
+            this.responseText.Text = partnerDAO.activatePartner(partner);
 
         }
 
-        protected void removeGroup(object sender, EventArgs e)
+        protected void loadSelectedPartner(object sender, EventArgs e)
         {
-            GroupsDAO groupsDAO = new GroupsDAO();
-
-            string result = groupsDAO.removeGroup(this.idGroupChosen.Text);
-
-            this.chooseGroupForm.Visible = false;
-            this.response.Visible = true;
-            this.responseText.Text = result;
+            this.partnerName.Text = this.searchPartners.SelectedRow.Cells[1].Text;
+            this.ID_PARTNER.Text = this.searchPartners.SelectedRow.Cells[2].Text;
         }
-
     }
 }

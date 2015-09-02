@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Vetallis.DAO;
 using Vetallis.FunctionalClasses;
 
-namespace Vetallis.View.MemberView
+namespace Vetallis.View.PartnerView
 {
     public partial class RebateAmounts : System.Web.UI.Page
     {
@@ -14,7 +16,7 @@ namespace Vetallis.View.MemberView
         {
             if (!this.Page.User.Identity.IsAuthenticated)
             {
-                FormsAuthentication.RedirectToLoginPage();               
+                FormsAuthentication.RedirectToLoginPage();
             }
 
             string userName = "User";
@@ -28,39 +30,26 @@ namespace Vetallis.View.MemberView
             this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
         }
 
-        protected void loadSelectedMember(object sender, EventArgs e)
+        protected void loadSelectedPartner(object sender, EventArgs e)
         {
-            this.memberName.Text = this.searchMembers.SelectedRow.Cells[2].Text;
+            this.partnerName.Text = this.searchPartners.SelectedRow.Cells[1].Text;
+            this.ID_PARTNER.Text = this.searchPartners.SelectedRow.Cells[2].Text;
         }
 
         protected void returnToMainPage(object sender, EventArgs e)
         {
-            //Server.Transfer("Default.aspx", true);
             Response.Redirect("~/Default.aspx");
-
-            //HttpContext.Current.RewritePath("~/Default.aspx");
         }
 
         protected void exportResults(object sender, EventArgs e)
         {
-            string memberId = this.searchMembers.SelectedRow.Cells[6].Text;
+            string partnerId = this.ID_PARTNER.Text;
 
-            string query = @"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
-                REBATE.QUANTITY as Amount, REBATE.YEAR as Year, rebate.CATEGORY as Category, rebate.IS_DELIVERED_BY_PARTNER as Delivered_By_Partner
-                FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = " + memberId + " JOIN PARTNER ON PARTNER.ID_PARTNER = ";
-
-            List<String> partnerList = new List<string>();
-
-            foreach (ListItem item in this.partners.Items)
-            {
-                if (item.Selected)
-                {
-                    partnerList.Add(item.Value);
-                }
-            }
-
-            query += String.Join(" OR PARTNER.ID_PARTNER = ", partnerList.ToArray());
-            query += " AND YEAR = '" + this.rebateYear.SelectedValue.ToString() + "-01-01'";
+            string query = @"SELECT PARTNER.NAME AS 'Partner Name', MEMBER.NAME AS 'Member Name', 
+            REBATE.QUANTITY AS 'Rebate Amount',  REBATE.YEAR AS 'Year', REBATE.CATEGORY AS 'Category' 
+            FROM PARTNER JOIN REBATE ON REBATE.ID_PARTNER = PARTNER.ID_PARTNER JOIN MEMBER ON 
+            REBATE.ID_MEMBER = MEMBER.ID_MEMBER WHERE PARTNER.ID_PARTNER = '" + partnerId + 
+            "' AND REBATE.YEAR = '" + this.rebateYear.SelectedValue + "-01-01'";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Amounts.xlsx", Response);
         }

@@ -48,7 +48,6 @@
                                     <li role="presentation">
                                         <hr />
                                     </li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activate Removed Group</a></li>
                                     <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportGroups" Text="Export List of Groups" /></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/GroupView/RebateAmounts.aspx">View Rebate Amounts</a></li>
                                 </ul>
@@ -65,14 +64,13 @@
                                     <li role="presentation">
                                         <hr />
                                     </li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Activate Removed Partner</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export Current Partner List</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/ActivateRemovedPartner.aspx">Activate Removed Partner</a></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportPartnerList" Text="Export Current Partner List" /></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportInactivePartners" Text="Export List of Inactive Partners" /></li>
                                     <li role="presentation">
                                         <hr />
                                     </li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Active Partners</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Inactive Partners</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View Rebate Amounts</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/RebateAmounts.aspx">View Rebate Amounts</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -88,7 +86,7 @@
                             <li role="presentation">
                                 <hr />
                             </li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Edit Single Rebate Data</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/SingleRebate.aspx">Edit Single Rebate Data</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export Rebate Data</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export Member Summary</a></li>
                             <li role="presentation">

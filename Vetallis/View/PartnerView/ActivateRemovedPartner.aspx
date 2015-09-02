@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RemovePartner.aspx.cs" Inherits="Vetallis.View.PartnerView.RemovePartner" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActivateRemovedPartner.aspx.cs" Inherits="Vetallis.View.PartnerView.ActivateRemovedPartner" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>VETALLIS - Remove a Partner</title>
+    <title>VETALLIS - Activate Removed Partner</title>
     <link rel="stylesheet" href="../../CSS/RegForms.css" />
     <link rel="stylesheet" href="../../CSS/GridView.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
@@ -18,7 +18,7 @@
 </head>
 <body>
     <!-- Main Form -->
-    <form id="removePartnerForm" runat="server">
+    <form id="activatePartnerForm" runat="server">
         <div class="all">
             <div class="container">
                 <div class="header">
@@ -38,8 +38,8 @@
                         <div style="position: absolute; top: 460px; right: 15px; width: 150px; height: 50px;">
                             <asp:Button Height="25px" Width="150px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel" OnClick="returnToMainPage" AutoPostBack="True"/>
                         </div>
-                        <div style="position: absolute; top: 510px; right: 15px; width: 150px; height: 50px;">
-                            <asp:Button Height="30px" BackColor="#e3efc7" Width="150px" Font-Names="Calibri" Font-Size="Large" runat="server" OnClick="removePartner" Text="Remove Partner" AutoPostBack="True" />
+                        <div runat="server" style="position: absolute; top: 510px; right: 15px; width: 150px; height: 50px;">
+                            <asp:Button Height="30px" BackColor="#e3efc7" Width="150px" Font-Names="Calibri" Font-Size="Large" runat="server" OnClick="activatePartner" Text="Activate Partner" AutoPostBack="True" />
                         </div>
 
 
@@ -62,7 +62,7 @@
                                     <asp:BoundField DataField="ID_PARTNER" HeaderText="ID" SortExpression="ID_PARTNER" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM PARTNER WHERE STATUS='ACTIVE'"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM PARTNER WHERE STATUS='INACTIVE'"></asp:SqlDataSource>
                         </div>
                         <div style="position: absolute; left: 10px; width: 370px; top: 530px; color: #707070; font-family: Calibri; font-size: 13px; text-align: left;">You can sort the results by clicking on the name of the columns.</div>
                     </div>

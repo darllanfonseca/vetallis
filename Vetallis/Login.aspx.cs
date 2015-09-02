@@ -17,7 +17,7 @@ namespace Vetallis
         {
             string ipAddress = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(2).ToString();
 
-            bool status = false;
+            bool status = true;
 
             LoginDAO loginDAO = new LoginDAO();
             List<Users> users = new List<Users>();

@@ -3,12 +3,14 @@ namespace Vetallis.Business
 {
     public class Rebate
     {
-        public int idRebate { get; set; }
-        public int idMember { get; set; }
-        public int idPartner { get; set; }
+        public string idRebate { get; set; }
+        public string idMember { get; set; }
+        public string idPartner { get; set; }
         public bool isDeliveredByPartner { get; set; }
-        public double quantity { get; set; }
+        public string quantity { get; set; }
         public string type { get; set; }
         public string year { get; set; }
+        public string dateModified { get; set; }
+        public string modifiedBy { get; set; }
     }
 }
