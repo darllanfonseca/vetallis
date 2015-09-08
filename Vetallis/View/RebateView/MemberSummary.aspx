@@ -1,17 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditCE.aspx.cs" Inherits="Vetallis.View.RebateView.EditCE" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MemberSummary.aspx.cs" Inherits="Vetallis.View.RebateView.MemberSummary" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>VETALLIS - Edit a CE Event</title>
+    <title>VETALLIS - Member Summary</title>
     <link rel="stylesheet" href="../../CSS/RegForms.css"/>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="mainForm" runat="server">
     <div class="all">
         <div class="container">
-            <div class="header">Edition...
+            <div class="header">
                 <div runat="server" style="position: absolute; font-family:Calibri; font-size: 14px; text-align:right; float: right; width: 300px; right: 10px; top: 5px; height: 50px;">
                         <asp:Label ID="timeAndDate" runat="server"></asp:Label><br />
                             <asp:LinkButton runat="server" Text="Log Out" OnClick="logout"></asp:LinkButton>

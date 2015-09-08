@@ -21,19 +21,15 @@
 	<span class="caret"></span>
                             </button>
                             <ul runat="server" class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/InsertMember.aspx">Create New</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/EditMember.aspx">Edit</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/RemoveMember.aspx">Remove</a></li>
-                                <li role="presentation">
-                                    <hr />
-                                </li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/ActivateRemovedMember.aspx">Activate Removed Member</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/MemberView/RebateAmounts.aspx">View Rebate Amounts</a></li>
-                                <li role="presentation">
-                                    <hr />
-                                </li>
+                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToInsertMember" Text="Create New" /></li>
+                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToEditMember" Text="Edit" /></li>
+                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToRemoveMember" Text="Remove" /></li>
+                                <li role="presentation"><hr /></li>
+                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToActivateMember" Text="Activate Removed Member" /></li>
+                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToViewMemberRebate" Text="View Rebate Amounts" /></li>
+                                <li role="presentation"><hr /></li>
                                 <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportMemberList" Text="Export Current Member List" /></li>
-                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="selectFieldsFromDB" Text="Export List of Inactives" /></li>
+                                <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportInactiveMembers" Text="Export List of Inactives" /></li>
                             </ul>
 
                             <div style="position: absolute; left: 111px; top: 0px;">
@@ -42,14 +38,12 @@
 	<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu2">
-                                    <li role="presentation"><a role="menuitem" id="editMember" tabindex="-1" href="/View/GroupView/InsertGroup.aspx">Create New</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/GroupView/EditGroup.aspx">Edit</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/GroupView/RemoveGroup.aspx">Remove</a></li>
-                                    <li role="presentation">
-                                        <hr />
-                                    </li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToCreateGroup" Text="Create New" /></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToEditGroup" Text="Edit" /></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToRemoveGroup" Text="Remove" /></li>
+                                    <li role="presentation"><hr /></li>
                                     <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportGroups" Text="Export List of Groups" /></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/GroupView/RebateAmounts.aspx">View Rebate Amounts</a></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToGroupRebate" Text="View Rebate Amounts" /></li>
                                 </ul>
                             </div>
                             <div style="position: absolute; left: 224px; top: 0px;">
@@ -58,19 +52,15 @@
 	<span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu3">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/InsertPartner.aspx">Create New</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/EditPartner.aspx">Edit</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/RemovePartner.aspx">Remove</a></li>
-                                    <li role="presentation">
-                                        <hr />
-                                    </li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/ActivateRemovedPartner.aspx">Activate Removed Partner</a></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToCreateNewPartner" Text="Create New" /></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToEditPartner" Text="Edit" /></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToRemovePartner" Text="Remove" /></li>
+                                    <li role="presentation"><hr /></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToActivatePartner" Text="Activate Removed Partner" /></li>
                                     <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportPartnerList" Text="Export Current Partner List" /></li>
                                     <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="exportInactivePartners" Text="Export List of Inactive Partners" /></li>
-                                    <li role="presentation">
-                                        <hr />
-                                    </li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/PartnerView/RebateAmounts.aspx">View Rebate Amounts</a></li>
+                                    <li role="presentation"><hr /></li>
+                                    <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToPartnerRebate" Text="View Rebate Amounts" /></li>
                                 </ul>
                             </div>
                         </div>
@@ -81,20 +71,16 @@
 	<span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu4">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/UploadPartnerFile.aspx">Upload Partner Rebate File</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/ReplacePartnerFile.aspx">Replace Partner File</a></li>
-                            <li role="presentation">
-                                <hr />
-                            </li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/SingleRebate.aspx">Edit Single Rebate Data</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export Rebate Data</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Export Member Summary</a></li>
-                            <li role="presentation">
-                                <hr />
-                            </li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/InsertCE.aspx">Add CE Data</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/View/RebateView/EditCE.aspx">Edit CE Data</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">View CE Amounts</a></li>
+                            <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToUploadPartnerFile" Text="Upload Partner Rebate File" /></li>
+                            <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToReplacePartnerFile" Text="Replace Partner File" /></li>
+                            <li role="presentation"><hr /></li>
+                            <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToEditSingleRebate" Text="Edit Single Rebate Data" /></li>
+                            <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToExportRebate" Text="Export Rebate Data" /></li>
+                            <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToMemberSummary" Text="Export Member Summary" /></li>
+                            <li role="presentation"><hr /></li>
+                            <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToAddCE" Text="Add CE Data" /></li>
+                            <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToEditCE" Text="Edit CE Data" /></li>
+                            <li role="presentation"><asp:Button CssClass="menuBtt" runat="server" OnClick="goToViewCETotals" Text="View CE Totals" /></li>
                         </ul>
                     </div>
                     <div style="position: absolute; float: right; right: 20px; top: 50%; margin-top: -10px; height: 50px;">

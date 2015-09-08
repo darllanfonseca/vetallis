@@ -59,7 +59,10 @@
                             <asp:Button Height="25px" Width="150px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel" OnClick="returnToMainPage" AutoPostBack="True"/>
                         </div>
                         <div style="position: absolute; top: 510px; right: 15px; width: 150px; height: 50px;">
-                            <asp:Button Height="30px" BackColor="#e3efc7" Width="150px" Font-Names="Calibri" Font-Size="Large" runat="server" ID="removeMemberBtt" OnClick="removeMember" Text="Remove Member" AutoPostBack="True" />
+                            <asp:Button Height="30px" BackColor="#e3efc7" Width="150px" Font-Names="Calibri" Font-Size="Large" runat="server" Enabled="false" ID="removeMemberBtt" OnClick="removeMember" Text="Remove Member" AutoPostBack="True" />
+                        </div>
+                        <div runat="server" id="errorDiv" visible="false" style="position: absolute; top: 460px; left: 415px; color:red; text-align:left; width: 350px; height: 50px;">
+                            <asp:Label runat="server" ID="errorMsg"></asp:Label>
                         </div>
 
 

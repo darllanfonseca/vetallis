@@ -169,7 +169,7 @@
             <div class="container">
                 <div class="section">
                     <div class="fieldSection">
-                        <div runat="server" style="position: absolute; top: 25%; left: 25%;">
+                        <div runat="server" style="position: absolute; width: 500px; height: 400px; top: 50%; left: 50%; margin-left: -250px; margin-top: -200px; text-align: center;">
                             <asp:Label runat="server" ID="responseText"></asp:Label><br /><br />
                             <asp:Button runat="server" Text="Return" OnClick="returnToMainPage"/>
                         </div>

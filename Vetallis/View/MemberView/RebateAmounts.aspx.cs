@@ -44,25 +44,42 @@ namespace Vetallis.View.MemberView
         protected void exportResults(object sender, EventArgs e)
         {
             string memberId = this.searchMembers.SelectedRow.Cells[6].Text;
+            string year = "'" + this.rebateYear.SelectedValue.ToString() + "-01-01'";
 
-            string query = @"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
-                REBATE.QUANTITY as Amount, REBATE.YEAR as Year, rebate.CATEGORY as Category, rebate.IS_DELIVERED_BY_PARTNER as Delivered_By_Partner
-                FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = " + memberId + " JOIN PARTNER ON PARTNER.ID_PARTNER = ";
-
-            List<String> partnerList = new List<string>();
-
-            foreach (ListItem item in this.partners.Items)
+            if (this.includeCE.Checked)
             {
-                if (item.Selected)
-                {
-                    partnerList.Add(item.Value);
-                }
+                string query = @"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
+                REBATE.QUANTITY as Amount, CE.NUMBER_OF_SEATS as 'Number of Seats', REBATE.YEAR as Year, rebate.CATEGORY as Category, rebate.IS_DELIVERED_BY_PARTNER as Delivered_By_Partner
+                FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = MEMBER.ID_MEMBER JOIN PARTNER ON REBATE.ID_PARTNER = PARTNER.ID_PARTNER join CE on REBATE.ID_MEMBER = CE.ID_MEMBER WHERE ";
+
+                query += "REBATE.YEAR = " + year + " AND MEMBER.ID_MEMBER = " + memberId + " AND CE.YEAR = " + year;
+
+                CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Amounts.xlsx", Response);
+            }
+            else
+            {
+                string query = @"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
+                REBATE.QUANTITY as Amount, REBATE.YEAR as Year, rebate.CATEGORY as Category, rebate.IS_DELIVERED_BY_PARTNER as Delivered_By_Partner
+                FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = MEMBER.ID_MEMBER JOIN PARTNER ON REBATE.ID_PARTNER = PARTNER.ID_PARTNER WHERE ";
+
+                /** List<String> partnerList = new List<string>();
+
+                 foreach (ListItem item in this.partners.Items)
+                 {
+                     if (item.Selected)
+                     {
+                         partnerList.Add(item.Value);
+                     }
+                 }
+
+                 query += String.Join(" OR PARTNER.ID_PARTNER = ", partnerList.ToArray()); **/
+
+                query += "YEAR = " + year + " AND MEMBER.ID_MEMBER = " + memberId;
+
+                CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Amounts.xlsx", Response);
             }
 
-            query += String.Join(" OR PARTNER.ID_PARTNER = ", partnerList.ToArray());
-            query += " AND YEAR = '" + this.rebateYear.SelectedValue.ToString() + "-01-01'";
-
-            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Amounts.xlsx", Response);
+            
         }
 
         protected void logout(object sender, EventArgs e)

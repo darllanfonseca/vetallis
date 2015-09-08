@@ -30,37 +30,37 @@
                     <div class="fieldSection">
                         <div style="text-align: right; position: absolute; top: 15px; right: 15px; width: 150px; height: 50px;">
                             <b>Account Number *</b>
-                            <asp:TextBox runat="server" ID="accountNumber" Width="120px">                           
+                            <asp:TextBox runat="server" Enabled="false" ID="accountNumber" Width="120px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 70px; left: 415px; width: 155px; height: 50px;">
                             <b>Member Name *</b>
-                            <asp:TextBox runat="server" ID="memberName" Width="350px">                           
+                            <asp:TextBox runat="server" Enabled="false" ID="memberName" Width="350px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: right; position: absolute; top: 70px; right: 15px; width: 150px; height: 50px;">
                             <b>Date Joined *</b>
-                            <asp:TextBox runat="server" ID="datepicker" Width="120px">
+                            <asp:TextBox runat="server" Enabled="false" ID="datepicker" Width="120px">
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 125px; left: 415px; width: 155px; height: 50px;">
                             <b>Address *</b>
-                            <asp:TextBox runat="server" ID="address" Width="350px">                           
+                            <asp:TextBox runat="server" Enabled="false" ID="address" Width="350px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 180px; left: 415px; width: 150px; height: 50px;">
                             <b>Doctor Name</b>
-                            <asp:TextBox runat="server" ID="doctorName" Width="250px">                           
+                            <asp:TextBox runat="server" Enabled="false" ID="doctorName" Width="250px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: right; position: absolute; top: 180px; right: 15px; width: 160px; height: 50px;">
                             <b>City *</b>
-                            <asp:TextBox runat="server" ID="city" Width="150px">                           
+                            <asp:TextBox runat="server" Enabled="false" ID="city" Width="150px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 235px; left: 415px; width: 80px; height: 50px;">
                             <b>Province *</b>
-                            <asp:DropDownList runat="server" Width="70px" AutoPostBack="True" ID="province" OnSelectedIndexChanged="changeRegion">
+                            <asp:DropDownList runat="server" Enabled="false" Width="70px" AutoPostBack="True" ID="province" OnSelectedIndexChanged="changeRegion">
                                 <asp:ListItem
                                     Text="Select..." />
                                 <asp:ListItem
@@ -99,36 +99,39 @@
                         </div>
                         <div style="text-align: right; position: absolute; top: 235px; right: 15px; width: 160px; height: 50px;">
                             <b>Postal Code *</b>
-                            <asp:TextBox Style="text-transform: uppercase;" runat="server" ID="postalCode" Width="150px" MaxLength="6">
+                            <asp:TextBox Style="text-transform: uppercase;" runat="server" Enabled="false" ID="postalCode" Width="150px" MaxLength="6">
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 290px; left: 415px; width: 200px; height: 50px;">
                             <b>Website</b>
-                            <asp:TextBox runat="server" ID="website" Width="350px">                           
+                            <asp:TextBox runat="server" ID="website" Enabled="false" Width="350px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: right; position: absolute; top: 290px; right: 15px; width: 160px; height: 50px;">
                             <b>Phone Number</b>
-                            <asp:TextBox Style="text-transform: uppercase;" runat="server" ID="phoneNumber" Width="150px" MaxLength="11">
+                            <asp:TextBox Style="text-transform: uppercase;" runat="server" Enabled="false" ID="phoneNumber" Width="150px" MaxLength="11">
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 345px; left: 415px; width: 200px; height: 50px;">
                             <b>Email Address</b>
-                            <asp:TextBox runat="server" ID="emailAddress" Width="350px">                           
+                            <asp:TextBox runat="server" ID="emailAddress" Enabled="false" Width="350px">                           
                             </asp:TextBox>
                         </div>
                         <div style="text-align: right; position: absolute; top: 345px; right: 15px; width: 160px; height: 50px;">
                             <b>Fax Number</b>
-                            <asp:TextBox Style="text-transform: uppercase;" runat="server" ID="faxNumber" Width="150px" MaxLength="11">
+                            <asp:TextBox Style="text-transform: uppercase;" runat="server" Enabled="false" ID="faxNumber" Width="150px" MaxLength="11">
                             </asp:TextBox>
                         </div>
                         <div style="text-align: left; position: absolute; top: 400px; left: 415px; width: 150px; height: 50px;">
                             <b>Contact Person</b>
-                            <asp:TextBox runat="server" ID="contactPerson" Width="250px">                           
+                            <asp:TextBox runat="server" ID="contactPerson" Enabled="false" Width="250px">                           
                             </asp:TextBox>
                         </div>
                         <div style="position: absolute; top: 460px; left: 415px; width: 100px; height: 50px;">
                             <asp:Button Height="25px" Width="100px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="enableFieldsBtt" OnClick="enableFields" Text="Enable Fields" AutoPostBack="True" />
+                        </div>
+                        <div runat="server" id="errorDiv" visible="false" style="position: absolute; top: 460px; left: 415px; color:red; text-align:left; width: 350px; height: 50px;">
+                            <asp:Label runat="server" ID="errorMsg"></asp:Label>
                         </div>
                         <div style="position: absolute; top: 460px; right: 15px; width: 150px; height: 50px;">
                             <asp:Button Height="25px" Width="150px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel" OnClick="returnToMainPage" AutoPostBack="True"/>
@@ -187,7 +190,7 @@
             <div class="container">
                 <div class="section">
                     <div class="fieldSection">
-                        <div style="position: absolute; top: 25%; left: 25%;">
+                        <div style="position: absolute; width: 500px; height: 400px;  top: 50%; left: 50%; margin-top: -200px; margin-left: -250px; text-align: center">
                             <asp:Label runat="server" ID="responseText"></asp:Label>
                             <br />
                             <br />

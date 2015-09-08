@@ -36,17 +36,24 @@ namespace Vetallis.View.MemberView
 
         protected void removeMember(object sender, EventArgs e)
         {
-            Member member = new Member();
+            if (this.datepicker.Text.Equals(""))
+            {
+                this.errorDiv.Visible = true;
+                this.errorMsg.Text = "Please select a date.";
+            }
+            else
+            {
+                Member member = new Member();
+                member.id = this.searchMembers.SelectedRow.Cells[6].Text;
+                member.status = "INACTIVE";
+                member.dateRemoved = this.datepicker.Text;
 
-            member.id = this.searchMembers.SelectedRow.Cells[6].Text;
-            member.status = "INACTIVE";
-            member.dateRemoved = this.datepicker.Text;
-
-            MemberDAO memberDAO = new MemberDAO();
-            this.removeMemberForm.Visible = false;
-            this.responseForm.Visible = true;
-            this.responseText.Text = memberDAO.removeMember(member);
-                                                        
+                MemberDAO memberDAO = new MemberDAO();
+                this.removeMemberForm.Visible = false;
+                this.responseForm.Visible = true;
+                this.responseText.Text = memberDAO.removeMember(member);
+            }
+                                                                    
         }
 
         protected void loadSelectedMember(object sender, EventArgs e)
@@ -54,6 +61,7 @@ namespace Vetallis.View.MemberView
             this.accountNumber.Text = this.searchMembers.SelectedRow.Cells[1].Text;
             this.memberName.Text = this.searchMembers.SelectedRow.Cells[2].Text;
             this.dateJoined.Text = this.searchMembers.SelectedRow.Cells[8].Text;
+            this.removeMemberBtt.Enabled = true;
         }
 
         protected void logout(object sender, EventArgs e)

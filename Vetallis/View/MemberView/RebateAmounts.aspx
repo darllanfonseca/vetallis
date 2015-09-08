@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="section">
-                    <div class="fieldSection">
+                    <div class="fieldSection" style="width:800px; position:absolute; left: 50%; margin-left: -400px;">
 
                         <div style="text-align: left; position: absolute; top: 70px; left: 400px; width: 150px; height: 50px;">
                             <b>Member Name</b>
@@ -36,13 +36,13 @@
                             </asp:TextBox>
                         </div>
 
-                        <div id="ID_GROUP_DIV" runat="server" style="text-align: left; position: absolute; top: 70px; right: 15px; width: 200px; height: 200px;">
+                       <!-- <div id="ID_GROUP_DIV" runat="server" style="text-align: left; position: absolute; top: 70px; right: 15px; width: 200px; height: 200px;">
                             <b>Choose the Partners</b>
                             <div runat="server" style="text-align: left; overflow: scroll; position: absolute; top: 19px; right: 0px; width: 200px; height: 200px; border: 1px solid #9c9c9c">
                                 <asp:CheckBoxList TextAlign="Right" runat="server" SelectionMode="Multiple" ID="partners" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="ID_PARTNER"></asp:CheckBoxList>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT ID_PARTNER, NAME FROM [PARTNER] ORDER BY NAME ASC"></asp:SqlDataSource>
                             </div>
-                        </div>
+                        </div>  -->
 
                         <div style="text-align: left; position: absolute; top: 150px; left: 400px; width: 150px; height: 50px;">
                             <b>Choose the Year</b>

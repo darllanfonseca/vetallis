@@ -88,6 +88,7 @@ namespace Vetallis.View.MemberView
             this.phoneNumber.Text = this.searchMembers.SelectedRow.Cells[15].Text;
             this.faxNumber.Text = this.searchMembers.SelectedRow.Cells[16].Text;
             this.contactPerson.Text = this.searchMembers.SelectedRow.Cells[17].Text;
+            this.activateMemberBtt.Enabled = true;
         }
 
         protected void returnToMainPage(object sender, EventArgs e)
@@ -98,7 +99,8 @@ namespace Vetallis.View.MemberView
         protected void activateMember(object sender, EventArgs e)
         {
             if(this.datepicker.Text.Equals("")){
-                this.requiredFieldsTxt.Text = "Please select the date of activation!";
+                this.errorDiv.Visible = true;
+                this.errorMsg.Text = "Please select the date of activation!";
             }
             else
             {

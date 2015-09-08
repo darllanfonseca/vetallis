@@ -101,15 +101,18 @@
     <Content Include="View\RebateView\EditCE.aspx" />
     <Content Include="View\MemberView\EditMember.aspx" />
     <Content Include="View\PartnerView\EditPartner.aspx" />
+    <Content Include="View\RebateView\ExportRebate.aspx" />
     <Content Include="View\RebateView\InsertCE.aspx" />
     <Content Include="View\GroupView\InsertGroup.aspx" />
     <Content Include="View\MemberView\InsertMember.aspx" />
     <Content Include="View\PartnerView\InsertPartner.aspx" />
     <Content Include="View\MemberView\RemoveMember.aspx" />
     <Content Include="View\PartnerView\RemovePartner.aspx" />
+    <Content Include="View\RebateView\MemberSummary.aspx" />
     <Content Include="View\RebateView\ReplacePartnerFile.aspx" />
     <Content Include="View\RebateView\SingleRebate.aspx" />
     <Content Include="View\RebateView\UploadPartnerFile.aspx" />
+    <Content Include="View\RebateView\ViewCETotals.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -241,6 +244,13 @@
     <Compile Include="View\PartnerView\EditPartner.aspx.designer.cs">
       <DependentUpon>EditPartner.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\RebateView\ExportRebate.aspx.cs">
+      <DependentUpon>ExportRebate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\RebateView\ExportRebate.aspx.designer.cs">
+      <DependentUpon>ExportRebate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\RebateView\InsertCE.aspx.cs">
       <DependentUpon>InsertCE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,6 +293,13 @@
     <Compile Include="View\PartnerView\RemovePartner.aspx.designer.cs">
       <DependentUpon>RemovePartner.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\RebateView\MemberSummary.aspx.cs">
+      <DependentUpon>MemberSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\RebateView\MemberSummary.aspx.designer.cs">
+      <DependentUpon>MemberSummary.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\RebateView\ReplacePartnerFile.aspx.cs">
       <DependentUpon>ReplacePartnerFile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -303,6 +320,13 @@
     </Compile>
     <Compile Include="View\RebateView\UploadPartnerFile.aspx.designer.cs">
       <DependentUpon>UploadPartnerFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\RebateView\ViewCETotals.aspx.cs">
+      <DependentUpon>ViewCETotals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\RebateView\ViewCETotals.aspx.designer.cs">
+      <DependentUpon>ViewCETotals.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

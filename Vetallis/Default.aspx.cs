@@ -43,6 +43,7 @@ namespace Vetallis
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Active Partners.xlsx", Response);
         }
 
+        //Exports current list of the inactive Partners
         protected void exportInactivePartners(object sender, EventArgs e)
         {
             string query = "SELECT NAME, ADDRESS, CITY, PARTNER_SINCE, PROVINCE, POSTAL_CODE, WEBSITE FROM PARTNER WHERE STATUS = 'INACTIVE'";
@@ -61,16 +62,54 @@ namespace Vetallis
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Sheet.xlsx", Response);            
         }
 
-        protected void selectFieldsFromDB(object sender, EventArgs e)
+        //exports list of inactive members
+        protected void exportInactiveMembers(object sender, EventArgs e)
         {
-            string query = "SELECT *";
-
-            query += " FROM MEMBER WHERE STATUS='INACTIVE' ORDER BY NAME";
+            string query = @"SELECT ACCOUNT_NUMBER, NAME, DATE_JOINED, DATE_REMOVED, DATE_LAST_ACTIVATED, 
+            STATUS, DOCTOR, ADDRESS, CITY, PROVINCE, REGION, POSTAL_CODE, WEBSITE, EMAIL_ADDRESS, 
+            PHONE_NUMBER, FAX, CONTACT_PERSON, DATE_MODIFIED, MODIFIED_BY, DATE_CREATED 
+            FROM MEMBER WHERE STATUS='INACTIVE' ORDER BY NAME";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "InactiveMembers.xlsx", Response);
 
         }
 
+
+        //Page Redirection -- MEMBER --
+
+        //redirects to other page
+        protected void goToInsertMember(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/MemberView/InsertMember.aspx");
+        }
+
+        //redirects to other page
+        protected void goToEditMember(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/MemberView/EditMember.aspx");
+        }
+
+        //redirects to other page
+        protected void goToRemoveMember(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/MemberView/RemoveMember.aspx");
+        }
+
+        //redirects to other page
+        protected void goToActivateMember(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/MemberView/ActivateRemovedMember.aspx");
+        }
+
+        //redirects to other page
+        protected void goToViewMemberRebate(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/MemberView/RebateAmounts.aspx");
+        }
+
+        //Page Redirection -- GROUPS --
+
+        //exports list of current groups
         protected void exportGroups(object sender, EventArgs e)
         {
             string query = @"SELECT GROUPS.GROUP_NAME AS 'Group Name', MEMBER.ACCOUNT_NUMBER AS 'Account Number', MEMBER.NAME AS 'Member Name' 
@@ -83,6 +122,109 @@ namespace Vetallis
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "List of Current Groups.xlsx", Response);
         }
 
+        //redirects to other page
+        protected void goToCreateGroup(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/GroupView/InsertGroup.aspx");
+        }
+
+        //redirects to other page
+        protected void goToEditGroup(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/GroupView/EditGroup.aspx");
+        }
+
+        //redirects to other page
+        protected void goToRemoveGroup(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/GroupView/RemoveGroup.aspx");
+        }
+
+        //redirects to other page
+        protected void goToGroupRebate(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/GroupView/RebateAmounts.aspx");
+        }
+
+
+        //Page Redirection -- PARTNER --
+
+        //redirects to other page
+        protected void goToCreateNewPartner(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/PartnerView/InsertPartner.aspx");
+        }
+
+        //redirects to other page
+        protected void goToEditPartner(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/PartnerView/EditPartner.aspx");
+        }
+
+        //redirects to other page
+        protected void goToRemovePartner(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/PartnerView/RemovePartner.aspx");
+        }
+
+        //redirects to other page
+        protected void goToActivatePartner(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/PartnerView/ActivateRemovedPartner.aspx");
+        }
+
+        //redirects to other page
+        protected void goToPartnerRebate(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/PartnerView/RebateAmounts.aspx");
+        }
+
+
+        //Page Redirection -- REBATE --
+        protected void goToUploadPartnerFile(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/RebateView/UploadPartnerFile.aspx");
+        }
+
+        protected void goToReplacePartnerFile(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/RebateView/ReplacePartnerFile.aspx");
+        }
+
+        protected void goToEditSingleRebate(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/RebateView/SingleRebate.aspx");
+        }
+
+        protected void goToExportRebate(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/RebateView/ExportRebate.aspx");
+        }
+
+        protected void goToMemberSummary(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/RebateView/MemberSummary.aspx");
+        }
+
+        protected void goToAddCE(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/RebateView/InsertCE.aspx");
+        }
+
+        protected void goToEditCE(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/RebateView/EditCE.aspx");
+        }
+
+        protected void goToViewCETotals(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/RebateView/ViewCETotals.aspx");
+        }
+
+       //------------------------------------------- 
+
+
+        //Logs the user out
         protected void logout(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();

@@ -61,40 +61,81 @@ namespace Vetallis.DAO
             DataTable dt = new DataTable();
             dt.Clear();
 
-            SqlCommand cmd = new SqlCommand(string.Format(@"UPDATE MEMBER 
-            SET ID_GROUP=@ID_GROUP, ACCOUNT_NUMBER=@ACCOUNT_NUMBER, NAME=@NAME, DOCTOR=@DOCTOR, 
-            DATE_JOINED=@DATE_JOINED, DATE_LAST_ACTIVATED=@DATE_LAST_ACTIVATED, ADDRESS=@ADDRESS, CITY=@CITY, PROVINCE=@PROVINCE, REGION=@REGION, 
-            POSTAL_CODE=@POSTAL_CODE, WEBSITE=@WEBSITE, EMAIL_ADDRESS=@EMAIL_ADDRESS, 
-            PHONE_NUMBER=@PHONE_NUMBER, FAX=@FAX, CONTACT_PERSON=@CONTACT_PERSON 
-            WHERE ID_MEMBER=@ID_MEMBER"), sqlConn);
+            if (member.idGroup == null || member.idGroup.Equals("") || member.idGroup.Equals("&nbsp;"))
+            {
+                SqlCommand cmd = new SqlCommand(string.Format(@"UPDATE MEMBER 
+                SET ACCOUNT_NUMBER=@ACCOUNT_NUMBER, NAME=@NAME, DOCTOR=@DOCTOR, 
+                DATE_JOINED=@DATE_JOINED, DATE_LAST_ACTIVATED=@DATE_LAST_ACTIVATED, ADDRESS=@ADDRESS, CITY=@CITY, PROVINCE=@PROVINCE, REGION=@REGION, 
+                POSTAL_CODE=@POSTAL_CODE, WEBSITE=@WEBSITE, EMAIL_ADDRESS=@EMAIL_ADDRESS, 
+                PHONE_NUMBER=@PHONE_NUMBER, FAX=@FAX, CONTACT_PERSON=@CONTACT_PERSON 
+                WHERE ID_MEMBER=@ID_MEMBER"), sqlConn);
 
-            cmd.Parameters.AddWithValue("@ID_MEMBER", member.id);
-            cmd.Parameters.AddWithValue("@ID_GROUP", member.idGroup);
-            cmd.Parameters.AddWithValue("@ACCOUNT_NUMBER", member.accountNumber);
-            cmd.Parameters.AddWithValue("@NAME", member.name);
-            cmd.Parameters.AddWithValue("@DOCTOR", member.doctor);
-            cmd.Parameters.AddWithValue("@DATE_JOINED", member.dateJoined);
-            cmd.Parameters.AddWithValue("@DATE_LAST_ACTIVATED", member.dateLastActivated);
-            cmd.Parameters.AddWithValue("@ADDRESS", member.address); cmd.Parameters.AddWithValue("@CITY", member.city);
-            cmd.Parameters.AddWithValue("@PROVINCE", member.province); cmd.Parameters.AddWithValue("@REGION", member.region);
-            cmd.Parameters.AddWithValue("@POSTAL_CODE", member.postalCode); cmd.Parameters.AddWithValue("@WEBSITE", member.website);
-            cmd.Parameters.AddWithValue("@EMAIL_ADDRESS", member.emailAddress); cmd.Parameters.AddWithValue("@PHONE_NUMBER", member.phoneNumber);
-            cmd.Parameters.AddWithValue("@FAX", member.faxNumber); cmd.Parameters.AddWithValue("@CONTACT_PERSON", member.contactPerson);
+                cmd.Parameters.AddWithValue("@ID_MEMBER", member.id);
+                cmd.Parameters.AddWithValue("@ACCOUNT_NUMBER", member.accountNumber);
+                cmd.Parameters.AddWithValue("@NAME", member.name);
+                cmd.Parameters.AddWithValue("@DOCTOR", member.doctor);
+                cmd.Parameters.AddWithValue("@DATE_JOINED", member.dateJoined);
+                cmd.Parameters.AddWithValue("@DATE_LAST_ACTIVATED", member.dateLastActivated);
+                cmd.Parameters.AddWithValue("@ADDRESS", member.address); cmd.Parameters.AddWithValue("@CITY", member.city);
+                cmd.Parameters.AddWithValue("@PROVINCE", member.province); cmd.Parameters.AddWithValue("@REGION", member.region);
+                cmd.Parameters.AddWithValue("@POSTAL_CODE", member.postalCode); cmd.Parameters.AddWithValue("@WEBSITE", member.website);
+                cmd.Parameters.AddWithValue("@EMAIL_ADDRESS", member.emailAddress); cmd.Parameters.AddWithValue("@PHONE_NUMBER", member.phoneNumber);
+                cmd.Parameters.AddWithValue("@FAX", member.faxNumber); cmd.Parameters.AddWithValue("@CONTACT_PERSON", member.contactPerson);
 
-            try
-            {
-                sqlConn.Open();
-                cmd.ExecuteNonQuery();
-                return "The Member has been updated sucessfully.";
+                try
+                {
+                    sqlConn.Open();
+                    cmd.ExecuteNonQuery();
+                    return "The Member has been updated sucessfully.";
+                }
+                catch (Exception e)
+                {
+                    return e.Message.ToString();
+                }
+                finally
+                {
+                    sqlConn.Close();
+                }
+
             }
-            catch (Exception e)
+            else
             {
-                return e.Message.ToString();
+                SqlCommand cmd = new SqlCommand(string.Format(@"UPDATE MEMBER 
+                SET ID_GROUP=@ID_GROUP, ACCOUNT_NUMBER=@ACCOUNT_NUMBER, NAME=@NAME, DOCTOR=@DOCTOR, 
+                DATE_JOINED=@DATE_JOINED, DATE_LAST_ACTIVATED=@DATE_LAST_ACTIVATED, ADDRESS=@ADDRESS, CITY=@CITY, PROVINCE=@PROVINCE, REGION=@REGION, 
+                POSTAL_CODE=@POSTAL_CODE, WEBSITE=@WEBSITE, EMAIL_ADDRESS=@EMAIL_ADDRESS, 
+                PHONE_NUMBER=@PHONE_NUMBER, FAX=@FAX, CONTACT_PERSON=@CONTACT_PERSON 
+                WHERE ID_MEMBER=@ID_MEMBER"), sqlConn);
+
+                cmd.Parameters.AddWithValue("@ID_MEMBER", member.id);
+                cmd.Parameters.AddWithValue("@ID_GROUP", member.idGroup);
+                cmd.Parameters.AddWithValue("@ACCOUNT_NUMBER", member.accountNumber);
+                cmd.Parameters.AddWithValue("@NAME", member.name);
+                cmd.Parameters.AddWithValue("@DOCTOR", member.doctor);
+                cmd.Parameters.AddWithValue("@DATE_JOINED", member.dateJoined);
+                cmd.Parameters.AddWithValue("@DATE_LAST_ACTIVATED", member.dateLastActivated);
+                cmd.Parameters.AddWithValue("@ADDRESS", member.address); cmd.Parameters.AddWithValue("@CITY", member.city);
+                cmd.Parameters.AddWithValue("@PROVINCE", member.province); cmd.Parameters.AddWithValue("@REGION", member.region);
+                cmd.Parameters.AddWithValue("@POSTAL_CODE", member.postalCode); cmd.Parameters.AddWithValue("@WEBSITE", member.website);
+                cmd.Parameters.AddWithValue("@EMAIL_ADDRESS", member.emailAddress); cmd.Parameters.AddWithValue("@PHONE_NUMBER", member.phoneNumber);
+                cmd.Parameters.AddWithValue("@FAX", member.faxNumber); cmd.Parameters.AddWithValue("@CONTACT_PERSON", member.contactPerson);
+
+                try
+                {
+                    sqlConn.Open();
+                    cmd.ExecuteNonQuery();
+                    return "The Member has been updated sucessfully.";
+                }
+                catch (Exception e)
+                {
+                    return e.Message.ToString();
+                }
+                finally
+                {
+                    sqlConn.Close();
+                }
             }
-            finally
-            {
-                sqlConn.Close();
-            }
+
         }
 
         public string removeMember(Member member)
@@ -218,7 +259,7 @@ namespace Vetallis.DAO
             dt.Clear();
 
             SqlCommand cmd = new SqlCommand(string.Format(
-            @"SELECT ACCOUNT_NUMBER FROM MEMBER WHERE ACCOUNT_NUMBER=@ACCOUNT_NUMBER"), sqlConn);
+            @"SELECT ID_MEMBER, ACCOUNT_NUMBER FROM MEMBER WHERE ACCOUNT_NUMBER=@ACCOUNT_NUMBER"), sqlConn);
 
             cmd.Parameters.AddWithValue("@ACCOUNT_NUMBER", accountNumber);
 
@@ -250,5 +291,6 @@ namespace Vetallis.DAO
             }
 
         }
+
     }
 }

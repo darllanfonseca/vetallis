@@ -12,7 +12,7 @@ namespace Vetallis.View.MemberView
         {
             if (!this.Page.User.Identity.IsAuthenticated)
             {
-                FormsAuthentication.RedirectToLoginPage();               
+                FormsAuthentication.RedirectToLoginPage();
             }
 
             string userName = "User";
@@ -55,7 +55,7 @@ namespace Vetallis.View.MemberView
                 case "ON":
                     region.Text = "CENTRAL";
                     break;
-            }           
+            }
         }
 
         protected void clearAllFields(object sender, EventArgs e)
@@ -98,36 +98,44 @@ namespace Vetallis.View.MemberView
         {
             MemberDAO memberDAO = new MemberDAO();
 
-            if (memberDAO.alreadyExists(this.accountNumber.Text))
+            if (this.accountNumber.Text.Equals("") || this.memberName.Text.Equals("") ||
+                this.datepicker.Text.Equals("") || this.city.Text.Equals("") ||
+                this.province.SelectedValue.Equals("Select...") || this.postalCode.Text.Equals(""))
             {
-                this.errorMsg.Text = "This account number already exists. Please choose another one.";
+                this.errorMsg.Text = "One or more of the required fields are blank. Please review all the fields before continuing.";
             }
             else
             {
-                member.accountNumber = this.accountNumber.Text.Trim();
-                member.doctor = this.doctorName.Text.Trim();
-                member.name = this.memberName.Text.Trim();
-                member.dateJoined = this.datepicker.Text;
-                member.address = this.address.Text.Trim();
-                member.city = this.city.Text.Trim();
-                member.province = this.province.SelectedValue;
-                member.region = this.region.Text;
-                member.postalCode = this.postalCode.Text.ToUpper();
-                member.website = this.website.Text.Trim();
-                member.emailAddress = this.emailAddress.Text.Trim();
-                member.phoneNumber = this.phoneNumber.Text;
-                member.faxNumber = this.faxNumber.Text;
-                member.contactPerson = this.contactPerson.Text.Trim();
-                member.dateModified = System.DateTime.Today.ToShortDateString();
-                member.dateCreated = System.DateTime.Today.ToShortDateString();
-                member.modifiedBy = this.Page.User.Identity.Name.ToString();
-                member.dateLastActivated = System.DateTime.Today.ToShortDateString();
+                if (memberDAO.alreadyExists(this.accountNumber.Text))
+                {
+                    this.errorMsg.Text = "This account number already exists. Please choose another one.";
+                }
+                else
+                {
+                    member.accountNumber = this.accountNumber.Text.Trim();
+                    member.doctor = this.doctorName.Text.Trim();
+                    member.name = this.memberName.Text.Trim();
+                    member.dateJoined = this.datepicker.Text;
+                    member.address = this.address.Text.Trim();
+                    member.city = this.city.Text.Trim();
+                    member.province = this.province.SelectedValue;
+                    member.region = this.region.Text;
+                    member.postalCode = this.postalCode.Text.ToUpper();
+                    member.website = this.website.Text.Trim();
+                    member.emailAddress = this.emailAddress.Text.Trim();
+                    member.phoneNumber = this.phoneNumber.Text;
+                    member.faxNumber = this.faxNumber.Text;
+                    member.contactPerson = this.contactPerson.Text.Trim();
+                    member.dateModified = System.DateTime.Today.ToShortDateString();
+                    member.dateCreated = System.DateTime.Today.ToShortDateString();
+                    member.modifiedBy = this.Page.User.Identity.Name.ToString();
+                    member.dateLastActivated = System.DateTime.Today.ToShortDateString();
 
-                this.insertNewMemberForm.Visible = false;
-                this.response.Visible = true;
-                this.responseText.Text = memberDAO.insertNewMember(member);
+                    this.insertNewMemberForm.Visible = false;
+                    this.response.Visible = true;
+                    this.responseText.Text = memberDAO.insertNewMember(member);
+                }
             }
-            
         }
 
         protected void returnToMainPage(object sender, EventArgs e)
