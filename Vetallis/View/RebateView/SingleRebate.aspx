@@ -30,7 +30,7 @@
                     <div class="fieldSection" style="position:absolute; width: 682px; left: 50%; margin-left: -341px;">
                         <div style="position: absolute; top: 5px; left: 5px; overflow: scroll; width: 300px; height: 400px; border: 1px solid #d0d0d0;">
                             <b>Select a Member</b> <br />
-                            <asp:GridView ID="searchMembers" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID_MEMBER" DataSourceID="memberDataSource">
+                            <asp:GridView ID="searchMembers" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID_MEMBER" DataSourceID="memberDataSource" OnSelectedIndexChanged="loadSelectedMember">
                                 <FooterStyle CssClass="GridViewFooterStyle" />
                                 <RowStyle CssClass="GridViewRowStyle" />    
                                 <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />
@@ -59,7 +59,7 @@
                         </div>
                         <div style="position: absolute; top: 5px; left: 310px; width: 200px; overflow: scroll; height:400px; border: 1px solid #d0d0d0;">
                             <b>Select a Partner</b> <br />
-                            <asp:GridView ID="searchPartners" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID_PARTNER" DataSourceID="partnerDataSource">
+                            <asp:GridView ID="searchPartners" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID_PARTNER" DataSourceID="partnerDataSource" OnSelectedIndexChanged="loadSelectedPartner">
                                 <FooterStyle CssClass="GridViewFooterStyle" />
                                 <RowStyle CssClass="GridViewRowStyle" />    
                                 <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />

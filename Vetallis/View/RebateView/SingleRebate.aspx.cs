@@ -41,14 +41,11 @@ namespace Vetallis.View.RebateView
         }
 
         protected void loadChosenItems(object sender, EventArgs e)
-        {
-            this.selectedMember.Text = this.searchMembers.SelectedRow.Cells[2].Text;
-            this.ID_SELECTED_MEMBER.Text = this.searchMembers.SelectedRow.Cells[6].Text;
-            this.selectedPartner.Text = this.searchPartners.SelectedRow.Cells[1].Text;
-            this.ID_SELECTED_PARTNER.Text = this.searchPartners.SelectedRow.Cells[3].Text;
+        {            
             this.selectedYear.Text = this.selectYear.SelectedValue;
             this.selectedCategory.Text = this.selectCategory.SelectedValue;
             this.selectedAmount.Text = this.rebateAmount.Text;
+
             if (this.isDeliveredByPartner.Checked)
             {
                 this.selectedDeliveredByPartner.Text = "Partner";
@@ -57,6 +54,18 @@ namespace Vetallis.View.RebateView
             {
                 this.selectedDeliveredByPartner.Text = "Vet Alliance";
             }
+        }
+
+        protected void loadSelectedMember(object sender, EventArgs e)
+        { 
+            this.selectedMember.Text = this.searchMembers.SelectedRow.Cells[2].Text;
+            this.ID_SELECTED_MEMBER.Text = this.searchMembers.SelectedRow.Cells[6].Text;
+        }
+
+        protected void loadSelectedPartner(object sender, EventArgs e)
+        {
+            this.selectedPartner.Text = this.searchPartners.SelectedRow.Cells[1].Text;
+            this.ID_SELECTED_PARTNER.Text = this.searchPartners.SelectedRow.Cells[3].Text;
         }
 
         protected void insertRebateData(object sender, EventArgs e)

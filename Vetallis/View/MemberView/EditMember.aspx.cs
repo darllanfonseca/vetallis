@@ -54,6 +54,11 @@ namespace Vetallis.View.MemberView
             {
                 this.contactPerson.Text = "";
             }
+            if (!this.datepicker.Text.Equals(""))
+            {
+                this.datepicker.Text = this.datepicker.Text.Substring(0, 10);
+            }
+            
         }
 
         protected void changeRegion(object sender, EventArgs e)
