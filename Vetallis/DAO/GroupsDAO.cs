@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -83,7 +84,7 @@ namespace Vetallis.DAO
                 query += ", ID_SIXTH_MEMBER";
             }
 
-            query += ", DATE_MODIFIED, MODIFIED_BY, DATE_CREATED)";
+            query += ", DATE_MODIFIED, MODIFIED_BY, DATE_CREATED, STATUS)";
             query += " VALUES (@ID_MAIN_MEMBER, @GROUP_NAME";
 
             if (!group.idSecond.Equals(""))
@@ -107,7 +108,7 @@ namespace Vetallis.DAO
                 query += ", @ID_SIXTH_MEMBER";
             }
 
-            query += ", @DATE_MODIFIED, @MODIFIED_BY, @DATE_CREATED)";
+            query += ", @DATE_MODIFIED, @MODIFIED_BY, @DATE_CREATED, @STATUS)";
 
             SqlCommand cmd = new SqlCommand(query, sqlConn);
 
@@ -138,6 +139,7 @@ namespace Vetallis.DAO
             cmd.Parameters.AddWithValue("@DATE_MODIFIED", System.DateTime.Now);
             cmd.Parameters.AddWithValue("@MODIFIED_BY", userName);
             cmd.Parameters.AddWithValue("@DATE_CREATED", System.DateTime.Now);
+            cmd.Parameters.AddWithValue("@STATUS", "ACTIVE");
 
             try
             {
@@ -164,19 +166,19 @@ namespace Vetallis.DAO
 
             string query = "UPDATE GROUPS SET ID_MAIN_MEMBER=@ID_MAIN_MEMBER, GROUP_NAME=@GROUP_NAME, ID_SECOND_MEMBER=@ID_SECOND_MEMBER";
 
-            if (!group.idThird.Equals(""))
+            if (group.idThird != null)
             {
                 query += ", ID_THIRD_MEMBER=@ID_THIRD_MEMBER";
             }
-            if (!group.idFourth.Equals(""))
+            if (group.idFourth != null)
             {
                 query += ", ID_FOURTH_MEMBER=@ID_FOURTH_MEMBER";
             }
-            if (!group.idFith.Equals(""))
+            if (group.idFith != null)
             {
                 query += ", ID_FITH_MEMBER=@ID_FITH_MEMBER";
             }
-            if (!group.idSixth.Equals(""))
+            if (group.idSixth != null)
             {
                 query += ", ID_SIXTH_MEMBER=@ID_SIXTH_MEMBER";
             }
@@ -190,19 +192,19 @@ namespace Vetallis.DAO
             cmd.Parameters.AddWithValue("@GROUP_NAME", group.name);
             cmd.Parameters.AddWithValue("@ID_SECOND_MEMBER", group.idSecond);
 
-            if (!group.idThird.Equals(""))
+            if (group.idThird != null)
             {
                 cmd.Parameters.AddWithValue("@ID_THIRD_MEMBER", group.idThird);
             }
-            if (!group.idFourth.Equals(""))
+            if (group.idFourth != null)
             {
                 cmd.Parameters.AddWithValue("@ID_FOURTH_MEMBER", group.idThird);
             }
-            if (!group.idFith.Equals(""))
+            if (group.idFith != null)
             {
                 cmd.Parameters.AddWithValue("@ID_FITH_MEMBER", group.idThird);
             }
-            if (!group.idSixth.Equals(""))
+            if (group.idSixth != null)
             {
                 cmd.Parameters.AddWithValue("@ID_SIXTH_MEMBER", group.idThird);
             }
@@ -252,5 +254,149 @@ namespace Vetallis.DAO
             }
 
         }
+
+        public List<Groups> getAllGroups()
+        {
+            List<Groups> allGroups = new List<Groups>();
+
+            sqlConn.ConnectionString = conn;
+            DataTable dt = new DataTable();
+            dt.Clear();
+
+            //---------------------------------------------------------------------------
+            //SELECT SQL, using the ID passed as an argument
+            SqlCommand cmd = new SqlCommand(string.Format(
+            @"SELECT * FROM GROUPS"), sqlConn);
+
+            try
+            {
+                sqlConn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+
+                    for(int i=0; i<=dt.Rows.Count; i++){
+                        Groups group1 = new Groups();
+                        DataRow row = dt.Rows[i];
+                        group1.id = row[0].ToString();
+                        group1.idMainMember = row[1].ToString();
+                        group1.name = row[2].ToString();
+                        group1.idSecond = row[3].ToString();
+                        group1.idThird = row[4].ToString();
+                        group1.idFourth = row[5].ToString();
+                        group1.idFith = row[6].ToString();
+                        group1.idSixth = row[7].ToString();
+
+                        allGroups.Add(group1);
+                    }
+                }
+
+                reader.Close();
+
+            }
+            catch (Exception e)
+            {
+                string error = e.Message.ToString();
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+
+            //---------------------------------------------------------------------
+            try
+            {
+                sqlConn.Open();
+
+                foreach (Groups group in allGroups)
+                {
+                    //---MAIN MEMBER
+                    cmd = new SqlCommand(string.Format(
+                    @"SELECT MEMBER.NAME FROM MEMBER WHERE MEMBER.ID_MEMBER = @ID_MEMBER"), sqlConn);
+                    cmd.Parameters.AddWithValue("@ID_MEMBER", group.idMainMember);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    if(reader.HasRows)
+                    group.mainMemberName = reader.GetValue(0).ToString();
+
+                    reader.Close();
+                    //---SECOND MEMBER
+                    cmd = new SqlCommand(string.Format(
+                    @"SELECT MEMBER.NAME FROM MEMBER WHERE MEMBER.ID_MEMBER = @ID_MEMBER"), sqlConn);
+                    cmd.Parameters.AddWithValue("@ID_MEMBER", group.idSecond);
+
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    if (reader.HasRows)
+                    group.secondMemberName = reader.GetValue(0).ToString();
+
+                    reader.Close();
+                    //---THIRD MEMBER
+                    cmd = new SqlCommand(string.Format(
+                    @"SELECT MEMBER.NAME FROM MEMBER WHERE MEMBER.ID_MEMBER = @ID_MEMBER"), sqlConn);
+                    cmd.Parameters.AddWithValue("@ID_MEMBER", group.idThird);
+
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    if (reader.HasRows)
+                    group.thirdMemberName = reader.GetValue(0).ToString();
+
+                    reader.Close();
+                    //---FOURTH MEMBER
+                    cmd = new SqlCommand(string.Format(
+                    @"SELECT MEMBER.NAME FROM MEMBER WHERE MEMBER.ID_MEMBER = @ID_MEMBER"), sqlConn);
+                    cmd.Parameters.AddWithValue("@ID_MEMBER", group.idFourth);
+
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    if (reader.HasRows)
+                    group.fourthMemberName = reader.GetValue(0).ToString();
+
+                    reader.Close();
+                    //---FITH MEMBER
+                    cmd = new SqlCommand(string.Format(
+                    @"SELECT MEMBER.NAME FROM MEMBER WHERE MEMBER.ID_MEMBER = @ID_MEMBER"), sqlConn);
+                    cmd.Parameters.AddWithValue("@ID_MEMBER", group.idFith);
+
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    if (reader.HasRows)
+                    group.fithMemberName = reader.GetValue(0).ToString();
+
+                    reader.Close();
+                    //---SIXTH MEMBER
+                    cmd = new SqlCommand(string.Format(
+                    @"SELECT MEMBER.NAME FROM MEMBER WHERE MEMBER.ID_MEMBER = @ID_MEMBER"), sqlConn);
+                    cmd.Parameters.AddWithValue("@ID_MEMBER", group.idSixth);
+
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    if (reader.HasRows)
+                    group.sixthMemberName = reader.GetValue(0).ToString();
+
+                    reader.Close();
+                }
+                return allGroups;
+            }
+            catch (Exception Exception)
+            {
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+            return allGroups;
+        }
     }
+
 }

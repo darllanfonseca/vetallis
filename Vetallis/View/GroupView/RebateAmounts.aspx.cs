@@ -31,11 +31,13 @@ namespace Vetallis.View.GroupView
 
         protected void exportResults(object sender, EventArgs e)
         {
-            string query = @"SELECT GROUPS.GROUP_NAME, PARTNER.NAME, MEMBER.NAME, REBATE.QUANTITY FROM 
-            GROUPS JOIN REBATE ON REBATE.ID_MEMBER = GROUPS.ID_MAIN_MEMBER OR REBATE.ID_MEMBER = 
-            GROUPS.ID_SECOND_MEMBER OR REBATE.ID_MEMBER = GROUPS.ID_THIRD_MEMBER JOIN PARTNER ON 
-            REBATE.ID_PARTNER = PARTNER.ID_PARTNER JOIN MEMBER ON REBATE.ID_MEMBER = 
-            MEMBER.ID_MEMBER WHERE GROUPS.ID_GROUP = " + this.ID_Group.Text + " AND YEAR = '" + this.rebateYear.SelectedValue + "-01-01'";
+            string query = @"SELECT GROUPS.GROUP_NAME AS 'Group Name', PARTNER.NAME AS Partner, MEMBER.NAME AS Member, 
+            REBATE.QUANTITY AS Amount FROM GROUPS JOIN REBATE ON REBATE.ID_MEMBER = GROUPS.ID_MAIN_MEMBER OR REBATE.ID_MEMBER = 
+            GROUPS.ID_SECOND_MEMBER OR REBATE.ID_MEMBER = GROUPS.ID_THIRD_MEMBER OR REBATE.ID_MEMBER = GROUPS.ID_FOURTH_MEMBER 
+            OR REBATE.ID_MEMBER = GROUPS.ID_FITH_MEMBER OR REBATE.ID_MEMBER = GROUPS.ID_SIXTH_MEMBER JOIN PARTNER ON 
+            REBATE.ID_PARTNER = PARTNER.ID_PARTNER JOIN MEMBER ON REBATE.ID_MEMBER = MEMBER.ID_MEMBER WHERE GROUPS.ID_GROUP = " 
+            + this.ID_Group.Text + " AND YEAR = '" + this.rebateYear.SelectedValue + "-01-01'";
+
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Amounts.xlsx", Response);
         }

@@ -40,7 +40,6 @@ namespace Vetallis.DAO
             }
         }
 
-        //TO DO
         public string insertSingleRebateData(Rebate rebate) {
             string conn = ConfigurationManager.ConnectionStrings["Conn"].ToString();
             SqlConnection sqlConn = new SqlConnection();

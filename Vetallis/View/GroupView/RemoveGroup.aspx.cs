@@ -38,6 +38,8 @@ namespace Vetallis.View.GroupView
         {
             this.chooseGroupForm.Visible = true;
             this.response.Visible = false;
+            this.groupNameChosen.Text = "";
+            this.mainMemberChosen.Text = "";
             clearAllFields();
         }
 

@@ -31,6 +31,33 @@ namespace Vetallis.View.RebateView {
         protected global::System.Web.UI.WebControls.Label timeAndDate;
         
         /// <summary>
+        /// uploadFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload uploadFile;
+        
+        /// <summary>
+        /// uploadFileBtt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button uploadFileBtt;
+        
+        /// <summary>
+        /// cancelBtt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancelBtt;
+        
+        /// <summary>
         /// partnerList control.
         /// </summary>
         /// <remarks>
@@ -58,31 +85,22 @@ namespace Vetallis.View.RebateView {
         protected global::System.Web.UI.WebControls.DropDownList selectYear;
         
         /// <summary>
-        /// uploadFile control.
+        /// errorDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload uploadFile;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorDiv;
         
         /// <summary>
-        /// uploadFileBtt control.
+        /// errorMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button uploadFileBtt;
-        
-        /// <summary>
-        /// cancelBtt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancelBtt;
+        protected global::System.Web.UI.WebControls.Label errorMsg;
         
         /// <summary>
         /// responseForm control.

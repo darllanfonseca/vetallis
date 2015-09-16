@@ -45,7 +45,7 @@
                         
 
                         <div runat="server" visible="true" id="selectMember" style="position: absolute; width: 330px; height: 340px; top: 20px; left: 430px; overflow: scroll; border: solid 1px #d0d0d0;">
-                            <asp:GridView CssClass="GridViewStyle" ID="searchGroups" runat="server" AllowSorting="True" OnSelectedIndexChanged="loadSelectedGroup" AutoGenerateColumns="False" DataKeyNames="ID_GROUP" DataSourceID="searchMainGroup">
+                            <asp:GridView CssClass="GridViewStyle" ID="searchGroups" runat="server" AllowSorting="True" OnSelectedIndexChanged="loadSelectedGroup" AutoGenerateColumns="True" AutoGenerateSelectButton="true">
                                 <FooterStyle CssClass="GridViewFooterStyle" />
                                 <RowStyle CssClass="GridViewRowStyle" />
                                 <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />
@@ -53,15 +53,7 @@
                                 <AlternatingRowStyle CssClass="GridViewAlternatingRowStyle" />
                                 <HeaderStyle CssClass="GridViewHeaderStyle" />
                                 <RowStyle Wrap="False" />
-                                <Columns>
-                                    <asp:CommandField ShowSelectButton="True" />
-                                    <asp:BoundField DataField="NAME" HeaderText="Name" SortExpression="NAME" />
-                                    <asp:BoundField DataField="MAIN_MEMBER" HeaderText="Main Member" SortExpression="MAIN_MEMBER" />
-                                    <asp:BoundField DataField="ID_GROUP" HeaderText="Group ID" SortExpression="ID_GROUP" />
-                                    <asp:BoundField DataField="ID_MAIN_MEMBER" HeaderText="Main Member ID" SortExpression="ID_MAIN_MEMBER" />
-                                </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="searchMainGroup" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT GROUPS.ID_GROUP, GROUPS.GROUP_NAME AS NAME, GROUPS.ID_MAIN_MEMBER, MEMBER.NAME AS MAIN_MEMBER FROM MEMBER JOIN GROUPS ON GROUPS.ID_MAIN_MEMBER = MEMBER.ID_MEMBER"></asp:SqlDataSource>
                         </div>
 
 
@@ -106,9 +98,8 @@
                         <asp:TextBox runat="server" Enabled="false" id="mainMember" Width="350px">                           
                         </asp:TextBox>
                         <asp:Label runat="server" ID="idMainMember" Visible="false"></asp:Label>
-                        <asp:Button runat="server" Width="90px" ID="addSecondMember" OnClick="addMember" Text="Add Second"/>
                     </div>
-                    <div runat="server" id="secondMemberDiv" visible="false" style="text-align:left; position: absolute; top: 120px; left: 15px; width: 450px; height: 50px;">
+                    <div runat="server" id="secondMemberDiv" style="text-align:left; position: absolute; top: 120px; left: 15px; width: 450px; height: 50px;">
                         <b>Second Member</b>
                         <asp:TextBox runat="server" id="secondMember" Enabled="false" Width="350px">                           
                         </asp:TextBox>

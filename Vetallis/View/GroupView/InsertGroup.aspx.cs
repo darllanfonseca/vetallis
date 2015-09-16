@@ -198,6 +198,7 @@ namespace Vetallis.View.GroupView
         {
             this.insertGroupForm.Visible = true;
             this.response.Visible = false;
+            this.searchMembers.SelectedIndex = -1;
             clearAllFields();
         }
 

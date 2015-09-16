@@ -85,15 +85,6 @@ namespace Vetallis.View.GroupView {
         protected global::System.Web.UI.WebControls.GridView searchGroups;
         
         /// <summary>
-        /// searchMainGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource searchMainGroup;
-        
-        /// <summary>
         /// clearFields control.
         /// </summary>
         /// <remarks>
@@ -164,15 +155,6 @@ namespace Vetallis.View.GroupView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label idMainMember;
-        
-        /// <summary>
-        /// addSecondMember control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addSecondMember;
         
         /// <summary>
         /// secondMemberDiv control.

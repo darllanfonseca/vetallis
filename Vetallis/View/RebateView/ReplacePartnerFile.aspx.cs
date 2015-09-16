@@ -27,8 +27,7 @@ namespace Vetallis.View.RebateView
             }
 
             this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
-
-
+            
         }
 
         protected void uploadExcelFile(object sender, EventArgs e)
@@ -61,9 +60,8 @@ namespace Vetallis.View.RebateView
             }
             catch (Exception exception)
             {
-                this.responseForm.Visible = true;
-                this.uploadForm.Visible = false;
-                this.response.Text = "Some error has occured. Please verify the file. Message from Server: " + exception.Message;
+                this.errorDiv.Visible = true;
+                this.errorMsg.Text = "Some error has occured. Please verify the file. Message from Server: " + exception.Message;
             }
 
             RebateDAO rebateDAO = new RebateDAO();
@@ -71,9 +69,8 @@ namespace Vetallis.View.RebateView
 
             if (result.Equals("error"))
             {
-                this.responseForm.Visible = true;
-                this.uploadForm.Visible = false;
-                this.response.Text = "Some error has occured. Please verify the file/the Year.";
+                this.errorDiv.Visible = true;
+                this.errorMsg.Text = "Some error has occured. Please verify the file/the Year.";
             }
             else
             {
@@ -131,9 +128,8 @@ namespace Vetallis.View.RebateView
                 }
                 catch (Exception excep)
                 {
-                    this.responseForm.Visible = true;
-                    this.uploadForm.Visible = false;
-                    this.response.Text = "Some error has occured. Please verify the file. Message from Server: " + excep.Message;
+                    this.errorDiv.Visible = true;
+                    this.errorMsg.Text = "Some error has occured. Please verify the file. Message from Server: " + excep.Message;
                 }
 
             }

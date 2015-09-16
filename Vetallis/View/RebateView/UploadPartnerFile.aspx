@@ -22,15 +22,39 @@
                 </div>
                 <div class="section">
                     <div id="fieldSection">
-                        <div runat="server" style="position: absolute; text-align: left; padding-left: 10px; padding-top: 20px; width: 200px; height: 200px; top: 50%; left: 50%; margin-left: -100px; margin-top: -100px;">
-                            <asp:FileUpload ID="uploadFile" runat="server"/>
-                            <br />
-                            <br />
-                            <asp:Button ID="uploadFileBtt" runat="server" OnClick="uploadExcelFile" Text="Upload File" />
-                            <div runat="server" style="position: absolute; bottom:20px; right: 10px;">
+                        <div runat="server" style="position: absolute; text-align: left; padding-left: 10px; border: solid white 1px; padding-top: 20px; width: 200px; height: 120px; top: 60%; left: 50%; margin-left: -100px; margin-top: -60px;">
+                            <div runat="server" style="position:absolute; top:20px; left:20px; height:100px;">
+                                <asp:FileUpload ID="uploadFile" runat="server"/>
+                            </div>
+                            <div runat="server" style="position:absolute; top: 80px; left: 20px; height: 50px;">
+                                <asp:Button ID="uploadFileBtt" runat="server" OnClick="uploadExcelFile" Text="Upload File" />
                                 <asp:Button runat="server" ID="cancelBtt" OnClick="returnMainPage" Text="Cancel" />
                             </div>
+                            
+                                
                         </div>  
+                        <div runat="server" style="position:absolute; height:120px; width:200px; left: 50%; top: 25%; margin-top: -60px; margin-left: -100px; border: white solid 1px;">
+                            <label>Select the Partner</label>
+                            <br />
+                            <asp:DropDownList runat="server" ID="partnerList" DataSourceID="Teste1" DataTextField="Name" DataValueField="ID_PARTNER">
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="Teste1" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT ID_PARTNER, NAME FROM [PARTNER] ORDER BY NAME ASC"></asp:SqlDataSource>
+                            <br />
+                            <br />
+                            <label>Select the Year</label>
+                            <br />
+                            <asp:DropDownList runat="server" ID="selectYear">
+                                <asp:ListItem Text="Select the Year..."></asp:ListItem>
+                                <asp:ListItem Text="2015"></asp:ListItem>
+                                <asp:ListItem Text="2014"></asp:ListItem>
+                                <asp:ListItem Text="2013"></asp:ListItem>
+                                <asp:ListItem Text="2012"></asp:ListItem>
+                                <asp:ListItem Text="2011"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                        <div runat="server" id="errorDiv" visible="true" style="position:absolute; height:50px; color:red; text-align:left; font-size:13px; width: 300px; bottom:30px; left: 50%; margin-left: -150px; border: white solid 1px;">
+                            <asp:Label runat="server" ID="errorMsg"/>
+                        </div>
                     </div>
                 </div>
             </div>

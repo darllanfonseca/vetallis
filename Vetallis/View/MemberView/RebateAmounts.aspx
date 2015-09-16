@@ -64,10 +64,6 @@
                         </asp:DropDownList>
                         </div>
 
-                        <div style="text-align: left; position: absolute; top: 230px; left: 400px; width: 200px; height: 50px;">
-                            <asp:CheckBox runat="server" ID="includeCE" Text="Include CE Amounts." />
-                        </div>
-
                         <div style="position: absolute; top: 400px; right: 15px; width: 150px; height: 50px;">
                             <asp:Button Height="25px" Width="150px" Font-Names="Calibri" Font-Size="Medium" runat="server" ID="cancel" Text="Cancel" OnClick="returnToMainPage" AutoPostBack="True" />
                         </div>

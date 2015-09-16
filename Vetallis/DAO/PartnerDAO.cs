@@ -191,5 +191,39 @@ namespace Vetallis.DAO
                 sqlConn.Close();
             }
         }
+
+        public bool alreadyExists(string partnerId, string year)
+        {
+            sqlConn.ConnectionString = conn;
+            DataTable dt = new DataTable();
+            dt.Clear();
+
+            SqlCommand cmd = new SqlCommand(string.Format(
+            @"SELECT ID_PARTNER, YEAR FROM REBATE WHERE ID_PARTNER=@PARTNER AND YEAR=@YEAR"), sqlConn);
+
+            cmd.Parameters.AddWithValue("@PARTNER", partnerId);
+            cmd.Parameters.AddWithValue("@YEAR", year);
+
+            try
+            {
+                sqlConn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                if (!reader.HasRows)
+                {
+                    return false;
+                }else
+                {
+                    return true;
+                }
+            }
+            finally
+            {
+                sqlConn.Close();
+
+            }
+        }
     }
 }

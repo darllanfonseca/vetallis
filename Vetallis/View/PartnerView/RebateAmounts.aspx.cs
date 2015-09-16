@@ -45,7 +45,7 @@ namespace Vetallis.View.PartnerView
         {
             string partnerId = this.ID_PARTNER.Text;
 
-            string query = @"SELECT PARTNER.NAME AS 'Partner Name', MEMBER.NAME AS 'Member Name', 
+            string query = @"SELECT PARTNER.NAME AS 'Partner Name', MEMBER.NAME AS 'Member Name', MEMBER.ACCOUNT_NUMBER AS 'Account #',
             REBATE.QUANTITY AS 'Rebate Amount',  REBATE.YEAR AS 'Year', REBATE.CATEGORY AS 'Category' 
             FROM PARTNER JOIN REBATE ON REBATE.ID_PARTNER = PARTNER.ID_PARTNER JOIN MEMBER ON 
             REBATE.ID_MEMBER = MEMBER.ID_MEMBER WHERE PARTNER.ID_PARTNER = '" + partnerId + 

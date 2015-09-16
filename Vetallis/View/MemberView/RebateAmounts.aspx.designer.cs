@@ -76,15 +76,6 @@ namespace Vetallis.View.MemberView {
         protected global::System.Web.UI.WebControls.DropDownList rebateYear;
         
         /// <summary>
-        /// includeCE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox includeCE;
-        
-        /// <summary>
         /// cancel control.
         /// </summary>
         /// <remarks>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web.Security;
+using Vetallis.Business;
+using Vetallis.DAO;
 
 namespace Vetallis.View.RebateView
 {
@@ -21,6 +23,47 @@ namespace Vetallis.View.RebateView
             }
 
             this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
+        }
+
+        protected void loadSelectedMember(object sender, EventArgs e)
+        {
+            this.memberName.Text = this.searchMembers.SelectedRow.Cells[2].Text;
+            this.memberID.Text = this.searchMembers.SelectedRow.Cells[6].Text;
+        }
+
+        protected void insertCEData(object sender, EventArgs e)
+        {
+            //--------CONSISTENCY-----------------
+
+            if (this.memberID.Text.Equals("") || this.datepicker.Text.Equals("") || this.numberOfSeats.Text.Equals("") || this.selectYear.SelectedIndex == 0)
+            {
+                this.errorDiv.Visible = true;
+                this.response.Visible = false;
+                this.errorMsg.Text = "Please fill all required fields.";
+            }
+
+            //------------------------------------
+
+            else
+            {
+                string user = Page.User.Identity.Name;
+                CEDAO ceDAO = new CEDAO();
+                CE ce = new CE();
+
+                ce.memberID = this.memberID.Text;
+                ce.numberOfSeats = this.numberOfSeats.Text;
+                ce.year = this.selectYear.Text + "-01-01";
+                ce.eventDate = this.datepicker.Text;
+
+                this.response.Visible = true;
+                this.errorDiv.Visible = false;
+                this.DBMsg.Text = ceDAO.insertCE(ce, user);
+            }
+        }
+
+        protected void returnToMainPage(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
         }
 
         protected void logout(object sender, EventArgs e)
