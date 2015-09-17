@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\GridView.css" />
+    <Content Include="Img\underConstruction.png" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -92,6 +93,9 @@
     <Content Include="View\GroupView\EditGroup.aspx" />
     <Content Include="View\GroupView\RebateAmounts.aspx" />
     <Content Include="View\GroupView\RemoveGroup.aspx" />
+    <Content Include="View\MembershipView\NotPay.aspx" />
+    <Content Include="View\MembershipView\Pay.aspx" />
+    <Content Include="View\MembershipView\Totals.aspx" />
     <Content Include="View\MemberView\ActivateRemovedMember.aspx" />
     <Content Include="View\MemberView\ExportInactives.aspx" />
     <Content Include="View\MemberView\ExportMemberList.aspx" />
@@ -122,6 +126,7 @@
     <Compile Include="Business\Global.cs" />
     <Compile Include="Business\Groups.cs" />
     <Compile Include="Business\Member.cs" />
+    <Compile Include="Business\Membership.cs" />
     <Compile Include="Business\Partner.cs" />
     <Compile Include="Business\Rebate.cs" />
     <Compile Include="Business\Users.cs" />
@@ -130,6 +135,7 @@
     <Compile Include="DAO\GroupsDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\MemberDAO.cs" />
+    <Compile Include="DAO\MembershipDAO.cs" />
     <Compile Include="DAO\PartnerDAO.cs" />
     <Compile Include="DAO\RebateDAO.cs" />
     <Compile Include="Default.aspx.cs">
@@ -182,6 +188,27 @@
     </Compile>
     <Compile Include="View\GroupView\RemoveGroup.aspx.designer.cs">
       <DependentUpon>RemoveGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\MembershipView\NotPay.aspx.cs">
+      <DependentUpon>NotPay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\MembershipView\NotPay.aspx.designer.cs">
+      <DependentUpon>NotPay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\MembershipView\Pay.aspx.cs">
+      <DependentUpon>Pay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\MembershipView\Pay.aspx.designer.cs">
+      <DependentUpon>Pay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\MembershipView\Totals.aspx.cs">
+      <DependentUpon>Totals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\MembershipView\Totals.aspx.designer.cs">
+      <DependentUpon>Totals.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\MemberView\ActivateRemovedMember.aspx.cs">
       <DependentUpon>ActivateRemovedMember.aspx</DependentUpon>

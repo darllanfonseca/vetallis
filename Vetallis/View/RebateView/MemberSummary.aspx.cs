@@ -28,6 +28,11 @@ namespace Vetallis.View.RebateView
             this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
         }
 
+        protected void returnToMainPage(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
+
         protected void logout(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();

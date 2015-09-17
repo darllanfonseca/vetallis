@@ -23,6 +23,7 @@ namespace Vetallis
             
             this.timeAndDate.Text = "Welcome back " + userName + "! Today is " + DateTime.Today.ToLongDateString();
             this.footer.InnerText = "© " + DateTime.Today.Year.ToString() + " Vet Alliance Inc. - Vet Alliance Information System.";
+
         }
 
         //Exports current list of active members
@@ -57,7 +58,7 @@ namespace Vetallis
             string query = @"SELECT MEMBER.NAME AS Member, PARTNER.NAME AS Partner,
                 REBATE.QUANTITY as Amount, REBATE.YEAR as Year, rebate.CATEGORY as Category, rebate.IS_DELIVERED_BY_PARTNER as Delivered_By_Partner
                 FROM REBATE JOIN MEMBER ON REBATE.ID_MEMBER = MEMBER.ID_MEMBER JOIN PARTNER ON 
-                REBATE.ID_PARTNER = PARTNER.ID_PARTNER WHERE REBATE.YEAR = '2015-01-01' ORDER BY MEMBER.NAME, PARTNER.NAME";
+                REBATE.ID_PARTNER = PARTNER.ID_PARTNER WHERE REBATE.YEAR = '2014-01-01' ORDER BY MEMBER.NAME, PARTNER.NAME";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Sheet.xlsx", Response);            
         }
@@ -219,6 +220,24 @@ namespace Vetallis
         protected void goToViewCETotals(object sender, EventArgs e)
         {
             Response.Redirect("~/View/RebateView/ViewCETotals.aspx");
+        }
+
+
+        //MEMBERSHIP PAGES  
+
+        protected void goToPay(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/MembershipView/Pay.aspx");
+        }
+
+        protected void goToNotPay(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/MembershipView/NotPay.aspx");
+        }
+
+        protected void goToTotals(object sender, EventArgs e)
+        {
+            Response.Redirect("~/View/MembershipView/Totals.aspx");
         }
 
        //------------------------------------------- 
