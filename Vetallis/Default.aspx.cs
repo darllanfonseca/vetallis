@@ -18,7 +18,15 @@ namespace Vetallis
 
             if (name != null && name != "")
             {
-                userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+                if (name.IndexOf(".") >= 0)
+                {
+                    userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+                }
+                else
+                {
+                    userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
+                }
+                
             }
             
             this.timeAndDate.Text = "Welcome back " + userName + "! Today is " + DateTime.Today.ToLongDateString();
@@ -29,8 +37,8 @@ namespace Vetallis
         //Exports current list of active members
         protected void exportMemberList(object sender, EventArgs e)
         {
-            string query = @"SELECT ID_MEMBER, ACCOUNT_NUMBER, NAME, DATE_JOINED, DOCTOR, ADDRESS, 
-            CITY, PROVINCE, REGION, POSTAL_CODE FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME";
+            string query = @"SELECT ACCOUNT_NUMBER, NAME, DATE_JOINED, DOCTOR, ADDRESS, 
+            CITY, PROVINCE, REGION, POSTAL_CODE, WEBSITE, EMAIL_ADDRESS, PHONE_NUMBER, FAX, CONTACT_PERSON FROM MEMBER WHERE STATUS = 'ACTIVE' ORDER BY MEMBER.NAME";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Members.xlsx", Response);
 
@@ -39,7 +47,7 @@ namespace Vetallis
         //Exports current list of the active Partners
         protected void exportPartnerList(object sender, EventArgs e)
         {
-            string query = "SELECT NAME, ADDRESS, CITY, PARTNER_SINCE, PROVINCE, POSTAL_CODE, WEBSITE FROM PARTNER WHERE STATUS = 'ACTIVE'";
+            string query = "SELECT NAME, ADDRESS, CITY, PARTNER_SINCE, PROVINCE, POSTAL_CODE, WEBSITE, PHONE_NUMBER, FAX FROM PARTNER WHERE STATUS = 'ACTIVE'";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Active Partners.xlsx", Response);
         }
@@ -47,7 +55,7 @@ namespace Vetallis
         //Exports current list of the inactive Partners
         protected void exportInactivePartners(object sender, EventArgs e)
         {
-            string query = "SELECT NAME, ADDRESS, CITY, PARTNER_SINCE, PROVINCE, POSTAL_CODE, WEBSITE FROM PARTNER WHERE STATUS = 'INACTIVE'";
+            string query = "SELECT NAME, ADDRESS, CITY, PARTNER_SINCE, PROVINCE, POSTAL_CODE, WEBSITE, PHONE_NUMBER, FAX FROM PARTNER WHERE STATUS = 'INACTIVE'";
 
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Inactive Partners.xlsx", Response);
         }       

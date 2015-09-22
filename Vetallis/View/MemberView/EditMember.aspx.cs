@@ -18,7 +18,15 @@ namespace Vetallis.View.MemberView
 
             if (name != null && name != "")
             {
-                userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+                if (name.IndexOf(".") >= 0)
+                {
+                    userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+                }
+                else
+                {
+                    userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
+                }
+
             }
 
             this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
@@ -113,7 +121,7 @@ namespace Vetallis.View.MemberView
             this.enableFieldsBtt.Visible = true;
             this.enableFieldsBtt.Enabled = true;
             this.errorDiv.Visible = false;
-            this.disableFields();
+            this.disableFields();            
         }
 
         protected void disableFields()

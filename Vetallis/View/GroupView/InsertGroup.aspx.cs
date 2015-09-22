@@ -19,7 +19,15 @@ namespace Vetallis.View.GroupView
 
             if (name != null && name != "")
             {
-                userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+                if (name.IndexOf(".") >= 0)
+                {
+                    userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.IndexOf(".") - 1);
+                }
+                else
+                {
+                    userName = name.Substring(0, 1).ToUpper() + name.Substring(1, name.Length - 1);
+                }
+
             }
 
             this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
