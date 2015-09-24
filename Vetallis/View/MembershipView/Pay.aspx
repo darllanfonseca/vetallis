@@ -102,11 +102,11 @@
                                 <Columns>
                                     <asp:CommandField ShowSelectButton="True" />
                                     <asp:BoundField DataField="GROUP_NAME" HeaderText="Group Name" SortExpression="GROUP_NAME" />
-                                    <asp:BoundField DataField="STATUS" HeaderText="Status" SortExpression="STATUS" />
+                                    <asp:BoundField DataField="GROUP_NAME" HeaderText="Group" SortExpression="GROUP_NAME" />
                                     <asp:BoundField DataField="ID_GROUP" HeaderText="Group ID" SortExpression="ID_GROUP" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="AllGroups" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [GROUPS] WHERE STATUS='ACTIVE' ORDER BY GROUP_NAME ASC"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="AllGroups" runat="server" ConnectionString="<%$ ConnectionStrings:Conn %>" SelectCommand="SELECT * FROM [GROUPS] ORDER BY GROUP_NAME ASC"></asp:SqlDataSource>
                         </div>
 
 
@@ -119,7 +119,6 @@
                                 <asp:ListItem Text="2015"></asp:ListItem>
                                 <asp:ListItem Text="2014"></asp:ListItem>
                                 <asp:ListItem Text="2013"></asp:ListItem>
-                                <asp:ListItem Text="2012"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 

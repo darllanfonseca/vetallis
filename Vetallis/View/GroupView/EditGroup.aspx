@@ -45,7 +45,7 @@
                         
 
                         <div runat="server" visible="true" id="selectMember" style="position: absolute; width: 330px; height: 340px; top: 20px; left: 430px; overflow: scroll; border: solid 1px #d0d0d0;">
-                            <asp:GridView CssClass="GridViewStyle" ID="searchGroups" runat="server" AllowSorting="True" OnSelectedIndexChanged="loadSelectedGroup" AutoGenerateColumns="True" AutoGenerateSelectButton="true">
+                            <asp:GridView CssClass="GridViewStyle" ID="searchGroups" runat="server" AllowSorting="False" OnSelectedIndexChanged="loadSelectedGroup" AutoGenerateColumns="True" AutoGenerateSelectButton="true">
                                 <FooterStyle CssClass="GridViewFooterStyle" />
                                 <RowStyle CssClass="GridViewRowStyle" />
                                 <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />

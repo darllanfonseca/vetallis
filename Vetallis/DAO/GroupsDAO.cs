@@ -84,7 +84,7 @@ namespace Vetallis.DAO
                 query += ", ID_SIXTH_MEMBER";
             }
 
-            query += ", DATE_MODIFIED, MODIFIED_BY, DATE_CREATED, STATUS)";
+            query += ", DATE_MODIFIED, MODIFIED_BY, DATE_CREATED)";
             query += " VALUES (@ID_MAIN_MEMBER, @GROUP_NAME";
 
             if (!group.idSecond.Equals(""))
@@ -108,7 +108,7 @@ namespace Vetallis.DAO
                 query += ", @ID_SIXTH_MEMBER";
             }
 
-            query += ", @DATE_MODIFIED, @MODIFIED_BY, @DATE_CREATED, @STATUS)";
+            query += ", @DATE_MODIFIED, @MODIFIED_BY, @DATE_CREATED)";
 
             SqlCommand cmd = new SqlCommand(query, sqlConn);
 
@@ -139,7 +139,6 @@ namespace Vetallis.DAO
             cmd.Parameters.AddWithValue("@DATE_MODIFIED", System.DateTime.Now);
             cmd.Parameters.AddWithValue("@MODIFIED_BY", userName);
             cmd.Parameters.AddWithValue("@DATE_CREATED", System.DateTime.Now);
-            cmd.Parameters.AddWithValue("@STATUS", "ACTIVE");
 
             try
             {
@@ -266,7 +265,7 @@ namespace Vetallis.DAO
             //---------------------------------------------------------------------------
             //SELECT SQL, using the ID passed as an argument
             SqlCommand cmd = new SqlCommand(string.Format(
-            @"SELECT * FROM GROUPS"), sqlConn);
+            @"SELECT * FROM GROUPS ORDER BY GROUP_NAME"), sqlConn);
 
             try
             {
