@@ -33,7 +33,7 @@
                             
                                 
                         </div>  
-                        <div runat="server" style="position:absolute; height:120px; width:200px; left: 50%; top: 25%; margin-top: -60px; margin-left: -100px; border: white solid 1px;">
+                       <!-- <div runat="server" style="position:absolute; height:120px; width:200px; left: 50%; top: 25%; margin-top: -60px; margin-left: -100px; border: white solid 1px;">
                             <label>Select the Partner</label>
                             <br />
                             <asp:DropDownList runat="server" ID="partnerList" DataSourceID="Teste1" DataTextField="Name" DataValueField="ID_PARTNER">
@@ -51,7 +51,7 @@
                                 <asp:ListItem Text="2012"></asp:ListItem>
                                 <asp:ListItem Text="2011"></asp:ListItem>
                             </asp:DropDownList>
-                        </div>
+                        </div>  -->
                         <div runat="server" id="errorDiv" visible="true" style="position:absolute; height:50px; color:red; text-align:left; font-size:13px; width: 300px; bottom:30px; left: 50%; margin-left: -150px; border: white solid 1px;">
                             <asp:Label runat="server" ID="errorMsg"/>
                         </div>

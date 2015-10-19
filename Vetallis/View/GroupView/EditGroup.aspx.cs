@@ -33,7 +33,7 @@ namespace Vetallis.View.GroupView
             }
 
             this.timeAndDate.Text = "User: " + userName + " - " + System.DateTime.Today.Date.ToLongDateString();
-           
+
             GroupsDAO groupDAO = new GroupsDAO();
 
             List<Groups> groups = groupDAO.getAllGroups();
@@ -100,19 +100,19 @@ namespace Vetallis.View.GroupView
         {
             if (this.editGroupForm.Visible == true)
             {
-                if (this.thirdMember.Text.Equals("&nbsp;"))
+                if (this.thirdMemberDiv.Visible == false && !this.secondMember.Text.Equals("") && !this.secondMember.Text.Equals("&nbsp;"))
                 {
                     this.addThirdMember.Visible = true;
                 }
-                else if (this.fourthMember.Text.Equals("&nbsp;"))
+                else if (this.fourthMemberDiv.Visible == false && !this.thirdMember.Text.Equals("") && !this.thirdMember.Text.Equals("&nbsp;"))
                 {
                     this.addFourthMember.Visible = true;
                 }
-                else if (this.fithMember.Text.Equals("&nbsp;"))
+                else if (this.fithMemberDiv.Visible == false && !this.fourthMember.Text.Equals("") && !this.fourthMember.Text.Equals("&nbsp;"))
                 {
                     this.addFithMember.Visible = true;
                 }
-                else if (this.sixthMember.Text.Equals("&nbsp;"))
+                else if (this.sixthMemberDiv.Visible == false && !this.fithMember.Text.Equals("") && !this.fithMember.Text.Equals("&nbsp;"))
                 {
                     this.addSixthMember.Visible = true;
                 }
@@ -186,16 +186,44 @@ namespace Vetallis.View.GroupView
                 group.idSecond = this.idSecondMember.Text;
 
                 if (!this.idThirdMember.Text.Equals("") && !this.idThirdMember.Text.Equals("&nbsp;"))
-                group.idThird = this.idThirdMember.Text;
+                {
+                    group.idThird = this.idThirdMember.Text;
+                }
+                else
+                {
+                    group.idThird = null;
+                }
+
 
                 if (!this.idFourthMember.Text.Equals("") && !this.idFourthMember.Text.Equals("&nbsp;"))
-                group.idFourth = this.idFourthMember.Text;
+                {
+                    group.idFourth = this.idFourthMember.Text;
+                }
+                else
+                {
+                    group.idFourth = null;
+                }
+
 
                 if (!this.idFithMember.Text.Equals("") && !this.idFithMember.Text.Equals("&nbsp;"))
-                group.idFith = this.idFithMember.Text;
+                {
+                    group.idFith = this.idFithMember.Text;
+                }
+                else
+                {
+                    group.idFith = null;
+                }
+
 
                 if (!this.idSixthMember.Text.Equals("") && !this.idSixthMember.Text.Equals("&nbsp;"))
-                group.idSixth = this.idSixthMember.Text;
+                {
+                    group.idSixth = this.idSixthMember.Text;
+                }
+                else
+                {
+                    group.idSixth = null;
+                }
+
 
                 string result = groupDAO.updateGroup(group, this.Page.User.Identity.Name.ToString());
 
@@ -259,25 +287,33 @@ namespace Vetallis.View.GroupView
 
         protected void changeGroupForm(object sender, EventArgs e)
         {
-            this.chooseGroupForm.Visible = false;
-            this.editGroupForm.Visible = true;
+            if (this.groupName.Text.Equals(""))
+            {
+                this.errorMsg.Text = "Select a group in order to proceed.";
+                this.errorMsg.Visible = true;
+            }
+            else
+            {
+                this.chooseGroupForm.Visible = false;
+                this.editGroupForm.Visible = true;
 
-            if (!this.thirdMember.Text.Equals("") && !this.thirdMember.Text.Equals("&nbsp;"))
-                this.thirdMemberDiv.Visible = true;
+                if (!this.thirdMember.Text.Equals("") && !this.thirdMember.Text.Equals("&nbsp;"))
+                    this.thirdMemberDiv.Visible = true;
 
-            if (!this.fourthMember.Text.Equals("") && !this.fourthMember.Text.Equals("&nbsp;"))
-                this.fourthMemberDiv.Visible = true;
+                if (!this.fourthMember.Text.Equals("") && !this.fourthMember.Text.Equals("&nbsp;"))
+                    this.fourthMemberDiv.Visible = true;
 
-            if (!this.fithMember.Text.Equals("") && !this.fithMember.Text.Equals("&nbsp;"))
-                this.fithMemberDiv.Visible = true;
+                if (!this.fithMember.Text.Equals("") && !this.fithMember.Text.Equals("&nbsp;"))
+                    this.fithMemberDiv.Visible = true;
 
-            if (!this.sixthMember.Text.Equals("") && !this.sixthMember.Text.Equals("&nbsp;"))
-                this.sixthMemberDiv.Visible = true;
+                if (!this.sixthMember.Text.Equals("") && !this.sixthMember.Text.Equals("&nbsp;"))
+                    this.sixthMemberDiv.Visible = true;
+            }
         }
 
         protected void loadSelectedMember(object sender, EventArgs e)
         {
-            if (this.sixthMemberDiv.Visible == true)
+            if (this.sixthMemberDiv.Visible == true && (this.sixthMember.Text.Equals("") || this.sixthMember.Text.Equals("&nbsp;")))
             {
                 if (this.idMainMember.Text != this.searchMembers.SelectedRow.Cells[6].Text
                     && this.idSecondMember.Text != this.searchMembers.SelectedRow.Cells[6].Text
@@ -289,7 +325,7 @@ namespace Vetallis.View.GroupView
                     this.idSixthMember.Text = this.searchMembers.SelectedRow.Cells[6].Text;
                 }
             }
-            else if (this.fithMemberDiv.Visible == true)
+            else if (this.fithMemberDiv.Visible == true && (this.fithMember.Text.Equals("") || this.fithMember.Text.Equals("&nbsp;")))
             {
                 if (this.idMainMember.Text != this.searchMembers.SelectedRow.Cells[6].Text
                     && this.idSecondMember.Text != this.searchMembers.SelectedRow.Cells[6].Text
@@ -298,11 +334,13 @@ namespace Vetallis.View.GroupView
                 {
                     this.fithMember.Text = this.searchMembers.SelectedRow.Cells[2].Text;
                     this.idFithMember.Text = this.searchMembers.SelectedRow.Cells[6].Text;
-                    this.addSixthMember.Visible = true;
+
+                    if (this.sixthMemberDiv.Visible == false)
+                        this.addSixthMember.Visible = true;
                 }
 
             }
-            else if (this.fourthMemberDiv.Visible == true)
+            else if (this.fourthMemberDiv.Visible == true && (this.fourthMember.Text.Equals("") || this.fourthMember.Text.Equals("&nbsp;")))
             {
                 if (this.idMainMember.Text != this.searchMembers.SelectedRow.Cells[6].Text
                     && this.idSecondMember.Text != this.searchMembers.SelectedRow.Cells[6].Text
@@ -310,18 +348,34 @@ namespace Vetallis.View.GroupView
                 {
                     this.fourthMember.Text = this.searchMembers.SelectedRow.Cells[2].Text;
                     this.idFourthMember.Text = this.searchMembers.SelectedRow.Cells[6].Text;
-                    this.addFithMember.Visible = true;
+
+                    if (this.fithMemberDiv.Visible == false)
+                        this.addFithMember.Visible = true;
                 }
 
             }
-            else if (this.thirdMemberDiv.Visible == true)
+            else if (this.thirdMemberDiv.Visible == true && (this.thirdMember.Text.Equals("") || this.thirdMember.Text.Equals("&nbsp;")))
             {
                 if (this.idMainMember.Text != this.searchMembers.SelectedRow.Cells[6].Text
                     && this.idSecondMember.Text != this.searchMembers.SelectedRow.Cells[6].Text)
                 {
                     this.thirdMember.Text = this.searchMembers.SelectedRow.Cells[2].Text;
                     this.idThirdMember.Text = this.searchMembers.SelectedRow.Cells[6].Text;
-                    this.addFourthMember.Visible = true;
+
+                    if (this.fourthMemberDiv.Visible == false)
+                        this.addFourthMember.Visible = true;
+                }
+
+            }
+            else if (this.secondMemberDiv.Visible == true && (this.secondMember.Text.Equals("") || this.secondMember.Text.Equals("&nbsp;")))
+            {
+                if (this.idMainMember.Text != this.searchMembers.SelectedRow.Cells[6].Text)
+                {
+                    this.secondMember.Text = this.searchMembers.SelectedRow.Cells[2].Text;
+                    this.idSecondMember.Text = this.searchMembers.SelectedRow.Cells[6].Text;
+
+                    if (this.thirdMemberDiv.Visible == false)
+                        this.addThirdMember.Visible = true;
                 }
 
             }
@@ -332,6 +386,36 @@ namespace Vetallis.View.GroupView
         {
             FormsAuthentication.SignOut();
             Response.Redirect("~/Login.aspx");
+        }
+
+        protected void removeSecondMember(object sender, EventArgs e)
+        {
+            this.secondMember.Text = "";
+            this.idSecondMember.Text = "";
+            this.addThirdMember.Visible = false;
+        }
+        protected void removeThirdMember(object sender, EventArgs e)
+        {
+            this.thirdMember.Text = "";
+            this.idThirdMember.Text = "";
+            this.addFourthMember.Visible = false;
+        }
+        protected void removeFourthMember(object sender, EventArgs e)
+        {
+            this.fourthMember.Text = "";
+            this.idFourthMember.Text = "";
+            this.addFithMember.Visible = false;
+        }
+        protected void removeFithMember(object sender, EventArgs e)
+        {
+            this.fithMember.Text = "";
+            this.idFithMember.Text = "";
+            this.addSixthMember.Visible = false;
+        }
+        protected void removeSixthMember(object sender, EventArgs e)
+        {
+            this.sixthMember.Text = "";
+            this.idSixthMember.Text = "";
         }
     }
 }

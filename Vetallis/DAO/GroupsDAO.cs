@@ -169,17 +169,36 @@ namespace Vetallis.DAO
             {
                 query += ", ID_THIRD_MEMBER=@ID_THIRD_MEMBER";
             }
+            else
+            {
+                query += ", ID_THIRD_MEMBER=@NULL3";
+            }
+
             if (group.idFourth != null)
             {
                 query += ", ID_FOURTH_MEMBER=@ID_FOURTH_MEMBER";
             }
+            else
+            {
+                query += ", ID_FOURTH_MEMBER=@NULL4";
+            }
+
             if (group.idFith != null)
             {
                 query += ", ID_FITH_MEMBER=@ID_FITH_MEMBER";
             }
+            else
+            {
+                query += ", ID_FITH_MEMBER=@NULL5";
+            }
+
             if (group.idSixth != null)
             {
                 query += ", ID_SIXTH_MEMBER=@ID_SIXTH_MEMBER";
+            }
+            else
+            {
+                query += ", ID_SIXTH_MEMBER=@NULL6";
             }
 
             query += ", DATE_MODIFIED=@DATE_MODIFIED, MODIFIED_BY=@MODIFIED_BY WHERE ID_GROUP=@ID_GROUP";
@@ -195,17 +214,34 @@ namespace Vetallis.DAO
             {
                 cmd.Parameters.AddWithValue("@ID_THIRD_MEMBER", group.idThird);
             }
+            else if(group.idThird == null)
+            {
+                cmd.Parameters.AddWithValue("@NULL3", DBNull.Value);
+            }
+
             if (group.idFourth != null)
             {
-                cmd.Parameters.AddWithValue("@ID_FOURTH_MEMBER", group.idThird);
+                cmd.Parameters.AddWithValue("@ID_FOURTH_MEMBER", group.idFourth);
             }
+            else if (group.idFourth == null)
+            {
+                cmd.Parameters.AddWithValue("@NULL4", DBNull.Value);
+            }
+
             if (group.idFith != null)
             {
-                cmd.Parameters.AddWithValue("@ID_FITH_MEMBER", group.idThird);
+                cmd.Parameters.AddWithValue("@ID_FITH_MEMBER", group.idFith);
+            }else if(group.idFith == null){
+                cmd.Parameters.AddWithValue("@NULL5", DBNull.Value);
             }
+
             if (group.idSixth != null)
             {
-                cmd.Parameters.AddWithValue("@ID_SIXTH_MEMBER", group.idThird);
+                cmd.Parameters.AddWithValue("@ID_SIXTH_MEMBER", group.idSixth);
+            }
+            else if (group.idSixth == null)
+            {
+                cmd.Parameters.AddWithValue("@NULL6", DBNull.Value);
             }
 
             cmd.Parameters.AddWithValue("@DATE_MODIFIED", System.DateTime.Today);

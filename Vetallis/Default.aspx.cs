@@ -71,6 +71,30 @@ namespace Vetallis
             CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Rebate Sheet.xlsx", Response);            
         }
 
+        //Exports template file
+        protected void downloadTemplateFile(object sender, EventArgs e)
+        {
+            string query = @"SELECT ID_MEMBER, ID_PARTNER, IS_DELIVERED_BY_PARTNER, QUANTITY, CATEGORY, YEAR, DATE_MODIFIED, MODIFIED_BY
+                            FROM REBATE WHERE ID_REBATE = -1;";
+
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Template.xlsx", Response);
+        }
+
+        protected void downloadMemberIds(object sender, EventArgs e)
+        {
+            string query = @"SELECT ID_MEMBER, ACCOUNT_NUMBER, NAME, DOCTOR, ADDRESS, CITY, PROVINCE
+                            FROM MEMBER WHERE STATUS = 'ACTIVE'";
+            
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Member IDs.xlsx", Response);
+        }
+
+        protected void downloadPartnerIds(object sender, EventArgs e)
+        {
+            string query = @"SELECT ID_PARTNER, NAME FROM PARTNER WHERE STATUS = 'ACTIVE'";
+
+            CreateExcelFile.CreateExcelDocument(ExportExcelDAO.getDataTable(query), "Partner IDs.xlsx", Response);
+        }
+
         //exports list of inactive members
         protected void exportInactiveMembers(object sender, EventArgs e)
         {

@@ -124,6 +124,12 @@
                                 <asp:Button CssClass="menuBtt" runat="server" OnClick="goToUploadPartnerFile" Text="Upload Partner Rebate File" /></li>
                             <li role="presentation">
                                 <asp:Button CssClass="menuBtt" runat="server" OnClick="goToReplacePartnerFile" Text="Replace Partner File" /></li>
+                             <li role="presentation">
+                                <asp:Button CssClass="menuBtt" runat="server" OnClick="downloadTemplateFile" Text="Download Template File" /></li>
+                            <li role="presentation">
+                                <asp:Button CssClass="menuBtt" runat="server" OnClick="downloadMemberIds" Text="Download Member IDs" /></li>
+                            <li role="presentation">
+                                <asp:Button CssClass="menuBtt" runat="server" OnClick="downloadPartnerIds" Text="Download Partner IDs" /></li>
                             <li role="presentation">
                                 <hr />
                             </li>

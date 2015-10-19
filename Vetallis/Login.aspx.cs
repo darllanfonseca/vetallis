@@ -15,7 +15,7 @@ namespace Vetallis
 
         protected void userLogin(object sender, EventArgs e)
         {
-            string ipAddress = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(2).ToString();           
+            string ipAddress = "";           
 
             bool status = true;
 
